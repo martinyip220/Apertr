@@ -34,6 +34,6 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_comments()
-    undo_albums()
     undo_photos()
+    undo_albums()
     undo_users()
