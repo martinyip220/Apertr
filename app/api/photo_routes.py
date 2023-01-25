@@ -48,7 +48,8 @@ def photo_action(id):
     if photo:
 
         if request.method == "GET":
-            return {{photo.id: photo.to_dict()}}, 200
+            photo_dict = photo.to_dict()
+            return photo_dict
 
         if request.method == "PUT":
             form = PhotoForm()
@@ -84,4 +85,8 @@ def photo_action(id):
 def all_user_photos(id):
 
     photos = Photo.query.filter_by(user_id=id).all()
-    return {photo.id: photo.to_dict() for photo in photos}, 200
+
+    if photos:
+        return {photo.id: photo.to_dict() for photo in photos}, 200
+    else:
+        return {'errors': 'User not found'}, 404

@@ -53,7 +53,7 @@ def upgrade():
     op.create_table('photos',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('album_id', sa.Integer(), nullable=False),
+    sa.Column('album_id', sa.Integer(), nullable=True),
     sa.Column('photo_img', sa.String(length=2000), nullable=False),
     sa.Column('description', sa.String(length=255), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),

@@ -20,7 +20,7 @@ class Photo(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
-    album_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("albums.id")), nullable=False)
+    album_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("albums.id")))
     photo_img = db.Column(db.String(2000), nullable=False)
     description = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
@@ -34,8 +34,9 @@ class Photo(db.Model):
         return {
             'id': self.id,
             'userId': self.user_id,
-            'albumId': self.album_id,
             'photoImg': self.photo_img,
             'description': self.description,
-            'createdAt': self.created_at
+            'createdAt': self.created_at,
+            'albums': [album.id for album in self.album],
+            'comments': [comment.to_dict() for comment in self.comment]
         }
