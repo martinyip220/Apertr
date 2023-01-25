@@ -4,8 +4,8 @@ from datetime import datetime
 photo_albums = db.Table(
     "photo_albums",
     db.Model.metadata,
-    db.Column("photo_id", db.Integer, db.ForeignKey("photos.id"), primary_key=True),
-    db.Column("album_id", db.Integer, db.ForeignKey("albums.id"), primary_key=True)
+    db.Column("photo_id", db.Integer, db.ForeignKey(add_prefix_for_prod("photos.id")), primary_key=True),
+    db.Column("album_id", db.Integer, db.ForeignKey(add_prefix_for_prod("albums.id")), primary_key=True)
 )
 
 if environment == "production":
