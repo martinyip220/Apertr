@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { login } from '../../store/session';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect, useHistory, NavLink } from "react-router-dom";
+import { login } from "../../store/session";
+import "./auth.css";
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const user = useSelector(state => state.session.user);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -16,6 +18,8 @@ const LoginForm = () => {
     if (data) {
       setErrors(data);
     }
+
+    history.push("/explore")
   };
 
   const updateEmail = (e) => {
@@ -27,38 +31,76 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to="/explore" />;
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div className="auth-forms-bg">
+      <div className="form-container">
+        <div className="form-top-container">
+          <img
+            className="logo-auth"
+            src="https://i.imgur.com/aRZYLNj.jpg"
+            alt="logo"
+            onClick={() => history.push("/")}
+          ></img>
+          <div className="form-title">Log in to Clickr</div>
+        </div>
+
+        <form className="auth-form" onSubmit={onLogin}>
+          <div className="auth-error-container">
+            {errors.map((error, ind) => (
+              <div className="auth-error-msg" key={ind}>
+                {error}
+              </div>
+            ))}
+          </div>
+
+          <div className="auth-input-container">
+            <input
+              name="email"
+              type="text"
+              placeholder="Email"
+              className="auth-input-fields"
+              value={email}
+              onChange={updateEmail}
+            />
+          </div>
+          <div className="auth-input-container">
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              className="auth-input-fields"
+              value={password}
+              onChange={updatePassword}
+            />
+          </div>
+
+          <div className="auth-btn-container">
+            <button type="submit" className="auth-btn">
+              Login
+            </button>
+            <button
+              className="auth-btn"
+              type="submit"
+              onClick={() => {
+                setEmail("demo@aa.io");
+                setPassword("password");
+              }}
+            >
+              Demo Login
+            </button>
+          </div>
+          <div className="login-form-register">
+            <div className="login-form-text">Not a Clickr member?</div>
+            <NavLink to="/sign-up" className="register">
+              Sign up here
+            </NavLink>
+          </div>
+        </form>
       </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-      </div>
-    </form>
+    </div>
   );
 };
 

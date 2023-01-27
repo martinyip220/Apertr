@@ -86,7 +86,7 @@ export const logout = () => async (dispatch) => {
 };
 
 
-export const signUp = (username, email, password) => async (dispatch) => {
+export const signUp = (username, full_name, email, password) => async (dispatch) => {
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
     headers: {
@@ -94,6 +94,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
     },
     body: JSON.stringify({
       username,
+      full_name,
       email,
       password,
     }),
@@ -120,7 +121,7 @@ export default function reducer(state = initialState, action) {
     case REMOVE_USER:
       return { user: null }
     case ALL_USERS:
-      let newState = { user: {}, allUsers: {} }
+      let newState = { ...state, allUsers: {} }
       const users = action.payload
       newState.allUsers = users
       return newState

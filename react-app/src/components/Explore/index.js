@@ -21,10 +21,13 @@ function ExplorePage() {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1>Explore</h1>
-      <div>
-        <div>
+    <div className="explore-pg-wrapper">
+      <div className="explore-title-container">
+        <div className="explore-title">Explore</div>
+      </div>
+
+      <div className="explore-pg-background">
+        <div className="explore-pg-imgs">
           {loaded &&
             photosObject.map((photo) => (
               <div className="photo-container" key={photo.id}>
@@ -33,9 +36,7 @@ function ExplorePage() {
                     className="photo-img"
                     src={photo.photoImg}
                     alt="explore"
-                    width={300}
-                  >
-                  </img>
+                  ></img>
                 </Link>
               </div>
             ))}
