@@ -3,24 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getOnePhotoThunk, getAllPhotosThunk } from "../../store/photo";
 import { getAllUsers } from "../../store/session";
+import EditPhotoModal from "../EditPhoto";
+import OpenModalMenuItem from "../OpenModalButton";
 import "./index.css";
 
 function PhotoDetail() {
   const dispatch = useDispatch();
   const { photoId } = useParams();
   const [loaded, setLoaded] = useState(false);
-  const users = useSelector((state) => state.session.allUsers?.users);
   const singlePhoto = useSelector((state) => state.photo.singlePhoto);
-  const ownerId = singlePhoto?.userId;
-
-  const ownerObj = users.filter((user) => user?.id === ownerId)
-
-  console.log("what am i ?", ownerObj[0])
-
-  const ownerName = ownerObj[0]?.username
+  const user = useSelector((state) => state.session.user);
+  const ownerId = singlePhoto.userId;
 
 
-  console.log("owner username", ownerName)
+  console.log("user? ", user)
+  console.log("userid", user.id)
+  console.log("ownerid", ownerId)
 
   useEffect(async () => {
     await dispatch(getAllUsers());
@@ -35,15 +33,22 @@ function PhotoDetail() {
     <div className="photo-detail-page">
       <div className="photo-detail-img-background">
         <div className="photo-detail-img-container">
-          <img src={singlePhoto.photoImg} alt="single" width={1000}></img>
+          <img src={singlePhoto.photoImg} alt="single" width={1200}></img>
         </div>
         <div>
-          <button>Edit Photo</button>
+          {user && user.id === ownerId && (
+            <button>
+              <OpenModalMenuItem
+                itemText={<i class="fa-solid fa-pen-to-square"></i>}
+                modalComponent={<EditPhotoModal photoId={photoId} />}
+              />
+            </button>
+          )}
         </div>
       </div>
 
       <div className="photo-detail-info">
-        <div>{ownerName}</div>
+        <div></div>
         <div>{singlePhoto.description}</div>
       </div>
     </div>

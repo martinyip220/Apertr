@@ -22,6 +22,7 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data);
       }
+      history.push("/explore")
     } else if (password !== repeatPassword) {
       let errors = [];
       errors.push("Passwords do not match. Please try again.");
@@ -52,7 +53,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to="/" />;
+    return <Redirect to="/explore" />;
   }
 
   return (

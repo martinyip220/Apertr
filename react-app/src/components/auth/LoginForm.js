@@ -18,6 +18,8 @@ const LoginForm = () => {
     if (data) {
       setErrors(data);
     }
+
+    history.push("/explore")
   };
 
   const updateEmail = (e) => {
@@ -29,7 +31,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to="/" />;
+    return <Redirect to="/explore" />;
   }
 
   return (
