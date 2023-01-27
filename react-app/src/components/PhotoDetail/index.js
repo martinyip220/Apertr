@@ -16,10 +16,6 @@ function PhotoDetail() {
   const ownerId = singlePhoto.userId;
 
 
-  console.log("user? ", user)
-  console.log("userid", user.id)
-  console.log("ownerid", ownerId)
-
   useEffect(async () => {
     await dispatch(getAllUsers());
     await dispatch(getAllPhotosThunk());
