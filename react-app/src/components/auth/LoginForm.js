@@ -48,31 +48,32 @@ const LoginForm = () => {
         <form className="auth-form" onSubmit={onLogin}>
           <div className="auth-error-container">
             {errors.map((error, ind) => (
-              <div className="auth-error-msg" key={ind}>{error}</div>
+              <div className="auth-error-msg" key={ind}>
+                {error}
+              </div>
             ))}
           </div>
 
-
-            <div className="auth-input-container top-input">
-              <input
-                name="email"
-                type="text"
-                placeholder="Email"
-                className="auth-input-fields"
-                value={email}
-                onChange={updateEmail}
-              />
-            </div>
-            <div className="auth-input-container">
-              <input
-                name="password"
-                type="password"
-                placeholder="Password"
-                className="auth-input-fields"
-                value={password}
-                onChange={updatePassword}
-              />
-            </div>
+          <div className="auth-input-container">
+            <input
+              name="email"
+              type="text"
+              placeholder="Email"
+              className="auth-input-fields"
+              value={email}
+              onChange={updateEmail}
+            />
+          </div>
+          <div className="auth-input-container">
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              className="auth-input-fields"
+              value={password}
+              onChange={updatePassword}
+            />
+          </div>
 
           <div className="auth-btn-container">
             <button type="submit" className="auth-btn">
@@ -90,11 +91,11 @@ const LoginForm = () => {
             </button>
           </div>
           <div className="login-form-register">
-              <div className="login-form-text">Not a Clickr member?</div>
-              <NavLink to="/sign-up" className="register">
-                Sign up here
-              </NavLink>
-            </div>
+            <div className="login-form-text">Not a Clickr member?</div>
+            <NavLink to="/sign-up" className="register">
+              Sign up here
+            </NavLink>
+          </div>
         </form>
       </div>
     </div>
