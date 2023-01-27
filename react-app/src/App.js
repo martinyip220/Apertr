@@ -11,6 +11,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import ExplorePage from "./components/Explore";
 import PhotoDetail from "./components/PhotoDetail";
+import UploadPhotoForm from "./components/UploadPhoto";
 import { getAllUsers } from "./store/session";
 import { authenticate } from "./store/session";
 import SplashPage from "./components/SplashPage";
@@ -20,7 +21,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const user = useSelector((state) => state.session.user);
 
-  console.log("am i the user? ---------->", user)
+  console.log("am i the user? ---------->", user);
 
   const dispatch = useDispatch();
 
@@ -55,15 +56,19 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path="/explore" exact={true}>
-          <NavBar />
+          {user ? <LoggedInNav /> : <NavBar />}
           <ExplorePage />
+        </Route>
+        <Route path="/photos/new" exact={true}>
+          {user ? <LoggedInNav /> : <NavBar />}
+          <UploadPhotoForm />
         </Route>
         <Route path="/photos/:photoId" exact={true}>
           {user ? <LoggedInNav /> : <NavBar />}
           <PhotoDetail />
         </Route>
         <Route path="/" exact={true}>
-           <NavBar />
+          <NavBar />
           <SplashPage />
           <Footer />
         </Route>

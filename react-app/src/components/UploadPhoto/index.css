@@ -1,0 +1,73 @@
+.up-photo-bg {
+  background-color: rgb(44, 44, 44);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-form-container {
+  background-color: white;
+  height: 360px;
+  width: 352px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.up-photo-form {
+  height: 420px;
+  width: 311px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.up-input-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.up-photo-modal-input {
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 18px;
+  padding-left: 5px;
+}
+
+.up-photo-btn-containers {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.up-photo-btn {
+  width: 80px;
+  margin-bottom: 12px;
+  border-width: 0;
+  height: 40px;
+  background-color: rgb(18, 143, 220);
+  color: white;
+  font-weight: 550;
+  border-radius: 5px;
+}
+
+.up-photo-btn:hover {
+  cursor: pointer;
+  background-color: rgb(58, 167, 235);
+}
+
+.up-photo-cancel {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.up-photo-cancel:hover {
+  cursor: pointer;
+}
