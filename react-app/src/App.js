@@ -11,6 +11,8 @@ import ExplorePage from "./components/Explore";
 import PhotoDetail from "./components/PhotoDetail";
 import { getAllUsers } from "./store/session";
 import { authenticate } from "./store/session";
+import SplashPage from "./components/SplashPage";
+import Footer from "./components/Footer";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,7 +53,8 @@ function App() {
           <PhotoDetail />
         </Route>
         <Route path="/" exact={true}>
-          <h1>My Home Page</h1>
+          <SplashPage />
+          <Footer />
         </Route>
       </Switch>
     </BrowserRouter>

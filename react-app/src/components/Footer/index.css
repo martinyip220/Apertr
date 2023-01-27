@@ -1,0 +1,12 @@
+.footer-wrapper {
+    background-color: rgb(32,31,35);
+    height: 35px;
+    width: 100vw;
+}
+
+.footer-title {
+    color: white;
+    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+}
