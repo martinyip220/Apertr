@@ -1,0 +1,110 @@
+.auth-forms-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("https://free4kwallpapers.com/uploads/originals/2022/12/18/tracks-to-nowhere-wallpaper.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.form-container {
+    background-color: white;
+    height: 420px;
+    width: 352px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.form-top-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-auth {
+    height: 50px;
+    margin-top: 30px;
+}
+
+.logo-auth:hover {
+    cursor: pointer;
+}
+
+.form-title {
+    font-size: 25px;
+    margin-top: 5px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    width: 304px;
+}
+
+.auth-error-container {
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-error-msg {
+    color: red;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+
+.auth-input-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+}
+
+.auth-input-fields {
+    width: 100%;
+    height: 40px;
+}
+
+.auth-btn-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-btn {
+    width: 100%;
+    margin-bottom: 12px;
+    border-width: 0;
+    height: 40px;
+    background-color: rgb(18,143,220);
+    color: white;
+    font-weight: 550;
+    border-radius: 5px;
+}
+
+.auth-btn:hover {
+    cursor: pointer;
+    background-color: rgb(58, 167, 235);
+}
+
+.login-form-register {
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-form-text {
+    margin-right: 5px;
+}
+
+.register {
+    text-decoration: none;
+    color: rgb(0,109,172);
+}
