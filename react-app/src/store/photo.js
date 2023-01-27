@@ -42,7 +42,7 @@ const deletePhoto = (photoId) => ({
 export const uploadPhotoThunk = (newPhoto) => async (dispatch) => {
     const { album, photo_img, description } = newPhoto;
 
-    const response = await fetch(`/api/servers/new`, {
+    const response = await fetch(`/api/photos/new`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -61,7 +61,7 @@ export const uploadPhotoThunk = (newPhoto) => async (dispatch) => {
 
 
 export const getOnePhotoThunk = (photoId) => async (dispatch) => {
-    const response = await fetch(`/api/servers/${photoId}`);
+    const response = await fetch(`/api/photos/${photoId}`);
 
     if (response.ok) {
         const photo = await response.json();
@@ -72,7 +72,7 @@ export const getOnePhotoThunk = (photoId) => async (dispatch) => {
 
 
 export const getAllPhotosThunk = () => async (dispatch) => {
-    const response = await fetch(`/api/servers`);
+    const response = await fetch(`/api/photos`);
 
     if (response.ok) {
         const photos = await response.json();
@@ -113,7 +113,7 @@ export const updatePhotoThunk = (photo) => async (dispatch) => {
 
 
 export const deletePhotoThunk = (photoId) => async (dispatch) => {
-    const response = await fetch(`/api/servers/${photoId}`, {
+    const response = await fetch(`/api/photos/${photoId}`, {
         method: "DELETE"
     });
     if (response.ok) {
