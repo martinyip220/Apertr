@@ -1,6 +1,7 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const ALL_USERS = 'session/ALL_USERS';
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -11,7 +12,22 @@ const removeUser = () => ({
   type: REMOVE_USER,
 })
 
-const initialState = { user: null };
+const allUsers = (users) => ({
+  type: ALL_USERS,
+  payload: users
+})
+
+const initialState = { user: null, allUsers: {} };
+
+export const getAllUsers = () => async (dispatch) => {
+  const response = await fetch(`/api/users/`);
+
+  if (response.ok) {
+    const data = await response.json();
+    await dispatch(allUsers(data))
+  }
+}
+
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {
@@ -24,7 +40,7 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-  
+
     dispatch(setUser(data));
   }
 }
@@ -40,8 +56,8 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
-  
-  
+
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -82,7 +98,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
       password,
     }),
   });
-  
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -103,6 +119,11 @@ export default function reducer(state = initialState, action) {
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
+    case ALL_USERS:
+      let newState = { user: {}, allUsers: {} }
+      const users = action.payload
+      newState.allUsers = users
+      return newState
     default:
       return state;
   }
