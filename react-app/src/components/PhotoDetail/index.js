@@ -29,7 +29,7 @@ function PhotoDetail() {
     <div className="photo-detail-page">
       <div className="photo-detail-img-background">
         <div className="photo-detail-img-container">
-          <img src={singlePhoto.photoImg} alt="single" width={1200}></img>
+          <img src={singlePhoto.photoImg} alt="single" className="single-photo"></img>
         </div>
         <div className="photo-detail-options">
           {user && user.id === ownerId && (

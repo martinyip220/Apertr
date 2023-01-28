@@ -4,6 +4,11 @@
     align-items: center;
 }
 
+.single-photo {
+    max-width: 1000px;
+    max-height: 800px;
+}
+
 .photo-detail-img-background {
     width: 100%;
     display: flex;
