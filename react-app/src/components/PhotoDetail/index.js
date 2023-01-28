@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getOnePhotoThunk, getAllPhotosThunk } from "../../store/photo";
 import { getAllUsers } from "../../store/session";
 import EditPhotoModal from "../EditPhoto";
+import DeletePhotoModal from "../DeletePhoto";
 import OpenModalMenuItem from "../OpenModalButton";
 import "./index.css";
 
@@ -14,7 +15,6 @@ function PhotoDetail() {
   const singlePhoto = useSelector((state) => state.photo.singlePhoto);
   const user = useSelector((state) => state.session.user);
   const ownerId = singlePhoto.userId;
-
 
   useEffect(async () => {
     await dispatch(getAllUsers());
@@ -31,14 +31,22 @@ function PhotoDetail() {
         <div className="photo-detail-img-container">
           <img src={singlePhoto.photoImg} alt="single" width={1200}></img>
         </div>
-        <div>
+        <div className="photo-detail-options">
           {user && user.id === ownerId && (
-            <button>
-              <OpenModalMenuItem
-                itemText={<i class="fa-solid fa-pen-to-square"></i>}
-                modalComponent={<EditPhotoModal photoId={photoId} />}
-              />
-            </button>
+            <div>
+              <button className="photo-detail-btns">
+                <OpenModalMenuItem
+                  itemText={<i class="fa-solid fa-pen-to-square"></i>}
+                  modalComponent={<EditPhotoModal photoId={photoId} />}
+                />
+              </button>
+              <button className="photo-detail-btns">
+                <OpenModalMenuItem
+                  itemText={<i class="fa-regular fa-trash-can"></i>}
+                  modalComponent={<DeletePhotoModal photoId={photoId} />}
+                />
+              </button>
+            </div>
           )}
         </div>
       </div>

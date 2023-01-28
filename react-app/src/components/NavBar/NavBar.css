@@ -27,8 +27,12 @@
 
 .nav-link {
     text-decoration: none;
-    color: white;
+    color: rgba(255, 255, 255, 0.479);
     font-size: 20px;
+}
+
+.nav-link:hover {
+    color: rgba(255, 255, 255, 0.842);
 }
 
 .nav-bar-items {
@@ -72,12 +76,31 @@
 }
 
 .fa-cloud-arrow-up {
-    color: white;
+    color: rgba(255, 255, 255, 0.315);
     font-size: 26px;
     margin-right: 20px;
+}
+
+.fa-cloud-arrow-up:hover {
+    color: rgba(255, 255, 255, 0.842);
 }
 
 .logged-nav-right {
     display: flex;
     align-items: center;
+}
+
+.signup-btn {
+    color: black;
+    text-decoration: none;
+    height: 32px;
+    width: 80px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    border-width: 0;
+}
+
+.signup-btn:hover {
+    color: rgba(128, 128, 128, 0.719);
 }

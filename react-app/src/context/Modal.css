@@ -1,4 +1,4 @@
-#modal {
+.modal {
     position: fixed;
     top: 0;
     right: 0;
@@ -7,29 +7,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
-#modal-background {
+.modal-background {
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(255, 255, 255, 0.548);
 }
 
-#modal-content {
+.modal-content {
     position: absolute;
-    background-color: rgb(54,57,63);
-    width: 23%;
-    /* padding: 10px; */
+    background-color: white;
+    width: 400px;
+    height: 250px;
     border-radius: 10px;
-}
-
-
-#modal-content form {
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
 }

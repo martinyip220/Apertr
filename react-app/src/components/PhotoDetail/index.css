@@ -13,3 +13,23 @@
     padding-top: 40px;
     padding-bottom: 20px;
 }
+
+.photo-detail-options {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 100px;
+}
+
+.photo-detail-btns {
+    font-size: 20px;
+    margin-right: 5px;
+    color: rgba(255, 255, 255, 0.315);
+    background-color: rgb(33,33,36);
+    border-width: 0;
+}
+
+.photo-detail-btns:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.842);
+}

@@ -43,12 +43,12 @@ export function Modal() {
     // If there is no div referenced by the modalRef or modalContent is not a
     // truthy value, render nothing:
     if (!modalRef || !modalRef.current || !modalContent) return null;
-    console.log('we in modal')
+
     // Render the following component to the div referenced by the modalRef
     return ReactDOM.createPortal(
-      <div id="modal">
-        <div id="modal-background" onClick={closeModal} />
-        <div id="modal-content">
+      <div className="modal">
+        <div className="modal-background" onClick={closeModal} />
+        <div className="modal-content">
           {modalContent}
         </div>
       </div>,
@@ -61,12 +61,12 @@ export function Modal2() {
     // If there is no div referenced by the modalRef or modalContent is not a
     // truthy value, render nothing:
     if (!modalRef || !modalRef.current || !modalContent) return null;
-    console.log('we in modal2')
+
     // Render the following component to the div referenced by the modalRef
     return ReactDOM.createPortal(
-      <div id="modal2">
-        <div id="modal-background2" onClick={closeModal} />
-        <div id="modal-content">
+      <div className="modal2">
+        <div className="modal-background2" onClick={closeModal} />
+        <div className="modal-content">
           {modalContent}
         </div>
       </div>,
