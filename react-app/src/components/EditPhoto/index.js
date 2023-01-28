@@ -7,6 +7,7 @@ import {
   getAllPhotosThunk,
 } from "../../store/photo";
 import { getAllUsers } from "../../store/session";
+import "./index.css";
 
 function EditPhotoModal({ photoId }) {
   const dispatch = useDispatch();
@@ -18,12 +19,6 @@ function EditPhotoModal({ photoId }) {
   //   const [album, setAlbum] = useState(singlePhoto?.album);
   const id = photoId;
 
-  useEffect(async () => {
-    await dispatch(getAllUsers());
-    await dispatch(getAllPhotosThunk());
-    await dispatch(getOnePhotoThunk(photoId));
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -33,17 +28,23 @@ function EditPhotoModal({ photoId }) {
       description,
     };
 
-    await dispatch(updatePhotoThunk(photoData));
-    await dispatch(getAllPhotosThunk());
-    await dispatch(getOnePhotoThunk(photoId));
+    if (photo_img.length < 5) {
+      let errors = [];
+      errors.push("Photo image url must be greater than 5 characters");
+      return setErrors(errors);
+    } else {
+      await dispatch(updatePhotoThunk(photoData));
+      await dispatch(getAllPhotosThunk());
+      await dispatch(getOnePhotoThunk(photoId));
 
-    closeModal();
+      closeModal();
+    }
   };
 
   return (
     <div className="edit-photo-modal">
       <div className="edit-photo-top">
-        <h1>Edit Photo</h1>
+        <div className="edit-del-photo-title">Edit Photo</div>
       </div>
 
       <form className="edit-photo-form" onSubmit={handleSubmit}>
@@ -55,26 +56,22 @@ function EditPhotoModal({ photoId }) {
           ))}
         </ul>
 
-        <label>
-          Photo Image Url
-          <input
-            type="text"
-            value={photo_img}
-            onChange={(e) => setPhoto_Img(e.target.value)}
-            required
-            className="edit-photo-modal-input"
-          />
-        </label>
-        <label>
-          Description
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-            className="edit-photo-modal-input"
-          />
-        </label>
+        <input
+          type="text"
+          value={photo_img}
+          onChange={(e) => setPhoto_Img(e.target.value)}
+          required
+          className="edit-photo-modal-input"
+        />
+
+        <input
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+          className="edit-photo-modal-input"
+        />
+
         <div className="edit-photo-btn-containers">
           <div className="edit-photo-cancel" onClick={closeModal}>
             Cancel

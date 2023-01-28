@@ -11,36 +11,36 @@ function DeletePhotoModal({ photoId }) {
   const history = useHistory();
 
   const handleDelete = async () => {
-
-    await dispatch(deletePhotoThunk(photoId))
+    await dispatch(deletePhotoThunk(photoId));
 
     closeModal();
 
-    history.push("/explore")
-  }
+    history.push("/explore");
+  };
 
   return (
-    <div className="delete-server-modal">
-      <div className="create-server-top-container">
-        <h1 className="create-server-h1">Delete your Photo</h1>
-        <div className="description-container">
-          <div className="create-server-descript">
-            Do you want to permanently delete this photo?
-          </div>
-        </div>
+    <div className="delete-photo-modal">
+      <div className="delete-photo-title-ctn">
+        <div className="delete-photo-title">Delete Photo</div>
       </div>
 
-      <div className="delete-photo-btn-container">
+
+        <div className="delete-photo-descript">
+          Do you want to permanently delete this photo?
+        </div>
+
+
+      <div className="delete-btn-container">
         <button className="delete-cancel" onClick={closeModal}>
           Cancel
         </button>
         <button
           className="delete-photo-btn"
           onClick={() => {
-            if (window.confirm("Delete the photo?")) {
-                handleDelete();
+            if (window.confirm("Deletion can not be undone. Do you wish to continue?")) {
+              handleDelete();
             } else {
-                closeModal();
+              closeModal();
             }
           }}
         >

@@ -1,0 +1,52 @@
+.delete-photo-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 367px;
+    height: 200px;
+    margin: 15px;
+}
+
+.delete-photo-title {
+    font-size: 24px;
+
+}
+
+.delete-photo-descript {
+    font-size: 17px;
+}
+
+.delete-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.delete-cancel {
+    margin-right: 10px;
+    background-color: rgb(151,158,162);
+    border-width: 0;
+    color: rgb(254,254,254);
+    height: 29px;
+    width: 83px;
+    border-radius: 5px;
+}
+
+.delete-cancel:hover {
+    cursor: pointer;
+    background-color: rgba(151, 158, 162, 0.815);
+}
+
+.delete-photo-btn {
+    background-color: rgb(226,41,43);
+    color: white;
+    border-width: 0;
+    height: 29px;
+    width: 83px;
+    border-radius: 5px;
+}
+
+.delete-photo-btn:hover {
+    cursor: pointer;
+    background-color: rgba(226, 41, 44, 0.808);
+}
