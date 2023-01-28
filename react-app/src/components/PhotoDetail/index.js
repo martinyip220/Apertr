@@ -31,16 +31,16 @@ function PhotoDetail() {
         <div className="photo-detail-img-container">
           <img src={singlePhoto.photoImg} alt="single" width={1200}></img>
         </div>
-        <div>
+        <div className="photo-detail-options">
           {user && user.id === ownerId && (
             <div>
-              <button>
+              <button className="photo-detail-btns">
                 <OpenModalMenuItem
                   itemText={<i class="fa-solid fa-pen-to-square"></i>}
                   modalComponent={<EditPhotoModal photoId={photoId} />}
                 />
               </button>
-              <button>
+              <button className="photo-detail-btns">
                 <OpenModalMenuItem
                   itemText={<i class="fa-regular fa-trash-can"></i>}
                   modalComponent={<DeletePhotoModal photoId={photoId} />}

@@ -6,7 +6,7 @@ function SplashPage() {
     <div className="splash-page-whole">
       <div className="splash-page-background">
         <div className="splash-page-text-container">
-          <div className="splash-title">Find your inspiration</div>
+          <div className="splash-title">Find your inspiration.</div>
           <div className="splash-text">
             Join the Clickr community, home to tens of billions of
           </div>
