@@ -1,0 +1,117 @@
+.profile-pg-whole {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-pg-background-top {
+    background-image: url("https://i.imgur.com/8QPC1h2.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 250px;
+}
+
+.profile-info-container {
+    display: flex;
+    width: 80%;
+    height: 250px;
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.prof-img {
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+    margin-top: 80px;
+}
+
+.prof-full-name-btn-container {
+    color: white;
+    align-items: center;
+    display: flex;
+    margin-top: 110px;
+    margin-left: 20px;
+}
+
+.prof-fullname {
+    font-size: 40px;
+    margin-right: 20px;
+    font-weight: 100;
+}
+
+.pro-btn {
+    background-color: transparent;
+    width: 45px;
+    height: 35px;
+    color: white;
+    border-style: solid;
+    border-color: white;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.pro-btn:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
+.prof-username-followers-container {
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.fa-circle{
+    margin-right: 10px;
+    font-size: 6px;
+}
+
+.prof-info-text {
+    margin-right: 10px;
+}
+
+
+.album-nav-container {
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 45px;
+    background-color: white;
+}
+
+.albun-nav-label {
+    font-size: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid rgb(0,145,220);
+}
+
+
+.albums-container-bg {
+    background-color: rgb(243,245,246);
+    width: 100%;
+    height: 100vh;
+}
+
+.albums-container {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 25px;
+    display: flex;
+}
+
+.album-img {
+    height: 200px;
+    width: 300px;
+    margin-right: 7px;
+}

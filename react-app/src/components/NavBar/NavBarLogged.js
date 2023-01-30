@@ -6,6 +6,7 @@ import "./NavBar.css";
 
 const LoggedInNav = () => {
   return (
+    <div className="logged-nav-background">
     <nav className="logged-nav">
       <div className="logged-nav-left">
         <NavLink
@@ -16,14 +17,21 @@ const LoggedInNav = () => {
         >
           <img className="login-signup-logo" src={logo} alt="splash-logo"></img>
         </NavLink>
+        <NavLink to="/you" exact={true} activeClassName="active" className="nav-link profile-link">
+          You
+        </NavLink>
+        <NavLink to="/explore" exact={true} activeClassName="active" className="nav-link">
+          Explore
+        </NavLink>
       </div>
       <div className="logged-nav-right">
         <NavLink to="/photos/new">
-          <i class="fa-solid fa-cloud-arrow-up"></i>
+          <i className="fa-solid fa-cloud-arrow-up"></i>
         </NavLink>
         <img src={profilePic} alt="pro-pic" className="profile-pic"></img>
       </div>
-    </nav>
+      </nav>
+      </div>
   );
 };
 

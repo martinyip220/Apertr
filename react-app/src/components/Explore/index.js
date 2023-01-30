@@ -12,7 +12,6 @@ function ExplorePage() {
   // const photosArr = Object.values(photosObject);
   // const allPhotos = photosArr[0]
   console.log("what am i object?", photosObject);
-  // console.log("what am i arr?", photosArr[0]);
 
   // use effect to get the state of all photos
   useEffect(async () => {

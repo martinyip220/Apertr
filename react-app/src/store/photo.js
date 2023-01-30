@@ -86,7 +86,7 @@ export const userPhotosThunk = (userId) => async (dispatch) => {
 
     if (response.ok) {
         const photos = await response.json();
-        dispatch(userPhotos(photos))
+        await dispatch(userPhotos(photos))
         return photos
     }
 }
@@ -106,7 +106,7 @@ export const updatePhotoThunk = (photo) => async (dispatch) => {
     })
     if (response.ok) {
         const editedPhoto = await response.json();
-        dispatch(updatePhoto(editedPhoto));
+        await dispatch(updatePhoto(editedPhoto));
         return editedPhoto;
     }
 }
@@ -118,7 +118,7 @@ export const deletePhotoThunk = (photoId) => async (dispatch) => {
     });
     if (response.ok) {
         const photo = await response.json();
-        dispatch(deletePhoto(photoId));
+        await dispatch(deletePhoto(photoId));
         return photo;
     }
 }

@@ -29,20 +29,20 @@ function PhotoDetail() {
     <div className="photo-detail-page">
       <div className="photo-detail-img-background">
         <div className="photo-detail-img-container">
-          <img src={singlePhoto.photoImg} alt="single" width={1200}></img>
+          <img src={singlePhoto.photoImg} alt="single" className="single-photo"></img>
         </div>
         <div className="photo-detail-options">
           {user && user.id === ownerId && (
             <div>
               <button className="photo-detail-btns">
                 <OpenModalMenuItem
-                  itemText={<i class="fa-solid fa-pen-to-square"></i>}
+                  itemText={<i className="fa-solid fa-pen-to-square"></i>}
                   modalComponent={<EditPhotoModal photoId={photoId} />}
                 />
               </button>
               <button className="photo-detail-btns">
                 <OpenModalMenuItem
-                  itemText={<i class="fa-regular fa-trash-can"></i>}
+                  itemText={<i className="fa-regular fa-trash-can"></i>}
                   modalComponent={<DeletePhotoModal photoId={photoId} />}
                 />
               </button>
