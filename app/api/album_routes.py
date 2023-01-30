@@ -66,7 +66,7 @@ def album_action(id):
                     photos = form.data["photo"].split(",")
                     photo_list = []
                     [photo_list.append(Photo.query.get(int(photo))) for photo in photos]
-                    [album.photo.remove(photo) for photo in photo_list]
+                    # [album.photo.remove(photo) for photo in photo_list]
 
                 db.session.commit()
                 return {"album": album.to_dict()}, 200
@@ -83,3 +83,11 @@ def album_action(id):
 
     else:
         return {'errors': 'Album not found'}, 404
+
+
+@album_routes.route("")
+def get_all_albums():
+
+    albums = Album.query.all()
+
+    return {"albums": [album.to_dict() for album in albums]}, 200

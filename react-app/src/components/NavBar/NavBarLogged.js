@@ -26,7 +26,7 @@ const LoggedInNav = () => {
       </div>
       <div className="logged-nav-right">
         <NavLink to="/photos/new">
-          <i class="fa-solid fa-cloud-arrow-up"></i>
+          <i className="fa-solid fa-cloud-arrow-up"></i>
         </NavLink>
         <img src={profilePic} alt="pro-pic" className="profile-pic"></img>
       </div>

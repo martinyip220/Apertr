@@ -36,13 +36,13 @@ function PhotoDetail() {
             <div>
               <button className="photo-detail-btns">
                 <OpenModalMenuItem
-                  itemText={<i class="fa-solid fa-pen-to-square"></i>}
+                  itemText={<i className="fa-solid fa-pen-to-square"></i>}
                   modalComponent={<EditPhotoModal photoId={photoId} />}
                 />
               </button>
               <button className="photo-detail-btns">
                 <OpenModalMenuItem
-                  itemText={<i class="fa-regular fa-trash-can"></i>}
+                  itemText={<i className="fa-regular fa-trash-can"></i>}
                   modalComponent={<DeletePhotoModal photoId={photoId} />}
                 />
               </button>
