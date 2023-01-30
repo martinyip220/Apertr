@@ -115,3 +115,27 @@
     width: 300px;
     margin-right: 7px;
 }
+
+.add-album-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.add-album-link {
+    display: flex;
+    text-decoration: none;
+    color: rgb(142,147,150);
+}
+
+.add-album-link:hover {
+    color: black;
+}
+
+.fa-folder-plus {
+    margin-right: 10px;
+}

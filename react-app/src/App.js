@@ -15,6 +15,8 @@ import ProfilePage from "./components/YouPage";
 import UploadPhotoForm from "./components/UploadPhoto";
 import { getAllUsers } from "./store/session";
 import { authenticate } from "./store/session";
+import { getAllPhotosThunk } from "./store/photo";
+import { getAllAlbumsThunk } from "./store/album";
 import SplashPage from "./components/SplashPage";
 import Footer from "./components/Footer";
 
@@ -27,12 +29,18 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => {
+
+    const fetchData = async () => {
       await dispatch(authenticate());
       await dispatch(getAllUsers());
-      setLoaded(true);
-    })();
-  }, [dispatch]);
+      await dispatch(getAllPhotosThunk());
+      await dispatch(getAllAlbumsThunk());
+      setLoaded(true)
+    }
+
+    fetchData().catch(console.error);
+
+  }, []);
 
   if (!loaded) {
     return null;

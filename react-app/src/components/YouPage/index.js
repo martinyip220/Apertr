@@ -11,18 +11,21 @@ function ProfilePage() {
   const history = useHistory();
   const [loaded, setLoaded] = useState(false);
   const user = useSelector((state) => state.session.user);
-  const userId = useSelector((state) => state.session.user.id);
   const albumsObj = useSelector((state) => state.album.userAlbums);
   const albumsArr = Object.values(albumsObj);
 
-  console.log("what am i ???", albumsArr);
+  // await console.log("what am i ???", albumsArr);
   // console.log("do i break? ", albumsArr[0].description)
 
-  useEffect(async () => {
-    await dispatch(userAlbumsThunk(userId));
-    await dispatch(getAllUsers());
-    setLoaded(true);
-  }, [dispatch]);
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(userAlbumsThunk(user.id));
+      await dispatch(getAllUsers());
+      setLoaded(true);
+    };
+
+    fetchData().catch(console.error);
+  }, []);
 
   if (!loaded) return null;
 
@@ -53,6 +56,18 @@ function ProfilePage() {
       </div>
 
       <div className="albums-container-bg">
+        <div className="add-album-container">
+          <NavLink
+            to="/albums/new"
+            exact={true}
+            activeClassName="active"
+            className="add-album-link"
+          >
+            <i className="fa-solid fa-folder-plus"></i>
+            <div className="add-album-text">New Album</div>
+          </NavLink>
+        </div>
+
         <div className="albums-container">
           {loaded &&
             albumsArr.map((album) => (
