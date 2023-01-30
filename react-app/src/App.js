@@ -11,6 +11,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import ExplorePage from "./components/Explore";
 import PhotoDetail from "./components/PhotoDetail";
+import ProfilePage from "./components/YouPage";
 import UploadPhotoForm from "./components/UploadPhoto";
 import { getAllUsers } from "./store/session";
 import { authenticate } from "./store/session";
@@ -66,6 +67,10 @@ function App() {
         <Route path="/photos/:photoId" exact={true}>
           {user ? <LoggedInNav /> : <NavBar />}
           <PhotoDetail />
+        </Route>
+        <Route path="/you" exact={true}>
+          <LoggedInNav />
+          <ProfilePage />
         </Route>
         <Route path="/" exact={true}>
           <NavBar />

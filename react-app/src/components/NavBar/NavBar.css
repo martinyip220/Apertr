@@ -76,7 +76,8 @@
 }
 
 .profile-pic {
-    width: 35px;
+    width: 33px;
+    height: 33px;
     border-radius: 100%;
 }
 
