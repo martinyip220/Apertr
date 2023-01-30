@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPhotosThunk } from "../../store/photo";
+import { getAllAlbumsThunk } from "../../store/album";
 import PhotoDetail from "../PhotoDetail";
 import { Link } from "react-router-dom";
 import "./index.css";
@@ -16,6 +17,7 @@ function ExplorePage() {
   // use effect to get the state of all photos
   useEffect(async () => {
     await dispatch(getAllPhotosThunk());
+    await dispatch(getAllAlbumsThunk());
     setLoaded(true);
   }, [dispatch]);
 
