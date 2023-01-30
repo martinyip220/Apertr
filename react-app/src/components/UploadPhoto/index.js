@@ -30,10 +30,6 @@ function UploadPhotoForm() {
       history.push(`/photos/${photoId}`);
     }
 
-    // const photo = await dispatch(uploadPhotoThunk(newPhoto));
-    // const photoId = photo.photo.id;
-
-    // history.push(`/photos/${photoId}`);
   };
 
   return (

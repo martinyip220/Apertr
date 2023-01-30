@@ -20,8 +20,8 @@ function ProfilePage() {
   useEffect(() => {
     const fetchData = async () => {
       await dispatch(userAlbumsThunk(user.id));
-      await dispatch(getAllUsers());
-      setLoaded(true);
+      await dispatch(getAllUsers())
+      .then(setLoaded(true));
     };
 
     fetchData().catch(console.error);
@@ -71,7 +71,7 @@ function ProfilePage() {
         <div className="albums-container">
           {loaded &&
             albumsArr.map((album) => (
-              <div>
+              <div className="albums-card">
                 <Link to={`/albums/${album.id}`} className="album-detail-link">
                   <img
                     className="album-img"

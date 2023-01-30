@@ -13,12 +13,14 @@ import ExplorePage from "./components/Explore";
 import PhotoDetail from "./components/PhotoDetail";
 import ProfilePage from "./components/YouPage";
 import UploadPhotoForm from "./components/UploadPhoto";
+import AlbumForm from "./components/CreateAlbum";
 import { getAllUsers } from "./store/session";
 import { authenticate } from "./store/session";
 import { getAllPhotosThunk } from "./store/photo";
 import { getAllAlbumsThunk } from "./store/album";
 import SplashPage from "./components/SplashPage";
 import Footer from "./components/Footer";
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -75,6 +77,10 @@ function App() {
         <Route path="/photos/:photoId" exact={true}>
           {user ? <LoggedInNav /> : <NavBar />}
           <PhotoDetail />
+        </Route>
+        <Route path="/albums/new" exact={true}>
+          <LoggedInNav />
+          <AlbumForm />
         </Route>
         <Route path="/you" exact={true}>
           <LoggedInNav />

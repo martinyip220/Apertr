@@ -31,10 +31,10 @@ def create_album():
         )
         db.session.add(new_album)
         if (form.data['photo']):
-            photos = form.data["photo"].split(",")
+            photo = form.data["photo"].split(",")
             photo_list = []
-            [photo_list.append(Photo.query.get(int(photo))) for photo in photos]
-            [new_album.photo.append(photo) for photo in photo_list]
+            [photo_list.append(Photo.query.get(int(img))) for img in photo]
+            [new_album.photo.append(img) for img in photo_list]
             db.session.commit()
             return {"album": new_album.to_dict()}, 201
         else:
