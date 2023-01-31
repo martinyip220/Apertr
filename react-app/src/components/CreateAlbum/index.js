@@ -123,7 +123,7 @@ function AlbumForm() {
           <div className="up-photo-btn-containers">
             <div
               className="up-photo-cancel"
-              onClick={() => history.push("/explore")}
+              onClick={() => history.push("/you")}
             >
               Cancel
             </div>

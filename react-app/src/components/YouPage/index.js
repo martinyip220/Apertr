@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect, useHistory, NavLink, Link } from "react-router-dom";
 import { getAllUsers } from "../../store/session";
 import { getAllAlbumsThunk, userAlbumsThunk } from "../../store/album";
+import { deleteAlbumThunk } from "../../store/album";
 import profilePic from "../../assets/profile-img.jpg";
 import "./index.css";
 
@@ -14,9 +15,6 @@ function ProfilePage() {
   const albumsObj = useSelector((state) => state.album.userAlbums);
   const albumsArr = Object.values(albumsObj);
 
-  // await console.log("what am i ???", albumsArr);
-  // console.log("do i break? ", albumsArr[0].description)
-
   useEffect(() => {
     const fetchData = async () => {
       await dispatch(userAlbumsThunk(user.id));
@@ -24,7 +22,19 @@ function ProfilePage() {
     };
 
     fetchData().catch(console.error);
-  }, []);
+  }, [dispatch]);
+
+  const handleDelete = (albumId) => {
+   
+
+    console.log("what am i?", albumId)
+
+
+    // dispatch(deleteAlbumThunk(e))
+
+
+    history.push("/you")
+  };
 
   if (!loaded) return null;
 
@@ -67,27 +77,49 @@ function ProfilePage() {
           </NavLink>
         </div>
 
-        <div className="albums-container">
-          {loaded &&
-            albumsArr.map((album) => (
-              <div className="albums-card">
-                <Link to={`/albums/${album.id}`} className="album-detail-link">
-                  <img
-                    className="album-img"
-                    src={album.photos[0].photoImg}
-                  ></img>
-                </Link>
+        {albumsArr.length > 0 &&
+          <div className="albums-container">
+            {loaded &&
+              albumsArr.map((album) => (
+                <div className="albums-card">
+                  <Link to={`/albums/${album.id}`} className="album-detail-link">
+                    <img
+                      className="album-img"
+                      src={album.photos[0].photoImg}
+                    ></img>
+                  </Link>
 
-                <div className="album-actions">
-                  <div className="album-title">{album.title}</div>
-                  <div className="album-edit-delete-btn-ctn">
-                    <i className="fa-solid fa-pen-to-square edit-album-btn"></i>
-                    <i className="fa-regular fa-trash-can delete-album-btn"></i>
+                  <div className="album-actions">
+                    <div className="album-title">{album.title}</div>
+                    <div className="album-edit-delete-btn-ctn">
+                      <i className="fa-solid fa-pen-to-square edit-album-btn"></i>
+
+                      <i
+                        className="fa-regular fa-trash-can delete-album-btn"
+                        onClick={() => {
+                          if (
+                            window.confirm(
+                              "Deletion of album can not be undone. The photos inside will not be deleted. Do you wish to continue?"
+                            )
+                          ) {
+                            handleDelete(album.id);
+                          } else {
+                            console.log("you clicked cancel");
+                          }
+                        }}
+                        ></i>
+
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-        </div>
+              ))}
+          </div>
+        }
+        {albumsArr.length === 0 && (
+          <div className="no-albums-ctn">
+            <div className="no-albums-msg">You have no albums. Create one today!</div>
+            </div>
+        )}
       </div>
     </div>
   );

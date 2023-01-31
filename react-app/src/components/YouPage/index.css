@@ -100,7 +100,7 @@
 .albums-container-bg {
     background-color: rgb(243,245,246);
     width: 100%;
-    height: 100vh;
+    height: 69vh;
 }
 
 .albums-container {
@@ -143,4 +143,45 @@
 
 .fa-folder-plus {
     margin-right: 10px;
+}
+
+.album-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 20px;
+}
+
+.album-edit-delete-btn-ctn {
+    display: flex;
+    color: rgb(142,147,150);
+}
+
+.album-edit-delete-btn-ctn:hover {
+    cursor: pointer;
+}
+
+.edit-album-btn:hover {
+    color: black;
+}
+
+.delete-album-btn:hover {
+    color: black;
+}
+
+.edit-album-btn {
+    margin-right: 15px;
+}
+
+.no-albums-msg {
+    font-size: 30px;
+    margin-top: 200px;
+}
+
+.no-albums-ctn {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    justify-content: center;
 }
