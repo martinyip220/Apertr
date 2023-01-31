@@ -20,8 +20,7 @@ function ProfilePage() {
   useEffect(() => {
     const fetchData = async () => {
       await dispatch(userAlbumsThunk(user.id));
-      await dispatch(getAllUsers())
-      .then(setLoaded(true));
+      await dispatch(getAllUsers()).then(setLoaded(true));
     };
 
     fetchData().catch(console.error);
@@ -78,7 +77,14 @@ function ProfilePage() {
                     src={album.photos[0].photoImg}
                   ></img>
                 </Link>
-                <div>{album.title}</div>
+
+                <div className="album-actions">
+                  <div className="album-title">{album.title}</div>
+                  <div className="album-edit-delete-btn-ctn">
+                    <i className="fa-solid fa-pen-to-square edit-album-btn"></i>
+                    <i className="fa-regular fa-trash-can delete-album-btn"></i>
+                  </div>
+                </div>
               </div>
             ))}
         </div>
