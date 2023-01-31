@@ -14,6 +14,7 @@ import PhotoDetail from "./components/PhotoDetail";
 import ProfilePage from "./components/YouPage";
 import UploadPhotoForm from "./components/UploadPhoto";
 import AlbumForm from "./components/CreateAlbum";
+import AlbumPage from "./components/AlbumPage";
 import { getAllUsers } from "./store/session";
 import { authenticate } from "./store/session";
 import { getAllPhotosThunk } from "./store/photo";
@@ -81,6 +82,10 @@ function App() {
         <Route path="/albums/new" exact={true}>
           <LoggedInNav />
           <AlbumForm />
+        </Route>
+        <Route path="/albums/:albumId" exact={true}>
+          <LoggedInNav />
+          <AlbumPage />
         </Route>
         <Route path="/you" exact={true}>
           <LoggedInNav />
