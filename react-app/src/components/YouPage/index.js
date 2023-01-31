@@ -13,8 +13,13 @@ function ProfilePage() {
   const history = useHistory();
   const [loaded, setLoaded] = useState(false);
   const user = useSelector((state) => state.session.user);
-  const albumsObj = useSelector((state) => state.album.userAlbums);
-  const albumsArr = Object.values(albumsObj);
+  const albumsObj = useSelector((state) => state.album?.userAlbums);
+  let albumsArr;
+
+  if (loaded) {
+    albumsArr = Object.values(albumsObj);
+  }
+  // const albumsArr = Object.values(albumsObj);
 
   useEffect(() => {
     const fetchData = async () => {

@@ -137,8 +137,11 @@ const albumReducer = (state = intialState, action) => {
     switch (action.type) {
         case CREATE_ALBUM: {
             newState = { ...state };
-            newState.allAlbums = { ...state.allAlbums };
-            newState.allAlbums[action.payload] = action.payload
+            newState.allAlbums = { ...state.allAlbums }
+            // console.log("i should be action.payload", action.payload)
+            console.log("i should be action.payload.album", action.payload.album)
+            console.log("ishould be action.payload.album.id", action.payload.album.id)
+            newState.allAlbums.albums[action.payload.album.id] = action.payload.album;
             return newState;
         }
         case GET_ALBUM: {
