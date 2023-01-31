@@ -4,6 +4,7 @@ import { Redirect, useHistory, NavLink, Link } from "react-router-dom";
 import { getAllUsers } from "../../store/session";
 import { getAllAlbumsThunk, userAlbumsThunk } from "../../store/album";
 import { deleteAlbumThunk } from "../../store/album";
+import AlbumCard from "../AlbumCard";
 import profilePic from "../../assets/profile-img.jpg";
 import "./index.css";
 
@@ -24,17 +25,6 @@ function ProfilePage() {
     fetchData().catch(console.error);
   }, [dispatch]);
 
-  const handleDelete = (albumId) => {
-   
-
-    console.log("what am i?", albumId)
-
-
-    // dispatch(deleteAlbumThunk(e))
-
-
-    history.push("/you")
-  };
 
   if (!loaded) return null;
 
@@ -78,6 +68,22 @@ function ProfilePage() {
         </div>
 
         {albumsArr.length > 0 &&
+          <div className="album-card-margins">
+            {loaded && albumsArr.map((album) => (
+              <div key={album.id}>
+                <AlbumCard albumId={album.id} />
+              </div>
+            ))}
+          </div>
+
+        }
+
+
+
+
+
+
+        {/* {albumsArr.length > 0 &&
           <div className="albums-container">
             {loaded &&
               albumsArr.map((album) => (
@@ -114,7 +120,7 @@ function ProfilePage() {
                 </div>
               ))}
           </div>
-        }
+        } */}
         {albumsArr.length === 0 && (
           <div className="no-albums-ctn">
             <div className="no-albums-msg">You have no albums. Create one today!</div>

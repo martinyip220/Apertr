@@ -185,3 +185,11 @@
     display: flex;
     justify-content: center;
 }
+
+
+.album-card-margins {
+    display: flex;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}

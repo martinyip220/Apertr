@@ -138,7 +138,7 @@ const albumReducer = (state = intialState, action) => {
         case CREATE_ALBUM: {
             newState = { ...state };
             newState.allAlbums = { ...state.allAlbums };
-            newState.allAlbums[action.payload.album.id] = action.payload
+            newState.allAlbums[action.payload] = action.payload
             return newState;
         }
         case GET_ALBUM: {
@@ -166,7 +166,8 @@ const albumReducer = (state = intialState, action) => {
         }
         case DELETE_ALBUM: {
             newState = { ...state };
-            delete newState.allAlbums[action.payload];
+            newState.userAlbums = { ...state.userAlbums }
+            delete newState.userAlbums[action.payload];
             return newState;
         }
         default:

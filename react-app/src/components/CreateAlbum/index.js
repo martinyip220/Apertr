@@ -18,15 +18,10 @@ function AlbumForm() {
   const userPhotosArr = Object.values(userPhotos);
   let photoArr = [];
 
-    // const photos = photo;
-    // const values = Object.values(photos)
-
-//   console.log("i am outside the handle submit", photos);
-
   const handleSubmit = async (e) => {
       e.preventDefault();
 
-      const photos = Array.from(photo).join();
+    const photos = String(photo)
 
       const newAlbum = {
           title,
@@ -109,7 +104,7 @@ function AlbumForm() {
                 </div>
               ) : null}
               {userPhotosArr?.map((photo) => (
-                <div className="album-form-photo-btn">
+                <div className="album-form-photo-btn" key={photo.id}>
                   <img
                     className="album-form-photo-imgs"
                     src={photo.photoImg}
