@@ -160,10 +160,9 @@ const albumReducer = (state = intialState, action) => {
             return newState;
         }
         case EDIT_ALBUM: {
-            return {
-                ...state,
-                [action.payload.id]: action.payload
-            }
+            const newState = { ...state };
+            newState.allAlbums.albums[action.payload.id] = action.payload;
+            return newState;
         }
         case DELETE_ALBUM: {
             newState = { ...state };
