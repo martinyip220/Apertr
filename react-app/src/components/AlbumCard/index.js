@@ -18,6 +18,13 @@ const AlbumCard = ({ albumId }) => {
   const currentAlbum = userAlbumsArr.filter((album) => album.id === albumId)[0];
   const albumPhotos = currentAlbum.photos;
 
+
+  const handleRedirect = async (id) => {
+    await dispatch(getOneAlbumThunk(id))
+
+      return history.push(`/albums/${id}/edit`)
+  }
+
   const handleDelete = async () => {
 
     await dispatch(deleteAlbumThunk(albumId));
@@ -38,9 +45,7 @@ const AlbumCard = ({ albumId }) => {
         </div>
         <div className="album-edit-delete-btn-ctn">
           <i className="fa-solid fa-pen-to-square edit-album-btn"
-            onClick={() => {
-              history.push(`/albums/${currentAlbum.id}/edit`)
-            }}
+            onClick={() => handleRedirect(currentAlbum.id)}
           ></i>
           <i
             className="fa-regular fa-trash-can delete-album-btn"

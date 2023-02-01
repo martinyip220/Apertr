@@ -18,8 +18,12 @@ function AlbumForm() {
   const userPhotosArr = Object.values(userPhotos);
   let photoArr = [];
 
+
+
+
+
   const handleSubmit = async (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
     const photos = String(photo)
 
@@ -43,7 +47,8 @@ function AlbumForm() {
   const handleSelect = async (e) => {
     e.preventDefault();
 
-    await setPhoto(photoArr);
+    await setPhoto(photoArr)
+    await handleSubmit(e)
   };
 
   useEffect(() => {

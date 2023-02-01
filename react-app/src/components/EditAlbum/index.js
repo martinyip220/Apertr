@@ -60,10 +60,10 @@ function EditAlbumForm() {
   };
 
   useEffect(async () => {
-    await dispatch(getAllAlbumsThunk());
     await dispatch(getOneAlbumThunk(id));
+    await dispatch(getAllAlbumsThunk());
     await dispatch(userPhotosThunk(userId)).then(setLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, id, userId]);
 
   if (!loaded) return null;
 
