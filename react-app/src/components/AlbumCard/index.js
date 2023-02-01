@@ -29,7 +29,7 @@ const AlbumCard = ({ albumId }) => {
     <div className="album-card-ctn">
       <div>
         <Link to={`/albums/${albumId}`} className="album-detail-link">
-          <img className="album-img" src={albumPhotos[0]?.photoImg || "hello"}></img>
+          <img className="album-img" src={albumPhotos[0]?.photoImg}></img>
         </Link>
       </div>
       <div className="album-actions">

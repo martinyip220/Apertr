@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { getAllAlbumsThunk, getOneAlbumThunk } from "../../store/album";
 import { getAllPhotosThunk } from "../../store/photo";
 
@@ -8,52 +8,57 @@ import "./index.css";
 
 function AlbumPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { albumId } = useParams();
   const [loaded, setLoaded] = useState(false);
   const id = parseInt(albumId);
   const currentAlbum = useSelector((state) => state.album.singleAlbum);
   const photos = useSelector((state) => state.album.singleAlbum.photos);
-    const owner = useSelector((state) => state.session.user.full_name);
-    const allPhotos = useSelector((state) => state.photo.allPhotos.photos);
+  const owner = useSelector((state) => state.session.user.full_name);
 
-    console.log(allPhotos)
-    console.log(photos)
+  const stateee = useSelector((state) => {
+    return state;
+  });
 
-    const filteredPhotos = []
+  console.log("im the currentalbum", currentAlbum);
+  console.log("i am the currentphotos", photos);
+  console.log("what am i ?????", stateee);
 
-  const currAlb = Object.values(currentAlbum);
-    const albumPhotos = currAlb[2];
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(getOneAlbumThunk(id)).then(setLoaded(true));
+    };
 
+    fetchData().catch(console.error);
+  }, [dispatch]);
 
-
-
-//   console.log("what am id????????", albumPhotos);
-
-    useEffect(async () => {
-        // await dispatch(getAllPhotosThunk());
-    await dispatch(getAllAlbumsThunk());
-      await dispatch(getOneAlbumThunk(id));
-      await setLoaded(true)
-  }, [dispatch, id]);
+  useEffect(() => {
+    dispatch(getOneAlbumThunk(id))
+  }, [dispatch])
 
   if (!loaded) return null;
 
+
   return (
     <div className="album-pg-whole">
+      <img
+        className="album-banner"
+        src={"https://images8.alphacoders.com/484/484717.jpg"}
+        // src={photos[0].photoImg}
+        alt="album-banner"
+      ></img>
       <div className="album-pg-background-top">
-        <div>{currentAlbum.title}</div>
-        <div>{currentAlbum.description}</div>
-        <div>By: {owner}</div>
+        <div>
+          <div className="album-banner-info">{currentAlbum.title}</div>
+          <div className="album-banner-info">{currentAlbum.description}</div>
+        </div>
+        <div className="album-banner-info">By: {owner}</div>
       </div>
-      {/* <div className="single-album-photos-ctn">
-        {loaded && photos.map((photo) => {
-          <div key={photo.id}>
-            <img src={photo.photoImg} alt="album-img">
-              hello
-            </img>
-          </div>;
-        })}
-      </div> */}
+      <div className="album-photos-btm-ctn" >
+        {photos && photos.map((photo) => (
+          <img className="album-pg-photo-img" src={photo.photoImg} alt="photoimg"></img>
+        ))}
+      </div>
     </div>
   );
 }

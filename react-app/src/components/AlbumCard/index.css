@@ -1,7 +1,9 @@
 .album-card-ctn {
-    width: 295.48px;
+    /* width: 295.48px; */
+    width: 370px;
     height: 235px;
     margin-top: 10px;
+    margin-right: 10px;
 }
 
 .album-img {
