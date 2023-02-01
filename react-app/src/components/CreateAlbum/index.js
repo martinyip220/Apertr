@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect, useHistory, NavLink, Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { userPhotosThunk } from "../../store/photo";
 import { createAlbumThunk } from "../../store/album";
 import "./index.css";
@@ -10,45 +10,32 @@ function AlbumForm() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [errors, setErrors] = useState([]);
-  const [photo, setPhoto] = useState([]);
-  const [loaded, setLoaded] = useState(false);
   const userId = useSelector((state) => state.session.user.id);
   const [description, setDescription] = useState("");
   const userPhotos = useSelector((state) => state.photo.userPhotos);
   const userPhotosArr = Object.values(userPhotos);
   let photoArr = [];
 
-
-
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const photos = String(photo)
+    const photos = String(photoArr);
 
-      const newAlbum = {
-          title,
-          description,
-          photos
-      }
+    const newAlbum = {
+      title,
+      description,
+      photos,
+    };
 
-      if (photos.length < 1) {
-          let errors = [];
-          errors.push("Please select at least 1 photo from below");
-          return setErrors(errors)
-      } else {
-          await dispatch(createAlbumThunk(newAlbum))
+    if (photos.length < 1) {
+      let errors = [];
+      errors.push("Please select at least 1 photo from below");
+      return setErrors(errors);
+    } else {
+      await dispatch(createAlbumThunk(newAlbum));
 
-          history.push("/you")
-      }
-  };
-
-  const handleSelect = async (e) => {
-    e.preventDefault();
-
-    await setPhoto(photoArr)
-    await handleSubmit(e)
+      history.push("/you");
+    }
   };
 
   useEffect(() => {
@@ -97,10 +84,9 @@ function AlbumForm() {
             />
           </div>
           <div className="album-form-photos-ctn">
-          <div className="album-label-btn-container">
-            <label className="album-photos-label">Photos</label>
-              <button className="add-to-alb-btn" onClick={handleSelect}>Add to Album</button>
-              </div>
+            <div className="album-label-btn-container">
+              <label className="album-photos-label">Photos</label>
+            </div>
             <div className="select-photos-container">
               {userPhotosArr.length < 1 ? (
                 <div className="no-photos-uploaded-ctn">

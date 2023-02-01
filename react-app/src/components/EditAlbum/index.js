@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  Redirect,
-  useHistory,
-  NavLink,
-  Link,
-  useParams,
-} from "react-router-dom";
+import { useHistory, Link, useParams } from "react-router-dom";
 import { updateAlbumThunk, getAllAlbumsThunk } from "../../store/album";
 import { userPhotosThunk } from "../../store/photo";
 import { getOneAlbumThunk } from "../../store/album";
@@ -19,21 +13,17 @@ function EditAlbumForm() {
   const userId = useSelector((state) => state.session.user.id);
   const singleAlbum = useSelector((state) => state.album.singleAlbum);
   const [errors, setErrors] = useState([]);
-  const [photo, setPhoto] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [title, setTitle] = useState(singleAlbum?.title);
   const [description, setDescription] = useState(singleAlbum?.description);
   const userPhotos = useSelector((state) => state.photo.userPhotos);
   const userPhotosArr = Object.values(userPhotos);
-
-  console.log("singleAlbum", singleAlbum);
-
   let photoArr = [];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const photos = String(photo);
+    const photos = String(photoArr);
 
     const editedAlbum = {
       id,
@@ -51,12 +41,6 @@ function EditAlbumForm() {
 
       history.push("/you");
     }
-  };
-
-  const handleSelect = async (e) => {
-    e.preventDefault();
-
-    await setPhoto(photoArr);
   };
 
   useEffect(async () => {
@@ -111,7 +95,6 @@ function EditAlbumForm() {
           <div className="album-form-photos-ctn">
             <div className="album-label-btn-container">
               <label className="album-photos-label">Photos</label>
-              <button className="add-to-alb-btn" onClick={handleSelect}>Add to Album</button>
             </div>
             <div className="select-photos-container">
               {userPhotosArr.length < 1 ? (
