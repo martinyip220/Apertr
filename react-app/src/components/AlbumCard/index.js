@@ -6,7 +6,7 @@ import {
   userAlbumsThunk,
   getOneAlbumThunk,
 } from "../../store/album";
-import { deleteAlbumThunk } from "../../store/album";
+import { deleteAlbumThunk, updateAlbumThunk } from "../../store/album";
 import "./index.css";
 
 const AlbumCard = ({ albumId }) => {
@@ -17,8 +17,7 @@ const AlbumCard = ({ albumId }) => {
   const currentAlbum = userAlbumsArr.filter((album) => album.id === albumId)[0];
   const albumPhotos = currentAlbum.photos;
 
-  const handleDelete = async (e) => {
-    e.preventDefault();
+  const handleDelete = async () => {
 
     await dispatch(deleteAlbumThunk(albumId));
 
@@ -38,9 +37,20 @@ const AlbumCard = ({ albumId }) => {
           {currentAlbum.title}
         </div>
         <div className="album-edit-delete-btn-ctn">
+
+
+
+
+          
           <i
             className="fa-regular fa-trash-can delete-album-btn"
-            onClick={handleDelete}
+            onClick={() => {
+              if (window.confirm("Deletion can not be undone. The album's photos will not be deleted. Continue?")) {
+                handleDelete()
+              } else {
+                history.push("/you")
+              }
+            }}
           ></i>
         </div>
       </div>

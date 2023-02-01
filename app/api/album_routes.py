@@ -62,14 +62,21 @@ def album_action(id):
                 album.title = form.data["title"]
                 album.description = form.data["description"]
 
-                if(form.data["photo"] != ""):
-                    photos = form.data["photo"].split(",")
+                if(form.data["photo"]):
+                    photo = form.data["photo"].split(",")
                     photo_list = []
-                    [photo_list.append(Photo.query.get(int(photo))) for photo in photos]
-                    # [album.photo.remove(photo) for photo in photo_list]
-
-                db.session.commit()
-                return {"album": album.to_dict()}, 200
+                    # del_photo_list = []
+                    album.photo = [] # this would reset the album.photo selection
+                    [photo_list.append(Photo.query.get(int(img))) for img in photo]
+                    # [del_photo_list.append(Photo.query.get(int(img))) for img in photo]
+                    [album.photo.append(img) for img in photo_list]
+                    # [album.photo.remove(img) for img in del_photo_list]
+                    db.session.commit()
+                    # currently constructed, album photo will be reset and user has to select photos to enter album
+                    return {"album": album.to_dict()}, 201
+                else:
+                    db.session.commit()
+                    return {"album": album.to_dict()}, 201
             else:
                 return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 

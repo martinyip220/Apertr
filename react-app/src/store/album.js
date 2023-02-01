@@ -102,7 +102,7 @@ export const updateAlbumThunk = (album) => async (dispatch) => {
         body: JSON.stringify({
             title,
             description,
-            photos
+            "photo": [photos]
         })
     })
     if (response.ok) {
