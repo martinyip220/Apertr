@@ -86,13 +86,14 @@
     align-items: center;
     margin-left: 10%;
     margin-right: 10%;
-    height: 45px;
+    height: 50px;
     background-color: white;
 }
 
 .albun-nav-label {
-    font-size: 20px;
+    font-size: 25px;
     padding-bottom: 10px;
+    padding-top: 5px;
     border-bottom: 3px solid rgb(0,145,220);
 }
 
@@ -100,18 +101,73 @@
 .albums-container-bg {
     background-color: rgb(243,245,246);
     width: 100%;
-    height: 100vh;
+    height: 69vh;
 }
 
 .albums-container {
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 25px;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.album-img {
-    height: 200px;
-    width: 300px;
-    margin-right: 7px;
+.albums-ctn-page {
+    width: 81%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* justify-content: space-between; */
+}
+
+
+.albums-card {
+    margin-right: 5px;
+    margin-bottom: 20px;
+}
+
+.add-album-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 20px;
+}
+
+.add-album-link {
+    display: flex;
+    margin-top: 10px;
+    text-decoration: none;
+    color: rgb(142,147,150);
+}
+
+.add-album-link:hover {
+    color: black;
+}
+
+.fa-folder-plus {
+    margin-right: 10px;
+}
+
+.no-albums-msg {
+    font-size: 30px;
+    margin-top: 200px;
+}
+
+.no-albums-ctn {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.album-card-margins {
+    display: flex;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
 }

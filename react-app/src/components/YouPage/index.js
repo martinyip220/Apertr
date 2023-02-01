@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect, useHistory, NavLink, Link } from "react-router-dom";
 import { getAllUsers } from "../../store/session";
 import { getAllAlbumsThunk, userAlbumsThunk } from "../../store/album";
+import { deleteAlbumThunk } from "../../store/album";
+import AlbumCard from "../AlbumCard";
 import profilePic from "../../assets/profile-img.jpg";
 import "./index.css";
 
@@ -11,18 +13,23 @@ function ProfilePage() {
   const history = useHistory();
   const [loaded, setLoaded] = useState(false);
   const user = useSelector((state) => state.session.user);
-  const userId = useSelector((state) => state.session.user.id);
-  const albumsObj = useSelector((state) => state.album.userAlbums);
-  const albumsArr = Object.values(albumsObj);
+  const albumsObj = useSelector((state) => state.album?.userAlbums);
+  let albumsArr;
 
-  console.log("what am i ???", albumsArr);
-  // console.log("do i break? ", albumsArr[0].description)
+  if (loaded) {
+    albumsArr = Object.values(albumsObj);
+  }
+  // const albumsArr = Object.values(albumsObj);
 
-  useEffect(async () => {
-    await dispatch(userAlbumsThunk(userId));
-    await dispatch(getAllUsers());
-    setLoaded(true);
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(userAlbumsThunk(user.id));
+      await dispatch(getAllUsers()).then(setLoaded(true));
+    };
+
+    fetchData().catch(console.error);
   }, [dispatch]);
+
 
   if (!loaded) return null;
 
@@ -53,20 +60,33 @@ function ProfilePage() {
       </div>
 
       <div className="albums-container-bg">
-        <div className="albums-container">
-          {loaded &&
-            albumsArr.map((album) => (
-              <div>
-                <Link to={`/albums/${album.id}`} className="album-detail-link">
-                  <img
-                    className="album-img"
-                    src={album.photos[0].photoImg}
-                  ></img>
-                </Link>
-                <div>{album.title}</div>
+        <div className="add-album-container">
+          <NavLink
+            to="/albums/new"
+            exact={true}
+            activeClassName="active"
+            className="add-album-link"
+          >
+            <i className="fa-solid fa-folder-plus"></i>
+            <div className="add-album-text">New Album</div>
+          </NavLink>
+        </div>
+
+        {albumsArr.length > 0 &&
+          <div className="albums-ctn-page">
+            {loaded && albumsArr.map((album) => (
+              <div className="albums-container" key={album.id}>
+                <AlbumCard albumId={album.id} />
               </div>
             ))}
-        </div>
+          </div>
+
+        }
+        {albumsArr.length === 0 && (
+          <div className="no-albums-ctn">
+            <div className="no-albums-msg">You have no albums. Create one today!</div>
+            </div>
+        )}
       </div>
     </div>
   );

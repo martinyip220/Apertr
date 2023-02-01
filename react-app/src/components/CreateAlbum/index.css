@@ -1,0 +1,41 @@
+.album-form-container {
+  background-color: white;
+  height: 600px;
+  width: 352px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.album-form-photo-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px;
+}
+
+.album-form-photo-imgs {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+}
+
+.selected-photo {
+  height: 80px;
+  width: 80px;
+  border: 2px solid red;
+}
+
+.album-form-photo-btn:hover {
+  cursor: pointer;
+}
+
+.select-photos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}

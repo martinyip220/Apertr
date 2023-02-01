@@ -13,23 +13,41 @@ import ExplorePage from "./components/Explore";
 import PhotoDetail from "./components/PhotoDetail";
 import ProfilePage from "./components/YouPage";
 import UploadPhotoForm from "./components/UploadPhoto";
+import AlbumForm from "./components/CreateAlbum";
+import EditAlbumForm from "./components/EditAlbum";
+import AlbumPage from "./components/AlbumPage";
 import { getAllUsers } from "./store/session";
 import { authenticate } from "./store/session";
+import { getAllPhotosThunk } from "./store/photo";
+import { getAllAlbumsThunk } from "./store/album";
 import SplashPage from "./components/SplashPage";
 import Footer from "./components/Footer";
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const user = useSelector((state) => state.session.user);
 
-  console.log("am i the user? ---------->", user);
-
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+
+  //   const fetchData = async () => {
+  //     await dispatch(authenticate());
+  //     await dispatch(getAllUsers());
+  //     await dispatch(getAllPhotosThunk());
+  //     await dispatch(getAllAlbumsThunk());
+  //     setLoaded(true)
+  //   }
+
+  //   fetchData().catch(console.error);
+
+  // }, []);
 
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
-      await dispatch(getAllUsers());
+      await dispatch(getAllAlbumsThunk());
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -67,6 +85,18 @@ function App() {
         <Route path="/photos/:photoId" exact={true}>
           {user ? <LoggedInNav /> : <NavBar />}
           <PhotoDetail />
+        </Route>
+        <Route path="/albums/new" exact={true}>
+          <LoggedInNav />
+          <AlbumForm />
+        </Route>
+        <Route path="/albums/:albumId" exact={true}>
+          <LoggedInNav />
+          <AlbumPage />
+        </Route>
+        <Route path="/albums/:albumId/edit" exact={true}>
+          <LoggedInNav />
+          <EditAlbumForm />
         </Route>
         <Route path="/you" exact={true}>
           <LoggedInNav />

@@ -1,0 +1,58 @@
+.album-form {
+  height: 480px;
+  width: 311px;
+  display: flex;
+  flex-direction: column;
+}
+
+.album-error-container {
+  height: 40px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.album-error-msg {
+  color: red;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.album-label-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.album-photos-label {
+  font-size: 20px;
+}
+
+.album-btn-containers {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 50px;
+  align-items: center;
+}
+
+.add-to-alb-btn {
+  width: 110px;
+  border-width: 0;
+  height: 40px;
+  background-color: rgb(18, 143, 220);
+  color: white;
+  font-weight: 550;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.add-to-alb-btn:hover {
+  cursor: pointer;
+  background-color: rgb(58, 167, 235);
+}

@@ -1,0 +1,49 @@
+.album-pg-whole {
+    display: flex;
+    flex-direction: column;
+    height: 95vh;
+    background-color: rgb(243,245,246);
+}
+
+.album-pg-background-top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+    position: fixed;
+    top: 130px;
+}
+
+.album-banner {
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    height: 35vh;
+    object-fit: cover;
+    object-position: center;
+}
+
+.album-banner-info {
+    font-size: 25px;
+    font-weight: 900;
+    color: white;
+}
+
+.album-photos-btm-ctn {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 100%;
+}
+
+.album-pg-photo-img {
+    max-height: 250px;
+    max-width: 376.5px;
+    margin-top: 10px;
+    margin-right: 10px;
+}

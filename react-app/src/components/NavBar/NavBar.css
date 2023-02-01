@@ -1,122 +1,164 @@
 .nav-bar-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    background-color: rgb(32,31,35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  background-color: rgb(32, 31, 35);
 }
 
 .login-signup-nav {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 50px;
-    background-color: rgb(32,31,35);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 50px;
+  background-color: rgb(32, 31, 35);
 }
 
 .nav-bar {
-    display: flex;
-    width: 100%;
-    margin-left: 30px;
-    margin-right: 30px;
-    padding: 0;
-    justify-content: space-between;
-    align-items: center;
-    text-decoration: none;
+  display: flex;
+  width: 100%;
+  margin-left: 30px;
+  margin-right: 30px;
+  padding: 0;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
 }
 
 .nav-link {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.479);
-    font-size: 20px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.479);
+  font-size: 20px;
 }
 
 .nav-link:hover {
-    color: rgba(255, 255, 255, 0.842);
+  color: rgba(255, 255, 255, 0.842);
 }
 
 .nav-bar-items {
-    list-style: none;
+  list-style: none;
 }
 
 .nav-left {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .nav-right {
-    display: flex;
-    align-items: center;
-    width: 200px;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  width: 140px;
+  justify-content: space-between;
 }
 
 .nav-logo {
-    height: 30px;
-    margin-right: 20px;
+  height: 30px;
+  margin-right: 20px;
 }
 
 .login-signup-logo {
-    height: 30px;
+  height: 30px;
 }
 
 .logged-nav-background {
-    background-color: rgb(32,31,35);
-    width: 100%;
+  background-color: rgb(32, 31, 35);
+  width: 100%;
 }
 
 .logged-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 50px;
-    margin-left: 190px;
-    margin-right: 190px;
-    background-color: rgb(32,31,35);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  margin-left: 190px;
+  margin-right: 190px;
+  background-color: rgb(32, 31, 35);
 }
 
 .profile-pic {
-    width: 33px;
-    height: 33px;
-    border-radius: 100%;
+  width: 33px;
+  height: 33px;
+  border-radius: 100%;
+}
+
+.profile-pic:hover {
+  cursor: pointer;
 }
 
 .fa-cloud-arrow-up {
-    color: rgba(255, 255, 255, 0.315);
-    font-size: 26px;
-    margin-right: 20px;
+  color: rgba(255, 255, 255, 0.315);
+  font-size: 26px;
+  margin-right: 20px;
 }
 
 .fa-cloud-arrow-up:hover {
-    color: rgba(255, 255, 255, 0.842);
+  color: rgba(255, 255, 255, 0.842);
 }
 
 .logged-nav-right {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logged-nav-left {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .signup-btn {
-    color: black;
-    text-decoration: none;
-    height: 32px;
-    width: 80px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 5px;
-    border-width: 0;
+  color: black;
+  text-decoration: none;
+  height: 32px;
+  width: 80px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 5px;
+  border-width: 0;
 }
 
 .signup-btn:hover {
-    color: rgba(128, 128, 128, 0.719);
+  color: rgba(128, 128, 128, 0.719);
 }
 
 .profile-link {
-    margin-left: 20px;
-    margin-right: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  width: 140px;
+  background-color: rgb(32, 31, 35);
+  color: white;
+  list-style: none;
+  position: absolute;
+  top: 38px;
+  right: 190px;
+  padding: 0;
+  border-radius: 5px;
+}
+
+.user-name-dropdown {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.logout-btn {
+  width: 80px;
+  margin-bottom: 12px;
+  border-width: 0;
+  height: 30px;
+  background-color: rgb(18, 143, 220);
+  color: white;
+  font-weight: 550;
+  border-radius: 5px;
+}
+
+.logout-btn:hover {
+  cursor: pointer;
+  background-color: rgb(58, 167, 235);
 }
