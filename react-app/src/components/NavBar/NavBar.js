@@ -40,9 +40,6 @@ const NavBar = () => {
               Sign Up
             </NavLink>
           </button>
-          <li className="nav-bar-items">
-            <LogoutButton />
-          </li>
         </div>
       </ul>
     </nav>
