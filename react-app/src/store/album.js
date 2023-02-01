@@ -137,11 +137,11 @@ const albumReducer = (state = intialState, action) => {
     switch (action.type) {
         case CREATE_ALBUM: {
             newState = { ...state };
-            newState.allAlbums = { ...state.allAlbums }
+            newState.allAlbums.albums = { ...state.allAlbums.albums }
             // console.log("i should be action.payload", action.payload)
             console.log("i should be action.payload.album", action.payload.album)
             console.log("ishould be action.payload.album.id", action.payload.album.id)
-            newState.allAlbums.albums[action.payload.album.id] = action.payload.album;
+            newState.allAlbums.albums[action.payload.album.id - 1] = action.payload.album;
             return newState;
         }
         case GET_ALBUM: {
@@ -150,7 +150,7 @@ const albumReducer = (state = intialState, action) => {
             return newState;
         }
         case GET_ALL_ALBUMS: {
-            newState = { allAlbums: {}, singleAlbum: {}, userAlbums: {} };
+            newState = { ... state };
             const albums = action.payload
             newState.allAlbums = albums
             return newState
@@ -164,7 +164,14 @@ const albumReducer = (state = intialState, action) => {
         }
         case EDIT_ALBUM: {
             const newState = { ...state };
-            newState.allAlbums.albums[action.payload.id] = action.payload;
+            newState.userAlbums = { ...state.userAlbums };
+            // newState.allAlbums = { ...state.allAlbums };
+            newState.userAlbums[action.payload.album.id] = action.payload.album;
+            newState.allAlbums.albums[action.payload.album.id] = action.payload.album
+
+            console.log("action.payload.album.id", action.payload.album.id)
+            console.log("action.payload.album", action.payload.album)
+            console.log("allalbums", newState.allAlbums.albums.length)
             return newState;
         }
         case DELETE_ALBUM: {

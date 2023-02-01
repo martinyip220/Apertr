@@ -7,6 +7,7 @@ import {
   getOneAlbumThunk,
 } from "../../store/album";
 import { deleteAlbumThunk, updateAlbumThunk } from "../../store/album";
+import EditAlbumForm from "../EditAlbum";
 import "./index.css";
 
 const AlbumCard = ({ albumId }) => {
@@ -28,7 +29,7 @@ const AlbumCard = ({ albumId }) => {
     <div className="album-card-ctn">
       <div>
         <Link to={`/albums/${albumId}`} className="album-detail-link">
-          <img className="album-img" src={albumPhotos[0].photoImg}></img>
+          <img className="album-img" src={albumPhotos[0]?.photoImg || "hello"}></img>
         </Link>
       </div>
       <div className="album-actions">
@@ -37,11 +38,11 @@ const AlbumCard = ({ albumId }) => {
           {currentAlbum.title}
         </div>
         <div className="album-edit-delete-btn-ctn">
-
-
-
-
-          
+          <i className="fa-solid fa-pen-to-square edit-album-btn"
+            onClick={() => {
+              history.push(`/albums/${currentAlbum.id}/edit`)
+            }}
+          ></i>
           <i
             className="fa-regular fa-trash-can delete-album-btn"
             onClick={() => {
