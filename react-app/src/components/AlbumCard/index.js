@@ -34,7 +34,6 @@ const AlbumCard = ({ albumId }) => {
       </div>
       <div className="album-actions">
         <div className="album-title">
-          {currentAlbum.id}
           {currentAlbum.title}
         </div>
         <div className="album-edit-delete-btn-ctn">

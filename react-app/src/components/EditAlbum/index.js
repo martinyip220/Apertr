@@ -80,10 +80,10 @@ function EditAlbumForm() {
           <div className="form-title">Edit your album</div>
         </div>
 
-        <form className="up-photo-form" onSubmit={handleSubmit}>
-          <div className="auth-error-container">
+        <form className="album-form" onSubmit={handleSubmit}>
+          <div className="album-error-container">
             {errors.map((error, ind) => (
-              <div className="auth-error-msg" key={ind}>
+              <div className="album-error-msg" key={ind}>
                 {error}
               </div>
             ))}
@@ -109,8 +109,10 @@ function EditAlbumForm() {
             />
           </div>
           <div className="album-form-photos-ctn">
-            <label>Photos</label>
-            <button onClick={handleSelect}>Add to Album</button>
+            <div className="album-label-btn-container">
+              <label className="album-photos-label">Photos</label>
+              <button className="add-to-alb-btn" onClick={handleSelect}>Add to Album</button>
+            </div>
             <div className="select-photos-container">
               {userPhotosArr.length < 1 ? (
                 <div className="no-photos-uploaded-ctn">
@@ -132,7 +134,7 @@ function EditAlbumForm() {
             </div>
           </div>
 
-          <div className="up-photo-btn-containers">
+          <div className="album-btn-containers">
             <div
               className="up-photo-cancel"
               onClick={() => history.push("/you")}

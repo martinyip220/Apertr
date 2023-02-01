@@ -86,13 +86,14 @@
     align-items: center;
     margin-left: 10%;
     margin-right: 10%;
-    height: 45px;
+    height: 50px;
     background-color: white;
 }
 
 .albun-nav-label {
-    font-size: 20px;
+    font-size: 25px;
     padding-bottom: 10px;
+    padding-top: 5px;
     border-bottom: 3px solid rgb(0,145,220);
 }
 
@@ -104,17 +105,19 @@
 }
 
 .albums-container {
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 25px;
     display: flex;
-    flex-wrap: wrap;
 }
 
-.album-img {
-    height: 200px;
-    width: 297.4px;
+.albums-ctn-page {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
 
 .albums-card {
     margin-right: 5px;
@@ -127,12 +130,12 @@
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: 5px;
     font-size: 20px;
 }
 
 .add-album-link {
     display: flex;
+    margin-top: 10px;
     text-decoration: none;
     color: rgb(142,147,150);
 }
@@ -143,34 +146,6 @@
 
 .fa-folder-plus {
     margin-right: 10px;
-}
-
-.album-actions {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-size: 20px;
-}
-
-.album-edit-delete-btn-ctn {
-    display: flex;
-    color: rgb(142,147,150);
-}
-
-.album-edit-delete-btn-ctn:hover {
-    cursor: pointer;
-}
-
-.edit-album-btn:hover {
-    color: black;
-}
-
-.delete-album-btn:hover {
-    color: black;
-}
-
-.edit-album-btn {
-    margin-right: 15px;
 }
 
 .no-albums-msg {

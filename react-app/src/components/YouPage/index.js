@@ -73,59 +73,15 @@ function ProfilePage() {
         </div>
 
         {albumsArr.length > 0 &&
-          <div className="album-card-margins">
+          <div className="albums-ctn-page">
             {loaded && albumsArr.map((album) => (
-              <div key={album.id}>
+              <div className="albums-container" key={album.id}>
                 <AlbumCard albumId={album.id} />
               </div>
             ))}
           </div>
 
         }
-
-
-
-
-
-
-        {/* {albumsArr.length > 0 &&
-          <div className="albums-container">
-            {loaded &&
-              albumsArr.map((album) => (
-                <div className="albums-card">
-                  <Link to={`/albums/${album.id}`} className="album-detail-link">
-                    <img
-                      className="album-img"
-                      src={album.photos[0].photoImg}
-                    ></img>
-                  </Link>
-
-                  <div className="album-actions">
-                    <div className="album-title">{album.title}</div>
-                    <div className="album-edit-delete-btn-ctn">
-                      <i className="fa-solid fa-pen-to-square edit-album-btn"></i>
-
-                      <i
-                        className="fa-regular fa-trash-can delete-album-btn"
-                        onClick={() => {
-                          if (
-                            window.confirm(
-                              "Deletion of album can not be undone. The photos inside will not be deleted. Do you wish to continue?"
-                            )
-                          ) {
-                            handleDelete(album.id);
-                          } else {
-                            console.log("you clicked cancel");
-                          }
-                        }}
-                        ></i>
-
-                    </div>
-                  </div>
-                </div>
-              ))}
-          </div>
-        } */}
         {albumsArr.length === 0 && (
           <div className="no-albums-ctn">
             <div className="no-albums-msg">You have no albums. Create one today!</div>

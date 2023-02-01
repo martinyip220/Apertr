@@ -1,5 +1,52 @@
 .album-card-ctn {
-    width: 300px;
-    height: 300px;
-    border: 1px solid red;
+    width: 295.48px;
+    height: 235px;
+    margin-top: 10px;
+}
+
+.album-img {
+    height: 200px;
+    width: 100%;
+}
+
+.album-detail-link {
+    height: 100%;
+    width: 100%;
+}
+
+.album-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 22px;
+}
+
+.album-edit-delete-btn-ctn {
+    display: flex;
+    color: rgb(142,147,150);
+}
+
+.album-edit-delete-btn-ctn:hover {
+    cursor: pointer;
+}
+
+.edit-album-btn:hover {
+    color: black;
+}
+
+.delete-album-btn {
+    margin-right: 5px;
+}
+
+.delete-album-btn:hover {
+    color: black;
+}
+
+.edit-album-btn {
+    margin-right: 10px;
+}
+
+.album-title {
+    margin-left: 5px;
 }
