@@ -8,7 +8,6 @@ import "./index.css";
 
 function AlbumPage() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const { albumId } = useParams();
   const [loaded, setLoaded] = useState(false);
   const id = parseInt(albumId);
@@ -37,14 +36,14 @@ function AlbumPage() {
   }, [dispatch])
 
   if (!loaded) return null;
+  if (!photos || photos.length < 1) return null;
 
 
   return (
     <div className="album-pg-whole">
       <img
         className="album-banner"
-        src={"https://images8.alphacoders.com/484/484717.jpg"}
-        // src={photos[0].photoImg}
+        src={photos[0]?.photoImg}
         alt="album-banner"
       ></img>
       <div className="album-pg-background-top">

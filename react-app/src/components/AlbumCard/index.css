@@ -1,14 +1,15 @@
 .album-card-ctn {
     /* width: 295.48px; */
-    width: 370px;
+    width: 373px;
     height: 235px;
-    margin-top: 10px;
     margin-right: 10px;
+    margin-top: 10px;
 }
 
 .album-img {
-    height: 200px;
+    height: 100%;
     width: 100%;
+    margin: 0;
 }
 
 .album-detail-link {

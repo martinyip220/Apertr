@@ -106,10 +106,12 @@
 
 .albums-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .albums-ctn-page {
-    width: 80%;
+    width: 81%;
     margin-left: 10%;
     margin-right: 10%;
     display: flex;

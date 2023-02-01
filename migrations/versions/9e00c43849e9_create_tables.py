@@ -1,20 +1,16 @@
-"""create all tables
+"""create tables
 
-Revision ID: 1a45cfbb1a52
-Revises:
-Create Date: 2023-01-25 09:41:34.159134
+Revision ID: 9e00c43849e9
+Revises: 
+Create Date: 2023-02-01 10:05:23.570869
 
 """
 from alembic import op
 import sqlalchemy as sa
-import os
-
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '1a45cfbb1a52'
+revision = '9e00c43849e9'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -34,9 +30,6 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-
     op.create_table('albums',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -47,9 +40,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE albums SET SCHEMA {SCHEMA};")
-
     op.create_table('photos',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -62,9 +52,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE photos SET SCHEMA {SCHEMA};")
-
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -76,18 +63,12 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
-
     op.create_table('photo_albums',
-    sa.Column('photo_id', sa.Integer(), nullable=False),
-    sa.Column('album_id', sa.Integer(), nullable=False),
+    sa.Column('photo_id', sa.Integer(), nullable=True),
+    sa.Column('album_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['album_id'], ['albums.id'], ),
-    sa.ForeignKeyConstraint(['photo_id'], ['photos.id'], ),
-    sa.PrimaryKeyConstraint('photo_id', 'album_id')
+    sa.ForeignKeyConstraint(['photo_id'], ['photos.id'], )
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE photo_albums SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 

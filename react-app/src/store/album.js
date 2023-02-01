@@ -157,7 +157,6 @@ const albumReducer = (state = intialState, action) => {
         }
         case USER_ALBUMS: {
             const newState = { ...state };
-            newState.userAlbums = {};
             const albums = action.payload
             newState.userAlbums = albums
             return newState;

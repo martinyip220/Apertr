@@ -1,4 +1,4 @@
-from app.models import db, Photo, environment, SCHEMA
+from app.models import db, Photo, Album, environment, SCHEMA
 
 
 def seed_photos():
@@ -39,6 +39,8 @@ def seed_photos():
     ]
 
     for photo in demo_photos:
+        album = Album.query.get(photo.album_id)
+        photo.album.append(album)
         db.session.add(photo)
 
     db.session.commit()

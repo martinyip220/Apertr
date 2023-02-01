@@ -27,7 +27,7 @@ const AlbumCard = ({ albumId }) => {
 
   return (
     <div className="album-card-ctn">
-      <div>
+      <div className="album-img-margin">
         <Link to={`/albums/${albumId}`} className="album-detail-link">
           <img className="album-img" src={albumPhotos[0]?.photoImg}></img>
         </Link>
