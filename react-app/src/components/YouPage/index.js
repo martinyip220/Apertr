@@ -41,9 +41,11 @@ function ProfilePage() {
           <div className="profile-name-info-container">
             <div className="prof-full-name-btn-container">
               <div className="prof-fullname">{user?.full_name}</div>
-              <button className="pro-btn">
+
+              {/* below is a button next to full name, to change background url, for later */}
+              {/* <button className="pro-btn">
                 <i className="fa-solid fa-ellipsis"></i>
-              </button>
+              </button> */}
             </div>
             <div className="prof-username-followers-container">
               <div className="prof-info-text">{user?.username}</div>

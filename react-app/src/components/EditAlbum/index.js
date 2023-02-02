@@ -20,6 +20,11 @@ function EditAlbumForm() {
   const userPhotosArr = Object.values(userPhotos);
   let photoSet = new Set();
 
+  function addDefaultSrc(e){
+    e.target.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg"
+  }
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -113,6 +118,7 @@ function EditAlbumForm() {
               {userPhotosArr?.map((photo) => (
                 <div className="album-form-photo-btn" key={photo.id}>
                   <img
+                    onError={addDefaultSrc}
                     className="album-form-photo-imgs"
                     src={photo.photoImg}
                     onClick={() => selectPhoto(photo.id)}

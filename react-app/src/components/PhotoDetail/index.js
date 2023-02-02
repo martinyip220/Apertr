@@ -19,6 +19,10 @@ function PhotoDetail() {
   const allUsers = useSelector((state) => state.session.allUsers);
   const ownerId = singlePhoto.userId;
 
+  function addDefaultSrc(e){
+    e.target.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg"
+  }
+
   useEffect(async () => {
     await dispatch(getAllPhotosThunk());
     await dispatch(getOnePhotoThunk(id));
@@ -42,6 +46,7 @@ function PhotoDetail() {
       <div className="photo-detail-img-background">
         <div className="photo-detail-img-container">
           <img
+            onError={addDefaultSrc}
             src={singlePhoto.photoImg}
             alt="single"
             className="single-photo"

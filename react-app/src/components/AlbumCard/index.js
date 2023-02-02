@@ -18,6 +18,10 @@ const AlbumCard = ({ albumId }) => {
   const currentAlbum = userAlbumsArr.filter((album) => album.id === albumId)[0];
   const albumPhotos = currentAlbum.photos;
 
+  function addDefaultSrc(e){
+    e.target.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg"
+  }
+
 
   const handleRedirect = async (id) => {
     await dispatch(getOneAlbumThunk(id))
@@ -36,7 +40,7 @@ const AlbumCard = ({ albumId }) => {
     <div className="album-card-ctn">
       <div className="album-img-margin">
         <Link to={`/albums/${albumId}`} className="album-detail-link">
-          <img className="album-img" src={albumPhotos[0]?.photoImg}></img>
+          <img onError={addDefaultSrc} className="album-img" src={albumPhotos[0]?.photoImg}></img>
         </Link>
       </div>
       <div className="album-actions">

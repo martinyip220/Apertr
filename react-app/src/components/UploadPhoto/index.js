@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, useHistory, NavLink } from "react-router-dom";
 import { uploadPhotoThunk } from "../../store/photo";
