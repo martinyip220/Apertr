@@ -55,21 +55,23 @@ function UploadPhotoForm() {
           </div>
 
           <div className="up-input-container">
+          <label className="photo-up-edit-label">Photo Image Url</label>
             <input
               type="text"
               value={photo_img}
               onChange={(e) => setPhoto_Img(e.target.value)}
-              placeholder="Photo Image Url"
+              placeholder="Required"
               required
               className="up-photo-modal-input"
             />
           </div>
           <div className="up-input-container">
+            <label className="photo-up-edit-label">Description</label>
             <input
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Description (Optional)"
+              placeholder="Optional"
               className="up-photo-modal-input"
             />
           </div>
