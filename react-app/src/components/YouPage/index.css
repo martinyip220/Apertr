@@ -101,7 +101,7 @@
 .albums-container-bg {
     background-color: rgb(243,245,246);
     width: 100%;
-    height: 69vh;
+    height: 100%;
 }
 
 .albums-container {
@@ -114,11 +114,10 @@
     width: 81%;
     margin-left: 10%;
     margin-right: 10%;
-    margin-bottom: 10%;
+    margin-bottom: 9px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    /* justify-content: space-between; */
 }
 
 
