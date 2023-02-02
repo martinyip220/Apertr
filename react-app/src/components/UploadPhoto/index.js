@@ -42,7 +42,7 @@ function UploadPhotoForm() {
             alt="logo"
             onClick={() => history.push("/explore")}
           ></img>
-          <div className="form-title">Upload a photo</div>
+          <div className="up-edit-delete-photo-title">Upload a photo</div>
         </div>
 
         <form className="up-photo-form" onSubmit={handleSubmit}>
@@ -55,12 +55,12 @@ function UploadPhotoForm() {
           </div>
 
           <div className="up-input-container">
-          <label className="photo-up-edit-label">Photo Image Url</label>
+          <label className="photo-up-edit-label">Photo Image Url <span className="required-label">(Required)</span></label>
             <input
-              type="text"
+              type="url"
               value={photo_img}
               onChange={(e) => setPhoto_Img(e.target.value)}
-              placeholder="Required"
+              placeholder="http://www.example.com"
               required
               className="up-photo-modal-input"
             />

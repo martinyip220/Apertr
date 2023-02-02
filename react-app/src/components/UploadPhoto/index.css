@@ -8,7 +8,7 @@
 
 .upload-form-container {
   background-color: white;
-  height: 380px;
+  height: 350px;
   width: 352px;
   display: flex;
   flex-direction: column;
@@ -33,6 +33,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.required-label {
+  color: red;
+}
+
+.up-edit-delete-photo-title {
+  font-size: 25px;
+  margin-top: 5px;
+  font-weight: 600;
 }
 
 .up-error-msg {

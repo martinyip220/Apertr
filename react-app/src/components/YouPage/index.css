@@ -125,10 +125,10 @@
 .add-album-container {
     display: flex;
     justify-content: flex-end;
-    width: 80%;
+    width: 80.7%;
     margin-left: 10%;
     margin-right: 10%;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .add-album-link {
