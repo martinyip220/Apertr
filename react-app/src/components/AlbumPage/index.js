@@ -53,11 +53,15 @@ function AlbumPage() {
         </div>
         <div className="album-banner-info">By: {owner}</div>
       </div>
-      <div className="album-photos-btm-ctn" >
+
+      <div className="album-photos-btm-ctn">
         {photos && photos.map((photo) => (
-          <img className="album-pg-photo-img" src={photo.photoImg} alt="photoimg"></img>
+          <div key={photo.id}>
+            <img className="album-pg-photo-img" src={photo.photoImg} alt="photoimg"></img>
+          </div>
         ))}
-      </div>
+        </div>
+
     </div>
   );
 }
