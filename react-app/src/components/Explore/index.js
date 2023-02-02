@@ -21,6 +21,14 @@ function ExplorePage() {
     setLoaded(true);
   }, [dispatch]);
 
+  const oddOrEven = (photoId) => {
+    if (photoId % 2 === 0) {
+      return "photo-img-even photo-img"
+    } else {
+      return "photo-img-odd photo-img"
+    }
+  }
+
   return (
     <div className="explore-pg-wrapper">
       <div className="explore-title-container">
@@ -34,7 +42,8 @@ function ExplorePage() {
               <div className="photo-container" key={photo.id}>
                 <Link className="photo-detail-link" to={`/photos/${photo.id}`}>
                   <img
-                    className="photo-img"
+
+                    className={oddOrEven(photo.id)}
                     src={photo.photoImg}
                     alt="explore"
                   ></img>
