@@ -8,7 +8,7 @@
 
 .upload-form-container {
   background-color: white;
-  height: 360px;
+  height: 350px;
   width: 352px;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
 }
 
 .up-photo-form {
-  height: 420px;
+  height: 100%;
   width: 311px;
   display: flex;
   flex-direction: column;
@@ -25,15 +25,42 @@
   justify-content: center;
 }
 
+.up-error-ctn {
+   height: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.required-label {
+  color: red;
+}
+
+.up-edit-delete-photo-title {
+  font-size: 25px;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.up-error-msg {
+  color: red;
+    font-weight: 600;
+    font-size: 13px;
+}
+
 .up-input-container {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   height: 60px;
 }
 
 .up-photo-modal-input {
-  width: 100%;
+  width: 300px;
   margin-bottom: 10px;
   font-size: 18px;
   padding-left: 5px;
@@ -45,6 +72,10 @@
   justify-content: space-between;
   margin-top: 10px;
   align-items: center;
+}
+
+.photo-up-edit-label {
+  font-weight: 600;
 }
 
 .up-photo-btn {

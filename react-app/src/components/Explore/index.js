@@ -14,6 +14,11 @@ function ExplorePage() {
   // const allPhotos = photosArr[0]
   console.log("what am i object?", photosObject);
 
+  function addDefaultSrc(e){
+    e.target.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg"
+  }
+
+
   // use effect to get the state of all photos
   useEffect(async () => {
     await dispatch(getAllPhotosThunk());
@@ -42,7 +47,7 @@ function ExplorePage() {
               <div className="photo-container" key={photo.id}>
                 <Link className="photo-detail-link" to={`/photos/${photo.id}`}>
                   <img
-
+                    onError={addDefaultSrc}
                     className={oddOrEven(photo.id)}
                     src={photo.photoImg}
                     alt="explore"

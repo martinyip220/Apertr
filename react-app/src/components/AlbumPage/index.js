@@ -13,11 +13,15 @@ function AlbumPage() {
   const id = parseInt(albumId);
   const currentAlbum = useSelector((state) => state.album.singleAlbum);
   const photos = useSelector((state) => state.album.singleAlbum.photos);
-  const owner = useSelector((state) => state.session.user.full_name);
+  const owner = useSelector((state) => state.session.user?.full_name);
 
   const stateee = useSelector((state) => {
     return state;
   });
+
+  function addDefaultSrc(e){
+    e.target.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg"
+  }
 
   console.log("im the currentalbum", currentAlbum);
   console.log("i am the currentphotos", photos);
@@ -57,7 +61,7 @@ function AlbumPage() {
       <div className="album-photos-btm-ctn">
         {photos && photos.map((photo) => (
           <div key={photo.id}>
-            <img className="album-pg-photo-img" src={photo.photoImg} alt="photoimg"></img>
+            <img onError={addDefaultSrc} className="album-pg-photo-img" src={photo.photoImg} alt="photoimg"></img>
           </div>
         ))}
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, useHistory, NavLink } from "react-router-dom";
 import { uploadPhotoThunk } from "../../store/photo";
@@ -42,34 +42,36 @@ function UploadPhotoForm() {
             alt="logo"
             onClick={() => history.push("/explore")}
           ></img>
-          <div className="form-title">Upload a photo</div>
+          <div className="up-edit-delete-photo-title">Upload a photo</div>
         </div>
 
         <form className="up-photo-form" onSubmit={handleSubmit}>
-          <div className="auth-error-container">
+          <div className="up-error-ctn">
             {errors.map((error, ind) => (
-              <div className="auth-error-msg" key={ind}>
+              <div className="up-error-msg" key={ind}>
                 {error}
               </div>
             ))}
           </div>
 
           <div className="up-input-container">
+          <label className="photo-up-edit-label">Photo Image Url <span className="required-label">(Required)</span></label>
             <input
-              type="text"
+              type="url"
               value={photo_img}
               onChange={(e) => setPhoto_Img(e.target.value)}
-              placeholder="Photo Image Url"
+              placeholder="http://www.example.com"
               required
               className="up-photo-modal-input"
             />
           </div>
           <div className="up-input-container">
+            <label className="photo-up-edit-label">Description</label>
             <input
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Description (Optional)"
+              placeholder="Optional"
               className="up-photo-modal-input"
             />
           </div>

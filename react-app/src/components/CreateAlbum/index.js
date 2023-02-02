@@ -10,11 +10,16 @@ function AlbumForm() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [errors, setErrors] = useState([]);
-  const userId = useSelector((state) => state.session.user.id);
+  const userId = useSelector((state) => state.session.user?.id);
   const [description, setDescription] = useState("");
   const userPhotos = useSelector((state) => state.photo.userPhotos);
   const userPhotosArr = Object.values(userPhotos);
   let photoSet = new Set();
+
+  function addDefaultSrc(e){
+    e.target.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg"
+  }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,7 +62,7 @@ function AlbumForm() {
             alt="logo"
             onClick={() => history.push("/explore")}
           ></img>
-          <div className="form-title">Create an album</div>
+          <div className="create-edit-album-title">Create an album</div>
         </div>
 
         <form className="album-form" onSubmit={handleSubmit}>
@@ -70,21 +75,23 @@ function AlbumForm() {
           </div>
 
           <div className="up-input-container">
+            <label className="photo-up-edit-label">Album Title <span className="required-label">(Required)</span></label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Album Title"
+              placeholder="Required"
               required
               className="up-photo-modal-input"
             />
           </div>
           <div className="up-input-container">
+          <label className="photo-up-edit-label">Album Description</label>
             <input
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Description (Optional)"
+              placeholder="Optional"
               className="up-photo-modal-input"
             />
           </div>
@@ -104,6 +111,7 @@ function AlbumForm() {
               {userPhotosArr?.map((photo) => (
                 <div className="album-form-photo-btn" key={photo.id}>
                   <img
+                    onError={addDefaultSrc}
                     className="album-form-photo-imgs"
                     src={photo.photoImg}
                     onClick={() => selectPhoto(photo.id)}

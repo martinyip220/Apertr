@@ -12,7 +12,7 @@ const LoginSignupNav = () => {
         activeClassName="active"
         className="nav-link"
       >
-        <img className="login-signup-logo" src={logo} alt="splash-logo"></img>
+        <img className="login-signup-logo login-sign-pg-logo" src={logo} alt="splash-logo"></img>
       </NavLink>
     </nav>
   );

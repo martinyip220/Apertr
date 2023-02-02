@@ -55,20 +55,21 @@ function EditPhotoModal({ photoId }) {
             </li>
           ))}
         </ul>
-
+        <label className="photo-up-edit-label">Photo Image Url <span className="required-label">(Required)</span></label>
         <input
-          type="text"
+          type="url"
           value={photo_img}
+          placeholder="http://www.example.com"
           onChange={(e) => setPhoto_Img(e.target.value)}
           required
           className="edit-photo-modal-input"
         />
-
+        <label className="photo-up-edit-label">Description</label>
         <input
           type="text"
           value={description}
+          placeholder="Optional"
           onChange={(e) => setDescription(e.target.value)}
-          required
           className="edit-photo-modal-input"
         />
 

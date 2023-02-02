@@ -21,7 +21,7 @@ function DeletePhotoModal({ photoId }) {
   return (
     <div className="delete-photo-modal">
       <div className="delete-photo-title-ctn">
-        <div className="delete-photo-title">Delete Photo</div>
+        <div className="up-edit-delete-photo-title">Delete Photo</div>
       </div>
 
 
