@@ -72,6 +72,7 @@ function ProfilePage() {
           </NavLink>
         </div>
 
+
         {albumsArr.length > 0 &&
           <div className="albums-ctn-page">
             {loaded && albumsArr.map((album) => (
@@ -88,6 +89,7 @@ function ProfilePage() {
             </div>
         )}
       </div>
+
     </div>
   );
 }

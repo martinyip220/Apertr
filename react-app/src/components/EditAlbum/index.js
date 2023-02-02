@@ -18,12 +18,12 @@ function EditAlbumForm() {
   const [description, setDescription] = useState(singleAlbum?.description);
   const userPhotos = useSelector((state) => state.photo.userPhotos);
   const userPhotosArr = Object.values(userPhotos);
-  let photoArr = [];
+  let photoSet = new Set();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const photos = String(photoArr);
+    const photos = [...photoSet].join(',')
 
     const editedAlbum = {
       id,
@@ -42,6 +42,11 @@ function EditAlbumForm() {
       history.push("/you");
     }
   };
+
+  const selectPhoto = async (photoId) => {
+
+    await photoSet.add(photoId)
+  }
 
   useEffect(async () => {
     await dispatch(getOneAlbumThunk(id));
@@ -110,7 +115,7 @@ function EditAlbumForm() {
                   <img
                     className="album-form-photo-imgs"
                     src={photo.photoImg}
-                    onClick={() => photoArr.push(photo.id)}
+                    onClick={() => selectPhoto(photo.id)}
                   />
                 </div>
               ))}

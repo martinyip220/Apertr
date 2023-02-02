@@ -14,7 +14,7 @@ const LoggedInNav = () => {
   const user = useSelector((state) => state.session.user)
   const userId = useSelector((state) => state.session.user.id);
 
-  const handleClick = async (e) => {
+  const handleClick = async () => {
     await dispatch(getAllAlbumsThunk())
     await dispatch(userAlbumsThunk(userId))
 
