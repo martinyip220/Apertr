@@ -14,12 +14,12 @@ function AlbumForm() {
   const [description, setDescription] = useState("");
   const userPhotos = useSelector((state) => state.photo.userPhotos);
   const userPhotosArr = Object.values(userPhotos);
-  let photoArr = [];
+  let photoSet = new Set();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const photos = String(photoArr);
+    const photos = [...photoSet].join(',')
 
     const newAlbum = {
       title,
@@ -37,6 +37,11 @@ function AlbumForm() {
       history.push("/you");
     }
   };
+
+  const selectPhoto = async (photoId) => {
+
+    await photoSet.add(photoId)
+  }
 
   useEffect(() => {
     dispatch(userPhotosThunk(userId));
@@ -101,7 +106,7 @@ function AlbumForm() {
                   <img
                     className="album-form-photo-imgs"
                     src={photo.photoImg}
-                    onClick={() => photoArr.push(photo.id)}
+                    onClick={() => selectPhoto(photo.id)}
                   />
                 </div>
               ))}
