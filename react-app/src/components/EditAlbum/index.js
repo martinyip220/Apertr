@@ -71,7 +71,7 @@ function EditAlbumForm() {
             alt="logo"
             onClick={() => history.push("/explore")}
           ></img>
-          <div className="form-title">Edit your album</div>
+          <div className="create-edit-album-title">Edit your album</div>
         </div>
 
         <form className="album-form" onSubmit={handleSubmit}>
@@ -84,21 +84,23 @@ function EditAlbumForm() {
           </div>
 
           <div className="up-input-container">
+          <label className="photo-up-edit-label">Album Title <span className="required-label">(Required)</span></label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Album Title"
+              placeholder="Required"
               required
               className="up-photo-modal-input"
             />
           </div>
           <div className="up-input-container">
+          <label className="photo-up-edit-label">Album Description</label>
             <input
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Description (Optional)"
+              placeholder="Optional"
               className="up-photo-modal-input"
             />
           </div>
