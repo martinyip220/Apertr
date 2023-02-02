@@ -10,7 +10,7 @@ function AlbumForm() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [errors, setErrors] = useState([]);
-  const userId = useSelector((state) => state.session.user.id);
+  const userId = useSelector((state) => state.session.user?.id);
   const [description, setDescription] = useState("");
   const userPhotos = useSelector((state) => state.photo.userPhotos);
   const userPhotosArr = Object.values(userPhotos);

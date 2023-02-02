@@ -10,7 +10,7 @@ function EditAlbumForm() {
   const id = parseInt(useParams()?.albumId);
   const history = useHistory();
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.session.user.id);
+  const userId = useSelector((state) => state.session.user?.id);
   const singleAlbum = useSelector((state) => state.album.singleAlbum);
   const [errors, setErrors] = useState([]);
   const [loaded, setLoaded] = useState(false);

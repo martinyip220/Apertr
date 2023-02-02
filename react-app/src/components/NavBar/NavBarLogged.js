@@ -12,7 +12,7 @@ const LoggedInNav = () => {
   const dispatch = useDispatch();
   const [showProfile, setShowProfile] = useState(false)
   const user = useSelector((state) => state.session.user)
-  const userId = useSelector((state) => state.session.user.id);
+  const userId = useSelector((state) => state.session.user?.id);
 
   const handleClick = async () => {
     await dispatch(getAllAlbumsThunk())
@@ -51,7 +51,7 @@ const LoggedInNav = () => {
         </NavLink>
           <img src={profilePic} alt="pro-pic" className="profile-pic" onClick={toggleProfile}></img>
           {showProfile ? <ul className="profile-dropdown">
-            <li className="user-name-dropdown">{user.full_name}</li>
+            <li className="user-name-dropdown">{user?.full_name}</li>
           <li>
             <LogoutButton />
           </li>

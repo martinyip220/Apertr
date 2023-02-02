@@ -13,7 +13,7 @@ function AlbumPage() {
   const id = parseInt(albumId);
   const currentAlbum = useSelector((state) => state.album.singleAlbum);
   const photos = useSelector((state) => state.album.singleAlbum.photos);
-  const owner = useSelector((state) => state.session.user.full_name);
+  const owner = useSelector((state) => state.session.user?.full_name);
 
   const stateee = useSelector((state) => {
     return state;
