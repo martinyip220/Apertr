@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, useHistory, NavLink } from "react-router-dom";
 import { signUp } from "../../store/session";
@@ -11,9 +11,24 @@ const SignUpForm = () => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [validationErrors, setValidationErrors] = useState([]);
+  const [disabled, setDisabled] = useState(true);
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  let emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+  useEffect(async () => {
+    let errors = [];
+    let validUser = username.trim();
+    let fullnameInput = full_name.trim();
+
+    if (validUser.length < 5 || validUser.length > 10) errors.push("Username between 5 and 10 characters");
+    if (fullnameInput.length < 5) errors.push("Full name must be at least 5 characters");
+    if (!email.match(emailFormat)) errors.push("You have entered an invalid email address")
+    if (password !== repeatPassword) errors.push("Passwords do not match")
+
+    await setErrors(errors)
+    }, [username, full_name, email, password])
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -29,7 +44,6 @@ const SignUpForm = () => {
       return setErrors(errors);
     }
   };
-
 
 
   const updateUsername = (e) => {
@@ -102,7 +116,7 @@ const SignUpForm = () => {
           </div>
           <div className="auth-input-container">
             <input
-              type="text"
+              type="email"
               name="email"
               className="auth-input-fields"
               placeholder="Email"

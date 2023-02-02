@@ -46,9 +46,9 @@ function UploadPhotoForm() {
         </div>
 
         <form className="up-photo-form" onSubmit={handleSubmit}>
-          <div className="auth-error-container">
+          <div className="up-error-ctn">
             {errors.map((error, ind) => (
-              <div className="auth-error-msg" key={ind}>
+              <div className="up-error-msg" key={ind}>
                 {error}
               </div>
             ))}

@@ -21,7 +21,7 @@
 
 .signup-form-container {
     background-color: white;
-    height: 550px;
+    height: 650px;
     width: 352px;
     display: flex;
     flex-direction: column;
@@ -56,12 +56,23 @@
 }
 
 .auth-error-container {
+    height: 100px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-error-container {
     height: 40px;
     margin-top: 5px;
     margin-bottom: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .auth-error-msg {

@@ -17,8 +17,6 @@ const LoggedInNav = () => {
   const handleClick = async () => {
     await dispatch(getAllAlbumsThunk())
     await dispatch(userAlbumsThunk(userId))
-
-    console.log("omg u clicked me.")
   }
 
   const toggleProfile = () => {
@@ -51,7 +49,7 @@ const LoggedInNav = () => {
         </NavLink>
           <img src={profilePic} alt="pro-pic" className="profile-pic" onClick={toggleProfile}></img>
           {showProfile ? <ul className="profile-dropdown">
-            <li className="user-name-dropdown">{user?.full_name}</li>
+            <li className="user-name-dropdown">{user?.username}</li>
           <li>
             <LogoutButton />
           </li>
