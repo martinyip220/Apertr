@@ -11,6 +11,16 @@ function UploadPhotoForm() {
   const [photo_img, setPhoto_Img] = useState("");
   const [description, setDescription] = useState("");
 
+
+  function isValidUrl(string) {
+    try {
+      new URL(string);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -31,6 +41,27 @@ function UploadPhotoForm() {
     }
 
   };
+
+  useEffect(() => {
+    (async () => {
+      let errors = [];
+      const btn = await document.getElementById("upload-photo-btn-id")
+
+      if (!isValidUrl(photo_img)) {
+        errors.push("Photo image url must start with https:// or http://")
+        btn.disabled = true
+        btn.className = "errors-btn"
+      }
+
+      if (isValidUrl(photo_img)) {
+        btn.disabled = false
+        btn.className = "up-photo-btn"
+      }
+
+      await setErrors(errors)
+    })();
+  }, [photo_img])
+
 
   return (
     <div className="up-photo-bg">
@@ -57,11 +88,11 @@ function UploadPhotoForm() {
           <div className="up-input-container">
           <label className="photo-up-edit-label">Photo Image Url <span className="required-label">(Required)</span></label>
             <input
+              required
               type="url"
               value={photo_img}
               onChange={(e) => setPhoto_Img(e.target.value)}
               placeholder="http://www.example.com"
-              required
               className="up-photo-modal-input"
             />
           </div>
@@ -83,7 +114,7 @@ function UploadPhotoForm() {
             >
               Cancel
             </div>
-            <button className="up-photo-btn" type="submit">
+            <button id="upload-photo-btn-id" className="up-photo-btn" type="submit">
               Upload
             </button>
           </div>
