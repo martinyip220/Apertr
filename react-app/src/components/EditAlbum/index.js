@@ -4,6 +4,7 @@ import { useHistory, Link, useParams } from "react-router-dom";
 import { updateAlbumThunk, getAllAlbumsThunk } from "../../store/album";
 import { userPhotosThunk } from "../../store/photo";
 import { getOneAlbumThunk } from "../../store/album";
+import UserPhotosSelect from "../CreateAlbum/photoImgs";
 import "./index.css";
 
 function EditAlbumForm() {
@@ -12,23 +13,57 @@ function EditAlbumForm() {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user?.id);
   const singleAlbum = useSelector((state) => state.album.singleAlbum);
+  const allAlbums = useSelector((state) => state.album.allAlbums.albums);
+  const currentAlbum = allAlbums.find((album) => album.id === id);
+  const [selectedPhotos, SetSelectedPhotos] = useState(currentAlbum?.photoIds);
   const [errors, setErrors] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  const [title, setTitle] = useState(singleAlbum?.title);
-  const [description, setDescription] = useState(singleAlbum?.description);
+  const [title, setTitle] = useState(currentAlbum?.title);
+  const [description, setDescription] = useState(currentAlbum?.description);
   const userPhotos = useSelector((state) => state.photo.userPhotos);
   const userPhotosArr = Object.values(userPhotos);
-  let photoSet = new Set();
 
-  function addDefaultSrc(e){
-    e.target.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg"
+  function addDefaultSrc(e) {
+    e.target.src =
+      "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
   }
+
+  useEffect(() => {
+    (async () => {
+      let errors = [];
+      const btn = await document.getElementById("test")
+
+      if (!btn) return null;
+
+      if (title.length > 20) {
+        errors.push("Title must be less than 20 characters");
+        btn.disabled = true
+        btn.className = "errors-btn"
+      }
+      if (description.length > 100) {
+        errors.push("Description must be less than 100 characters");
+        btn.disabled = true
+        btn.className = "errors-btn"
+      }
+
+      if (title.length <= 20 && description.length <= 100) {
+        btn.disabled = false
+        btn.className = "up-photo-btn"
+        console.log("btn", btn)
+      }
+
+      await setErrors(errors);
+
+    })();
+  }, [title, description]);
+
+
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const photos = [...photoSet].join(',')
+    const photos = Array.isArray(selectedPhotos) ? [...selectedPhotos].join(",") : [...singleAlbum.photoIds].join(",");
 
     const editedAlbum = {
       id,
@@ -37,7 +72,7 @@ function EditAlbumForm() {
       photos,
     };
 
-    if (photos.length < 1) {
+    if (!photos.length) {
       let errors = [];
       errors.push("Please select at least 1 photo from below");
       return setErrors(errors);
@@ -49,14 +84,27 @@ function EditAlbumForm() {
   };
 
   const selectPhoto = async (photoId) => {
+    const set = new Set(selectedPhotos);
 
-    await photoSet.add(photoId)
-  }
+    if (set.has(photoId)) {
+      set.delete(photoId);
+    } else {
+      set.add(photoId);
+    }
 
-  useEffect(async () => {
-    await dispatch(getOneAlbumThunk(id));
-    await dispatch(getAllAlbumsThunk());
-    await dispatch(userPhotosThunk(userId)).then(setLoaded(true));
+    const selectedArr = Array.from(set);
+
+    SetSelectedPhotos(selectedArr);
+  };
+
+  useEffect(() => {
+    (async () => {
+      await dispatch(getOneAlbumThunk(id));
+      await dispatch(getAllAlbumsThunk());
+      await dispatch(userPhotosThunk(userId)).then(setLoaded(true));
+
+      return () => dispatch(getOneAlbumThunk(id));
+    })();
   }, [dispatch, id, userId]);
 
   if (!loaded) return null;
@@ -84,7 +132,9 @@ function EditAlbumForm() {
           </div>
 
           <div className="up-input-container">
-          <label className="photo-up-edit-label">Album Title <span className="required-label">(Required)</span></label>
+            <label className="photo-up-edit-label">
+              Album Title <span className="required-label">(Required)</span>
+            </label>
             <input
               type="text"
               value={title}
@@ -95,7 +145,7 @@ function EditAlbumForm() {
             />
           </div>
           <div className="up-input-container">
-          <label className="photo-up-edit-label">Album Description</label>
+            <label className="photo-up-edit-label">Album Description</label>
             <input
               type="text"
               value={description}
@@ -118,14 +168,7 @@ function EditAlbumForm() {
                 </div>
               ) : null}
               {userPhotosArr?.map((photo) => (
-                <div className="album-form-photo-btn" key={photo.id}>
-                  <img
-                    onError={addDefaultSrc}
-                    className="album-form-photo-imgs"
-                    src={photo.photoImg}
-                    onClick={() => selectPhoto(photo.id)}
-                  />
-                </div>
+                <UserPhotosSelect photo={photo} selectPhoto={selectPhoto} addDefaultSrc={addDefaultSrc} chosen={singleAlbum.photoIds} />
               ))}
             </div>
           </div>
@@ -137,7 +180,7 @@ function EditAlbumForm() {
             >
               Cancel
             </div>
-            <button className="up-photo-btn" type="submit">
+            <button id="test" className="up-photo-btn" type="submit">
               Edit
             </button>
           </div>

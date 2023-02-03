@@ -19,6 +19,15 @@ function EditPhotoModal({ photoId }) {
   //   const [album, setAlbum] = useState(singlePhoto?.album);
   const id = photoId;
 
+  function isValidUrl(string) {
+    try {
+      new URL(string);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -40,6 +49,27 @@ function EditPhotoModal({ photoId }) {
       closeModal();
     }
   };
+
+  useEffect(() => {
+    (async () => {
+      let errors = [];
+      const btn = await document.getElementById("edit-photo-btn-id")
+
+      if (!isValidUrl(photo_img)) {
+        errors.push("Photo image url must start with https:// or http://")
+        btn.disabled = true
+        btn.className = "errors-btn"
+      }
+
+      if (isValidUrl(photo_img)) {
+        btn.disabled = false
+        btn.className = "up-photo-btn"
+      }
+
+      await setErrors(errors)
+    })();
+  }, [photo_img])
+
 
   return (
     <div className="edit-photo-modal">
@@ -77,7 +107,7 @@ function EditPhotoModal({ photoId }) {
           <div className="edit-photo-cancel" onClick={closeModal}>
             Cancel
           </div>
-          <button className="edit-photo-btn" type="submit">
+          <button id="edit-photo-btn-id" className="edit-photo-btn" type="submit">
             Save
           </button>
         </div>

@@ -34,6 +34,7 @@ class Photo(db.Model):
         return {
             'id': self.id,
             'userId': self.user_id,
+            'username':self.user.username,
             'photoImg': self.photo_img,
             'description': self.description,
             'createdAt': self.created_at,

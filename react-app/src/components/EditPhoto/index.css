@@ -41,6 +41,8 @@
 .edit-modal-errors {
     list-style: none;
     color: red;
+    font-weight: 600;
+    font-size: 13px;
 }
 
 .edit-photo-btn {

@@ -63,7 +63,7 @@ def album_action(id):
                 album.description = form.data["description"]
 
                 if(form.data["photo"]):
-                    photo = form.data["photo"].split(",")
+                    photo = form.data["photo"].split(",") # 1,2
                     photo_list = []
                     # del_photo_list = []
                     album.photo = [] # this would reset the album.photo selection
