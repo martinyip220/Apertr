@@ -12,15 +12,16 @@ import "./index.css";
 function PhotoDetail() {
   const dispatch = useDispatch();
   const { photoId } = useParams();
-  const id = Number(photoId)
+  const id = Number(photoId);
   const [loaded, setLoaded] = useState(false);
   const singlePhoto = useSelector((state) => state.photo.singlePhoto);
   const user = useSelector((state) => state.session.user);
   const allUsers = useSelector((state) => state.session.allUsers);
   const ownerId = singlePhoto.userId;
 
-  function addDefaultSrc(e){
-    e.target.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg"
+  function addDefaultSrc(e) {
+    e.target.src =
+      "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
   }
 
   useEffect(async () => {
@@ -73,12 +74,27 @@ function PhotoDetail() {
       </div>
 
       <div className="photo-detail-bottom-ctn">
-        <div className="photo-detail-info-ctn">
-          <div className="profile-pic-photo-info-ctn">
-            <img src={profilePic}></img>
-            <div className="owner-photo-info">
-              <div></div>
+        <div className="profile-pic-photo-info-ctn">
+          <img className="default-photopic" src={profilePic}></img>
+          <div className="owner-photo-info">
+            <div className="owner-name">hello I am the owner</div>
+            <div className="owner-description">
+              this is a description of the photo that I have taken
             </div>
+          </div>
+        </div>
+
+        <div className="comments-tags-info-ctn">
+          <div className="photo-pg-comments-wrapper">
+            <div className="comments-title-ctn">
+              <h2>Comments</h2>
+            </div>
+            <div className="placeholder-comments">
+              Comments Feature Coming Soon!
+            </div>
+          </div>
+          <div className="photos-pg-placeholder-ctn">
+            <div className="placeholder-tags">Place Holder Tags in Development!</div>
           </div>
         </div>
       </div>

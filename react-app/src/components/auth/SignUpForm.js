@@ -24,9 +24,9 @@ const SignUpForm = () => {
 
     const btn = await document.getElementById("signup-btn-submit")
 
-    if (validUser.length < 5 || validUser.length > 10) errors.push("Username between 5 and 10 characters");
+    if (validUser.length < 5 || validUser.length > 10) errors.push("Username must be between 5 and 10 characters");
     if (fullnameInput.length < 5 || fullnameInput.length > 30) errors.push("Full name must be between 5 and 30 characters");
-    if (!email.match(emailFormat)) errors.push("You have entered an invalid email address")
+    if (!email.match(emailFormat)) errors.push("Please enter a invalid email address")
     if (password.length < 6 || password.length > 15) errors.push("Password must be between 6 and 15 characters")
     if (password !== repeatPassword) errors.push("Passwords do not match")
 

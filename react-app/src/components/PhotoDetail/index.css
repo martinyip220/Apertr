@@ -11,6 +11,7 @@
 
 .photo-detail-img-background {
     width: 100%;
+    height: 75vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,8 +28,8 @@
 }
 
 .photo-detail-btns {
-    font-size: 20px;
-    margin-right: 5px;
+    font-size: 30px;
+    margin-right: 10px;
     color: rgba(255, 255, 255, 0.315);
     background-color: rgb(33,33,36);
     border-width: 0;
@@ -37,4 +38,77 @@
 .photo-detail-btns:hover {
     cursor: pointer;
     color: rgba(255, 255, 255, 0.842);
+}
+
+
+
+.profile-pic-photo-info-ctn {
+    display: flex;
+    width: 60vw;
+    padding-top: 20px;
+}
+
+.default-photopic {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+.owner-photo-info {
+    display: flex;
+    width: 60vw;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 10px;
+    border-bottom: 1px solid black;
+}
+
+.photo-pg-comments-wrapper {
+    height: 30vh;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comments-tags-info-ctn {
+    display: flex;
+    margin-bottom: 60px;
+}
+
+.comments-title-ctn {
+    width: 30vw;
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+    font-size: 20px;
+    border-bottom: 1px solid black;
+}
+
+.owner-name {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.owner-description {
+    font-size: 16px;
+}
+
+.placeholder-comments {
+    font-size: 25px;
+    margin-bottom: 90px;
+}
+
+.photos-pg-placeholder-ctn {
+    width: 30vw;
+    height: 30vh;
+    border-left: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.placeholder-tags {
+    font-size: 25px;
 }
