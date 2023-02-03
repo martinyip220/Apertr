@@ -14,10 +14,10 @@ function ExplorePage() {
   // const allPhotos = photosArr[0]
   console.log("what am i object?", photosObject);
 
-  function addDefaultSrc(e){
-    e.target.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg"
+  function addDefaultSrc(e) {
+    e.target.src =
+      "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
   }
-
 
   // use effect to get the state of all photos
   useEffect(async () => {
@@ -28,11 +28,11 @@ function ExplorePage() {
 
   const oddOrEven = (photoId) => {
     if (photoId % 2 === 0) {
-      return "photo-img-even photo-img"
+      return "photo-img-even photo-img";
     } else {
-      return "photo-img-odd photo-img"
+      return "photo-img-odd photo-img";
     }
-  }
+  };
 
   return (
     <div className="explore-pg-wrapper">
@@ -41,20 +41,25 @@ function ExplorePage() {
       </div>
 
       <div className="explore-pg-background">
-        <div className="explore-pg-imgs">
-          {loaded &&
-            photosObject.map((photo) => (
-              <div className="photo-container" key={photo.id}>
-                <Link className="photo-detail-link" to={`/photos/${photo.id}`}>
-                  <img
-                    onError={addDefaultSrc}
-                    className={oddOrEven(photo.id)}
-                    src={photo.photoImg}
-                    alt="explore"
-                  ></img>
-                </Link>
-              </div>
-            ))}
+        <div className="explore-cards-ctn">
+          <div className="explore-pg-imgs">
+            {loaded &&
+              photosObject.map((photo) => (
+                <div className="photo-container" key={photo.id}>
+                  <Link
+                    className="photo-detail-link"
+                    to={`/photos/${photo.id}`}
+                  >
+                    <img
+                      onError={addDefaultSrc}
+                      className={oddOrEven(photo.id)}
+                      src={photo.photoImg}
+                      alt="explore"
+                    ></img>
+                  </Link>
+                </div>
+              ))}
+          </div>
         </div>
       </div>
     </div>

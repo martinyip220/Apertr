@@ -19,8 +19,9 @@ function AlbumPage() {
     return state;
   });
 
-  function addDefaultSrc(e){
-    e.target.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg"
+  function addDefaultSrc(e) {
+    e.target.src =
+      "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
   }
 
   console.log("im the currentalbum", currentAlbum);
@@ -36,12 +37,11 @@ function AlbumPage() {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getOneAlbumThunk(id))
-  }, [dispatch])
+    dispatch(getOneAlbumThunk(id));
+  }, [dispatch]);
 
   if (!loaded) return null;
   if (!photos || photos.length < 1) return null;
-
 
   return (
     <div className="album-pg-whole">
@@ -51,21 +51,27 @@ function AlbumPage() {
         alt="album-banner"
       ></img>
       <div className="album-pg-background-top">
-        <div>
-          <div className="album-banner-info">{currentAlbum.title}</div>
-          <div className="album-banner-info">{currentAlbum.description}</div>
-        </div>
-        <div className="album-banner-info">By: {owner}</div>
-      </div>
-
-      <div className="album-photos-btm-ctn">
-        {photos && photos.map((photo) => (
-          <div key={photo.id}>
-            <img onError={addDefaultSrc} className="album-pg-photo-img" src={photo.photoImg} alt="photoimg"></img>
+        <div className="album-banner-title-descr">
+          <div className="album-banner-info-title">{currentAlbum.title}</div>
+          <div className="album-banner-info-description">
+            {currentAlbum.description}
           </div>
-        ))}
         </div>
-
+        <div className="album-banner-info-credits">By: {owner}</div>
+      </div>
+      <div className="album-photos-btm-ctn">
+        {photos &&
+          photos.map((photo) => (
+            <div key={photo.id}>
+              <img
+                onError={addDefaultSrc}
+                className="album-pg-photo-img"
+                src={photo.photoImg}
+                alt="photoimg"
+              ></img>
+            </div>
+          ))}
+      </div>
     </div>
   );
 }

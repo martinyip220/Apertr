@@ -1,6 +1,6 @@
 .album-form-container {
   background-color: white;
-  max-height: 600px;
+  max-height: 900px;
   width: 352px;
   display: flex;
   flex-direction: column;
@@ -17,6 +17,7 @@
 }
 
 .album-form-photo-imgs {
+  margin-bottom: 10px;
   height: 70px;
   width: 98.6px;
   object-fit: cover;
@@ -44,4 +45,15 @@
   font-size: 25px;
   margin-top: 5px;
   font-weight: 600;
+}
+
+.errors-btn {
+  width: 80px;
+  margin-bottom: 12px;
+  border-width: 0;
+  height: 40px;
+  background-color: rgba(161, 159, 159, 0.445);
+  color:  white;
+  font-weight: 550;
+  border-radius: 5px;
 }

@@ -8,23 +8,56 @@ import "./index.css";
 function AlbumForm() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [title, setTitle] = useState("");
   const [errors, setErrors] = useState([]);
   const userId = useSelector((state) => state.session.user?.id);
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const userPhotos = useSelector((state) => state.photo.userPhotos);
   const userPhotosArr = Object.values(userPhotos);
   let photoSet = new Set();
 
-  function addDefaultSrc(e){
-    e.target.src = "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg"
+  function addDefaultSrc(e) {
+    e.target.src =
+      "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
   }
 
+  useEffect(() => {
+    (async () => {
+      let errors = [];
+      const btn = await document.getElementById("testing")
+
+      if (title.length > 20) {
+        errors.push("Title must be less than 20 characters");
+        btn.disabled = true
+        btn.className = "errors-btn"
+      }
+      if (description.length > 100) {
+        errors.push("Description must be less than 100 characters");
+        btn.disabled = true
+        btn.className = "errors-btn"
+      }
+
+      if (title.length <= 20 && description.length <= 100) {
+        btn.disabled = false
+        btn.className = "up-photo-btn"
+      }
+
+      await setErrors(errors);
+      console.log("i am the current title and description errors", errors)
+
+    })();
+  }, [title, description]);
+
+  useEffect(() => {
+    (async () => {
+      console.log("i am the photoset", photoSet)
+    })();
+  }, [photoSet])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const photos = [...photoSet].join(',')
+    const photos = [...photoSet].join(",");
 
     const newAlbum = {
       title,
@@ -32,21 +65,22 @@ function AlbumForm() {
       photos,
     };
 
-    if (photos.length < 1) {
+    if (photos.length < 1 && errors.length) {
       let errors = [];
-      errors.push("Please select at least 1 photo from below");
+      errors.push("Please select at least 1 photo from below")
       return setErrors(errors);
+
     } else {
       await dispatch(createAlbumThunk(newAlbum));
 
       history.push("/you");
     }
   };
+  const selectPhoto = (photoId) => {
+    photoSet.add(photoId);
 
-  const selectPhoto = async (photoId) => {
-
-    await photoSet.add(photoId)
-  }
+    console.log("i am the set of selected photos", photoSet)
+  };
 
   useEffect(() => {
     dispatch(userPhotosThunk(userId));
@@ -75,7 +109,9 @@ function AlbumForm() {
           </div>
 
           <div className="up-input-container">
-            <label className="photo-up-edit-label">Album Title <span className="required-label">(Required)</span></label>
+            <label className="photo-up-edit-label">
+              Album Title <span className="required-label">(Required)</span>
+            </label>
             <input
               type="text"
               value={title}
@@ -86,7 +122,7 @@ function AlbumForm() {
             />
           </div>
           <div className="up-input-container">
-          <label className="photo-up-edit-label">Album Description</label>
+            <label className="photo-up-edit-label">Album Description</label>
             <input
               type="text"
               value={description}
@@ -128,7 +164,7 @@ function AlbumForm() {
             >
               Cancel
             </div>
-            <button className="up-photo-btn" type="submit">
+            <button id="testing" className="up-photo-btn" type="submit">
               Create
             </button>
           </div>
