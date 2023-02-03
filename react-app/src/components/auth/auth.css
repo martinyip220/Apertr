@@ -21,7 +21,7 @@
 
 .signup-form-container {
     background-color: white;
-    height: 650px;
+    height: 610px;
     width: 352px;
     display: flex;
     flex-direction: column;
@@ -105,6 +105,17 @@
     border-width: 0;
     height: 40px;
     background-color: rgb(18,143,220);
+    color: white;
+    font-weight: 550;
+    border-radius: 5px;
+}
+
+.signup-errors-disabled-btn {
+    width: 100%;
+    margin-bottom: 12px;
+    border-width: 0;
+    height: 40px;
+    background-color: rgba(161, 159, 159, 0.445);
     color: white;
     font-weight: 550;
     border-radius: 5px;
