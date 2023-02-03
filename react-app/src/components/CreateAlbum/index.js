@@ -3,18 +3,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { userPhotosThunk } from "../../store/photo";
 import { createAlbumThunk } from "../../store/album";
+import UserPhotosSelect from "./photoImgs";
 import "./index.css";
 
 function AlbumForm() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
+  const [selectedPhotos, SetSelectedPhotos] = useState([])
   const userId = useSelector((state) => state.session.user?.id);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const userPhotos = useSelector((state) => state.photo.userPhotos);
   const userPhotosArr = Object.values(userPhotos);
-  let photoSet = new Set();
+
 
   function addDefaultSrc(e) {
     e.target.src =
@@ -43,21 +45,14 @@ function AlbumForm() {
       }
 
       await setErrors(errors);
-      console.log("i am the current title and description errors", errors)
 
     })();
   }, [title, description]);
 
-  useEffect(() => {
-    (async () => {
-      console.log("i am the photoset", photoSet)
-    })();
-  }, [photoSet])
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const photos = [...photoSet].join(",");
+    const photos = [...selectedPhotos].join(",");
 
     const newAlbum = {
       title,
@@ -65,7 +60,7 @@ function AlbumForm() {
       photos,
     };
 
-    if (photos.length < 1 && errors.length) {
+    if (!photos.length) {
       let errors = [];
       errors.push("Please select at least 1 photo from below")
       return setErrors(errors);
@@ -76,10 +71,19 @@ function AlbumForm() {
       history.push("/you");
     }
   };
-  const selectPhoto = (photoId) => {
-    photoSet.add(photoId);
 
-    console.log("i am the set of selected photos", photoSet)
+  const selectPhoto = (photoId) => {
+    const set = new Set(selectedPhotos);
+
+    if (set.has(photoId)) {
+      set.delete(photoId)
+    } else {
+      set.add(photoId);
+    }
+
+    const selectedArr = Array.from(set);
+
+    SetSelectedPhotos(selectedArr);
   };
 
   useEffect(() => {
@@ -145,14 +149,7 @@ function AlbumForm() {
                 </div>
               ) : null}
               {userPhotosArr?.map((photo) => (
-                <div className="album-form-photo-btn" key={photo.id}>
-                  <img
-                    onError={addDefaultSrc}
-                    className="album-form-photo-imgs"
-                    src={photo.photoImg}
-                    onClick={() => selectPhoto(photo.id)}
-                  />
-                </div>
+                <UserPhotosSelect photo={photo} selectPhoto={selectPhoto} addDefaultSrc={addDefaultSrc} />
               ))}
             </div>
           </div>

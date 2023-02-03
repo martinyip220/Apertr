@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect, useHistory, NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { getAllUsers } from "../../store/session";
-import { getAllAlbumsThunk, userAlbumsThunk } from "../../store/album";
-import { deleteAlbumThunk } from "../../store/album";
+import { userAlbumsThunk } from "../../store/album";
 import AlbumCard from "../AlbumCard";
 import profilePic from "../../assets/profile-img.jpg";
 import "./index.css";
 
 function ProfilePage() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const [loaded, setLoaded] = useState(false);
   const user = useSelector((state) => state.session.user);
   const albumsObj = useSelector((state) => state.album?.userAlbums);
@@ -19,7 +17,6 @@ function ProfilePage() {
   if (loaded) {
     albumsArr = Object.values(albumsObj);
   }
-  // const albumsArr = Object.values(albumsObj);
 
   useEffect(() => {
     const fetchData = async () => {

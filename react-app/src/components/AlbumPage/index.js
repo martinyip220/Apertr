@@ -15,18 +15,10 @@ function AlbumPage() {
   const photos = useSelector((state) => state.album.singleAlbum.photos);
   const owner = useSelector((state) => state.session.user?.full_name);
 
-  const stateee = useSelector((state) => {
-    return state;
-  });
-
   function addDefaultSrc(e) {
     e.target.src =
       "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg";
   }
-
-  console.log("im the currentalbum", currentAlbum);
-  console.log("i am the currentphotos", photos);
-  console.log("what am i ?????", stateee);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,9 +37,11 @@ function AlbumPage() {
 
   return (
     <div className="album-pg-whole">
+      <div style={{position: "relative"}}>
       <img
         className="album-banner"
-        src={photos[0]?.photoImg}
+          src={photos[0]?.photoImg}
+          onError={addDefaultSrc}
         alt="album-banner"
       ></img>
       <div className="album-pg-background-top">
@@ -57,8 +51,11 @@ function AlbumPage() {
             {currentAlbum.description}
           </div>
         </div>
+
         <div className="album-banner-info-credits">By: {owner}</div>
       </div>
+      </div>
+
       <div className="album-photos-btm-ctn">
         {photos &&
           photos.map((photo) => (

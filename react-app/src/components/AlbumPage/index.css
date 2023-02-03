@@ -1,7 +1,7 @@
 .album-pg-whole {
     display: flex;
     flex-direction: column;
-    height: 95vh;
+    height: calc(100vh - 50px);
     background-color: rgb(243,245,246);
 }
 
@@ -15,8 +15,8 @@
     justify-content: space-between;
     align-items: center;
     height: 150px;
-    position: fixed;
-    /* top: 295px; */
+    position: absolute;
+    top: 0px;
 }
 
 .album-banner-title-descr {
