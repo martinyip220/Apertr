@@ -6,12 +6,12 @@
 
 .single-photo {
     max-width: 1000px;
-    max-height: 800px;
+    max-height: 40%;
 }
 
 .photo-detail-img-background {
     width: 100%;
-    height: 75vh;
+    height: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
