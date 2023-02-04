@@ -77,3 +77,26 @@
     margin-right: 4px;
     margin-left: 4px;
 }
+
+.empty-album-ctn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 28px;
+}
+
+.empty-album-msg {
+    margin-right: 20px;
+}
+
+.add-to-empty-alb-btn {
+    font-size: 28px;
+    color: rgb(142,147,150);
+}
+
+.add-to-empty-alb-btn:hover {
+    cursor: pointer;
+    color: black;
+}
