@@ -5,8 +5,8 @@
 }
 
 .single-photo {
-    max-width: 1000px;
-    max-height: 40%;
+    height: 700px;
+    width: 1000px;
 }
 
 .photo-detail-img-background {
@@ -17,7 +17,12 @@
     align-items: center;
     background-color: rgb(33,33,36);
     padding-top: 40px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.photo-detail-img-container {
+    display: flex;
+    justify-content: center;
 }
 
 .photo-detail-options {
@@ -25,6 +30,7 @@
     display: flex;
     justify-content: flex-end;
     margin-right: 100px;
+    margin-top: 10px;
 }
 
 .photo-detail-btns {
@@ -39,7 +45,6 @@
     cursor: pointer;
     color: rgba(255, 255, 255, 0.842);
 }
-
 
 
 .profile-pic-photo-info-ctn {
