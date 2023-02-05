@@ -13,7 +13,7 @@ const SignUpForm = () => {
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
-  let emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
   useEffect(() => {
     (async () => {
