@@ -24,7 +24,7 @@ function SplashPage() {
       }, 500);
     }, 2500);
     return () => clearInterval(interval);
-  }, []);
+  }, [photos.length]);
 
   return (
     <div

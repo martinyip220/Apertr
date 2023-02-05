@@ -36,6 +36,7 @@ const AlbumCard = ({ albumId }) => {
           <img
             onError={addDefaultSrc}
             className="album-img"
+            alt="album-profile"
             src={
               albumPhotos.length
                 ? albumPhotos[0]?.photoImg

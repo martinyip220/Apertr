@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getOnePhotoThunk, getAllPhotosThunk } from "../../store/photo";
 import { getAllUsers } from "../../store/session";
-import EditPhotoModal from "../EditPhoto";
 import DeletePhotoModal from "../DeletePhoto";
+import EditPhotoModal from "../EditPhoto";
 import OpenModalMenuItem from "../OpenModalButton";
 import profilePic from "../../assets/profile-img.jpg";
 import "./index.css";
@@ -29,7 +29,7 @@ function PhotoDetail() {
       await dispatch(getOnePhotoThunk(id));
       await dispatch(getAllUsers()).then(setLoaded(true));
     })();
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   if (!loaded) return null;
 
@@ -68,7 +68,7 @@ function PhotoDetail() {
 
       <div className="photo-detail-bottom-ctn">
         <div className="profile-pic-photo-info-ctn">
-          <img className="default-photopic" src={profilePic}></img>
+          <img className="default-photopic" src={profilePic} alt="default"></img>
           <div className="owner-photo-info">
             <div className="owner-name">
               {singlePhoto.username}

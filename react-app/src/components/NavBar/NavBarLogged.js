@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/clickr-logo.jpg";
 import profilePic from "../../assets/profile-img.jpg";
-import { getAllUsers } from "../../store/session";
 import { getAllAlbumsThunk, userAlbumsThunk } from "../../store/album";
 import { useDispatch, useSelector } from "react-redux";
 import LogoutButton from "../auth/LogoutButton";

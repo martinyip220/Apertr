@@ -20,6 +20,7 @@ function UserPhotosSelect({ addDefaultSrc, selectPhoto, photo, chosen }) {
         <img
           onError={addDefaultSrc}
           className="album-form-photo-imgs"
+          alt="selected"
           src={photo.photoImg}
           onClick={() => selectPhoto(photo.id)}
         />

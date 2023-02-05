@@ -6,7 +6,6 @@ import {
   getOnePhotoThunk,
   getAllPhotosThunk,
 } from "../../store/photo";
-import { getAllUsers } from "../../store/session";
 import "./index.css";
 
 function EditPhotoModal({ photoId }) {

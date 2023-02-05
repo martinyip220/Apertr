@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { getAllAlbumsThunk, getOneAlbumThunk } from "../../store/album";
-import { getAllPhotosThunk } from "../../store/photo";
+import { getOneAlbumThunk } from "../../store/album";
 
 import "./index.css";
 
@@ -27,11 +26,11 @@ function AlbumPage() {
     };
 
     fetchData().catch(console.error);
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   useEffect(() => {
     dispatch(getOneAlbumThunk(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   const handleRedirect = async (id) => {
     await dispatch(getOneAlbumThunk(id));

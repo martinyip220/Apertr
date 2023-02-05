@@ -10,13 +10,12 @@ function AlbumForm() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
-  const [selectedPhotos, SetSelectedPhotos] = useState([])
+  const [selectedPhotos, SetSelectedPhotos] = useState([]);
   const userId = useSelector((state) => state.session.user?.id);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const userPhotos = useSelector((state) => state.photo.userPhotos);
   const userPhotosArr = Object.values(userPhotos);
-
 
   function addDefaultSrc(e) {
     e.target.src =
@@ -26,26 +25,34 @@ function AlbumForm() {
   useEffect(() => {
     (async () => {
       let errors = [];
-      const btn = await document.getElementById("testing")
+      const btn = await document.getElementById("testing");
 
-      if (title.length > 20) {
+      if (title.trim().length > 20) {
         errors.push("Title must be less than 20 characters");
-        btn.disabled = true
-        btn.className = "errors-btn"
+        btn.disabled = true;
+        btn.className = "errors-btn";
       }
-      if (description.length > 100) {
+      if (!title.trim().length) {
+        errors.push("Title is required");
+        btn.disabled = true;
+        btn.className = "errors-btn";
+      }
+      if (description.trim().length > 100) {
         errors.push("Description must be less than 100 characters");
-        btn.disabled = true
-        btn.className = "errors-btn"
+        btn.disabled = true;
+        btn.className = "errors-btn";
       }
 
-      if (title.length <= 20 && description.length <= 100) {
-        btn.disabled = false
-        btn.className = "up-photo-btn"
+      if (
+        title.trim().length <= 20 &&
+        title.trim().length > 0 &&
+        description.trim().length <= 100
+      ) {
+        btn.disabled = false;
+        btn.className = "up-photo-btn";
       }
 
       await setErrors(errors);
-
     })();
   }, [title, description]);
 
@@ -62,9 +69,8 @@ function AlbumForm() {
 
     if (!photos.length) {
       let errors = [];
-      errors.push("Please select at least 1 photo from below")
+      errors.push("Please select at least 1 photo from below");
       return setErrors(errors);
-
     } else {
       await dispatch(createAlbumThunk(newAlbum));
 
@@ -76,7 +82,7 @@ function AlbumForm() {
     const set = new Set(selectedPhotos);
 
     if (set.has(photoId)) {
-      set.delete(photoId)
+      set.delete(photoId);
     } else {
       set.add(photoId);
     }
@@ -88,7 +94,7 @@ function AlbumForm() {
 
   useEffect(() => {
     dispatch(userPhotosThunk(userId));
-  }, [dispatch]);
+  }, [dispatch, userId]);
 
   return (
     <div className="up-photo-bg">
@@ -144,12 +150,16 @@ function AlbumForm() {
                 <div className="no-photos-uploaded-ctn">
                   <div>You have no photos uploaded.</div>
                   <div>
-                    Upload your photo click <Link to="/photos/new">here</Link>{" "}
+                    Upload your photo click <Link to="/photos/new">here</Link>
                   </div>
                 </div>
               ) : null}
               {userPhotosArr?.map((photo) => (
-                <UserPhotosSelect photo={photo} selectPhoto={selectPhoto} addDefaultSrc={addDefaultSrc} />
+                <UserPhotosSelect
+                  photo={photo}
+                  selectPhoto={selectPhoto}
+                  addDefaultSrc={addDefaultSrc}
+                />
               ))}
             </div>
           </div>

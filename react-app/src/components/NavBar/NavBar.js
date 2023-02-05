@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import LogoutButton from "../auth/LogoutButton";
 import { getAllPhotosThunk } from "../../store/photo";
 import { useDispatch } from "react-redux";
 import logo from "../../assets/clickr-logo.jpg";

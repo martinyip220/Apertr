@@ -25,7 +25,7 @@ function ProfilePage() {
     };
 
     fetchData().catch(console.error);
-  }, [dispatch]);
+  }, [dispatch, user.id]);
 
 
   if (!loaded) return null;
