@@ -10,39 +10,42 @@ const SignUpForm = () => {
   const [full_name, setFull_Name] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [validationErrors, setValidationErrors] = useState([]);
-  const [disabled, setDisabled] = useState(true);
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
-  let emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  useEffect(async () => {
-    let errors = [];
-    let validUser = username.trim();
-    let fullnameInput = full_name.trim();
+  useEffect(() => {
+    (async () => {
+      let errors = [];
+      let validUser = username.trim();
+      let fullnameInput = full_name.trim();
 
-    const btn = await document.getElementById("signup-btn-submit")
+      const btn = await document.getElementById("signup-btn-submit");
 
-    if (validUser.length < 5 || validUser.length > 10) errors.push("Username must be between 5 and 10 characters");
-    if (fullnameInput.length < 5 || fullnameInput.length > 30) errors.push("Full name must be between 5 and 30 characters");
-    if (!email.match(emailFormat)) errors.push("Please enter a invalid email address")
-    if (password.length < 6 || password.length > 15) errors.push("Password must be between 6 and 15 characters")
-    if (password !== repeatPassword) errors.push("Passwords do not match")
+      if (validUser.length < 5 || validUser.length > 10)
+        errors.push("Username must be between 5 and 10 characters");
+      if (fullnameInput.length < 5 || fullnameInput.length > 30)
+        errors.push("Full name must be between 5 and 30 characters");
+      if (!email.match(emailFormat))
+        errors.push("Please enter a invalid email address");
+      if (password.length < 6 || password.length > 15)
+        errors.push("Password must be between 6 and 15 characters");
+      if (password !== repeatPassword) errors.push("Passwords do not match");
 
-    await setErrors(errors)
+      await setErrors(errors);
 
-    if (errors.length > 1) {
-      btn.disabled = true
-      btn.className = "signup-errors-disabled-btn"
-    }
+      if (errors.length > 1) {
+        btn.disabled = true;
+        btn.className = "signup-errors-disabled-btn";
+      }
 
-    if (errors.length === 0) {
-      btn.disabled = false
-      btn.className = "auth-btn"
-    }
-
-    }, [username, full_name, email, password, repeatPassword])
+      if (errors.length === 0) {
+        btn.disabled = false;
+        btn.className = "auth-btn";
+      }
+    })();
+  }, [username, full_name, email, password, repeatPassword]);
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -51,14 +54,13 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data);
       }
-      history.push("/explore")
+      history.push("/explore");
     } else if (password !== repeatPassword) {
       let errors = [];
       errors.push("Passwords do not match. Please try again.");
       return setErrors(errors);
     }
   };
-
 
   const updateUsername = (e) => {
     setUsername(e.target.value);

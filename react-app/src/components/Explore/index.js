@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPhotosThunk } from "../../store/photo";
 import { getAllAlbumsThunk } from "../../store/album";
-import PhotoDetail from "../PhotoDetail";
 import { Link } from "react-router-dom";
 import "./index.css";
 
@@ -10,9 +9,6 @@ function ExplorePage() {
   const dispatch = useDispatch();
   const photosObject = useSelector((state) => state.photo.allPhotos.photos);
   const [loaded, setLoaded] = useState(false);
-  // const photosArr = Object.values(photosObject);
-  // const allPhotos = photosArr[0]
-  console.log("what am i object?", photosObject);
 
   function addDefaultSrc(e) {
     e.target.src =
@@ -20,10 +16,12 @@ function ExplorePage() {
   }
 
   // use effect to get the state of all photos
-  useEffect(async () => {
-    await dispatch(getAllPhotosThunk());
-    await dispatch(getAllAlbumsThunk());
-    setLoaded(true);
+  useEffect(() => {
+    (async () => {
+      await dispatch(getAllPhotosThunk());
+      await dispatch(getAllAlbumsThunk());
+      setLoaded(true);
+    })();
   }, [dispatch]);
 
   const oddOrEven = (photoId) => {

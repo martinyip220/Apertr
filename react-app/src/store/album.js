@@ -136,22 +136,9 @@ const albumReducer = (state = intialState, action) => {
     let newState;
     switch (action.type) {
         case CREATE_ALBUM: {
-
-            // newState[action.payload] = action.payload.album
-            console.log("state.allalbums.albums", state.allAlbums.albums)
-            console.log("this is before getting to newState", state.allAlbums)
-            console.log("this is newState", newState)
             newState = { ...state };
-            console.log("this is after getting to newState", state.allAlbums)
-            console.log("this is newState after spreading state", newState)
             newState.allAlbums.albums = [ ...state.allAlbums.albums]
-
-            // console.log("i should be action.payload", action.payload)
-            console.log("what am i???newState.allAlbums.albums", newState.allAlbums.albums)
-            console.log("i should be action.payload.album", action.payload.album)
-            console.log("ishould be action.payload.album.id", action.payload.album.id)
             newState.allAlbums.albums.push(action.payload.album)
-            console.log("newState.allAlbums.albums after pushing", newState.allAlbums.albums)
             return newState;
         }
         case GET_ALBUM: {
@@ -161,9 +148,8 @@ const albumReducer = (state = intialState, action) => {
             return newState;
         }
         case GET_ALL_ALBUMS: {
-            newState = { ... state };
+            newState = { ...state };
             const albums = action.payload
-            console.log("i am the albums from get all albums", albums)
             newState.allAlbums.albums = albums.albums
             return newState
         }
@@ -176,13 +162,8 @@ const albumReducer = (state = intialState, action) => {
         case EDIT_ALBUM: {
             const newState = { ...state };
             newState.userAlbums = { ...state.userAlbums };
-            // newState.allAlbums = { ...state.allAlbums };
             newState.userAlbums[action.payload.album.id] = action.payload.album;
             newState.allAlbums.albums[action.payload.album.id] = action.payload.album
-
-            console.log("action.payload.album.id", action.payload.album.id)
-            console.log("action.payload.album", action.payload.album)
-            console.log("allalbums", newState.allAlbums.albums.length)
             return newState;
         }
         case DELETE_ALBUM: {

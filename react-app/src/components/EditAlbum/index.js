@@ -31,39 +31,45 @@ function EditAlbumForm() {
   useEffect(() => {
     (async () => {
       let errors = [];
-      const btn = await document.getElementById("test")
+      const btn = await document.getElementById("test");
 
       if (!btn) return null;
 
-      if (title.length > 20) {
+      if (title.trim().length > 20) {
         errors.push("Title must be less than 20 characters");
-        btn.disabled = true
-        btn.className = "errors-btn"
+        btn.disabled = true;
+        btn.className = "errors-btn";
       }
-      if (description.length > 100) {
+      if (!title.trim().length) {
+        errors.push("Title is required");
+        btn.disabled = true;
+        btn.className = "errors-btn";
+      }
+      if (description.trim().length > 100) {
         errors.push("Description must be less than 100 characters");
-        btn.disabled = true
-        btn.className = "errors-btn"
+        btn.disabled = true;
+        btn.className = "errors-btn";
       }
 
-      if (title.length <= 20 && description.length <= 100) {
-        btn.disabled = false
-        btn.className = "up-photo-btn"
-        console.log("btn", btn)
+      if (
+        title.trim().length <= 20 &&
+        title.trim().length > 0 &&
+        description.trim().length <= 100
+      ) {
+        btn.disabled = false;
+        btn.className = "up-photo-btn";
       }
 
       await setErrors(errors);
-
     })();
   }, [title, description]);
-
-
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const photos = Array.isArray(selectedPhotos) ? [...selectedPhotos].join(",") : [...singleAlbum.photoIds].join(",");
+    const photos = Array.isArray(selectedPhotos)
+      ? [...selectedPhotos].join(",")
+      : [...singleAlbum.photoIds].join(",");
 
     const editedAlbum = {
       id,
@@ -168,7 +174,12 @@ function EditAlbumForm() {
                 </div>
               ) : null}
               {userPhotosArr?.map((photo) => (
-                <UserPhotosSelect photo={photo} selectPhoto={selectPhoto} addDefaultSrc={addDefaultSrc} chosen={singleAlbum.photoIds} />
+                <UserPhotosSelect
+                  photo={photo}
+                  selectPhoto={selectPhoto}
+                  addDefaultSrc={addDefaultSrc}
+                  chosen={singleAlbum.photoIds}
+                />
               ))}
             </div>
           </div>

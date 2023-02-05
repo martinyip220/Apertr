@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/clickr-logo.jpg";
 import profilePic from "../../assets/profile-img.jpg";
-import { getAllUsers } from "../../store/session";
 import { getAllAlbumsThunk, userAlbumsThunk } from "../../store/album";
 import { useDispatch, useSelector } from "react-redux";
 import LogoutButton from "../auth/LogoutButton";
@@ -10,7 +9,8 @@ import "./NavBar.css";
 
 const LoggedInNav = () => {
   const dispatch = useDispatch();
-  const [showProfile, setShowProfile] = useState(false)
+  const [showProfile, setShowProfile] = useState(false);
+  const profileRef = React.useRef(null);
   const user = useSelector((state) => state.session.user)
   const userId = useSelector((state) => state.session.user?.id);
 
@@ -22,6 +22,22 @@ const LoggedInNav = () => {
   const toggleProfile = () => {
     setShowProfile(!showProfile)
   }
+
+  useEffect(() => {
+    const handleDocumentClick = (event) => {
+      if (
+        !profileRef.current?.contains(event.target) &&
+        !event.target.classList?.contains("profile-pic")
+      ) {
+        setShowProfile(false);
+      }
+    };
+    document.addEventListener("click", handleDocumentClick);
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, []);
 
 
   return (

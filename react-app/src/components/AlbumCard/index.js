@@ -36,10 +36,11 @@ const AlbumCard = ({ albumId }) => {
           <img
             onError={addDefaultSrc}
             className="album-img"
+            alt="album-profile"
             src={
               albumPhotos.length
                 ? albumPhotos[0]?.photoImg
-                : "https://t3.ftcdn.net/jpg/04/84/88/76/360_F_484887682_Mx57wpHG4lKrPAG0y7Q8Q7bJ952J3TTO.jpg"
+                : "https://sipr.mojokertokab.go.id/images/avatar/no-image.jpg"
             }
           ></img>
         </Link>
