@@ -21,8 +21,8 @@ function SplashPage() {
           return (prevIndex + 1) % photos.length;
         });
         setShow(true);
-      }, 500);
-    }, 3000);
+      }, 400);
+    }, 3300);
     return () => clearInterval(interval);
   }, [photos.length]);
 

@@ -12,7 +12,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  transition: all 1.5s ease-in-out;
+  transition: 2.0s ease-in-out;
 }
 
 .splash-page-text-container {
