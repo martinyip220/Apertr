@@ -1,59 +1,59 @@
 .splash-page-whole {
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
 }
 
 .splash-page-background {
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-    background: url("https://free4kwallpapers.com/uploads/originals/2019/01/20/huge-moon-wallpaper.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin: 0;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 1.5s ease-in-out;
 }
 
-
 .splash-page-text-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 700px;
-    height: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 700px;
+  height: 1000px;
 }
 
 .splash-text {
-    color: white;
-    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-    font-size: 26px;
-    font-weight: 500;
+  color: white;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  font-size: 26px;
+  font-weight: 500;
 }
 
 .splash-title {
-    font-size: 56px;
-    margin-bottom: 50px;
-    color: white;
-    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-size: 56px;
+  margin-bottom: 50px;
+  color: white;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
 .splash-btn-link {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .get-started-btn {
-    margin-top: 50px;
-    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
-    color: black;
-    font-size: 24px;
-    font-weight: 600;
-    padding: 20px;
-    background-color: white;
-    text-decoration: none;
-    border-radius: 5px;
+  margin-top: 50px;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: black;
+  font-size: 24px;
+  font-weight: 600;
+  padding: 20px;
+  background-color: white;
+  text-decoration: none;
+  border-radius: 5px;
 }
 
 .get-started-btn:hover {
-    color: rgba(99, 99, 99, 0.705);
+  color: rgba(99, 99, 99, 0.705);
 }
