@@ -10,7 +10,8 @@ import "./NavBar.css";
 
 const LoggedInNav = () => {
   const dispatch = useDispatch();
-  const [showProfile, setShowProfile] = useState(false)
+  const [showProfile, setShowProfile] = useState(false);
+  const profileRef = React.useRef(null);
   const user = useSelector((state) => state.session.user)
   const userId = useSelector((state) => state.session.user?.id);
 
@@ -22,6 +23,22 @@ const LoggedInNav = () => {
   const toggleProfile = () => {
     setShowProfile(!showProfile)
   }
+
+  useEffect(() => {
+    const handleDocumentClick = (event) => {
+      if (
+        !profileRef.current?.contains(event.target) &&
+        !event.target.classList?.contains("profile-pic")
+      ) {
+        setShowProfile(false);
+      }
+    };
+    document.addEventListener("click", handleDocumentClick);
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, []);
 
 
   return (
