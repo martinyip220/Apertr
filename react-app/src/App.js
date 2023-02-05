@@ -23,24 +23,10 @@ import Footer from "./components/Footer";
 
 
 function App() {
+  const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   const user = useSelector((state) => state.session.user);
 
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-
-  //   const fetchData = async () => {
-  //     await dispatch(authenticate());
-  //     await dispatch(getAllUsers());
-  //     await dispatch(getAllPhotosThunk());
-  //     await dispatch(getAllAlbumsThunk());
-  //     setLoaded(true)
-  //   }
-
-  //   fetchData().catch(console.error);
-
-  // }, []);
 
   useEffect(() => {
     (async () => {
@@ -56,7 +42,6 @@ function App() {
 
   return (
     <>
-      {/* <NavBar /> */}
       <Switch>
         <Route path="/login" exact={true}>
           <LoginSignupNav />
@@ -66,15 +51,17 @@ function App() {
           <LoginSignupNav />
           <SignUpForm />
         </Route>
-        <ProtectedRoute path="/users" exact={true}>
+        {/* no use for users yet */}
+        {/* <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <Route path="/explore" exact={true}>
           {user ? <LoggedInNav /> : <NavBar />}
           <ExplorePage />
+          <Footer />
         </Route>
         <Route path="/photos/new" exact={true}>
           {user ? <LoggedInNav /> : <NavBar />}
@@ -83,6 +70,7 @@ function App() {
         <Route path="/photos/:photoId" exact={true}>
           {user ? <LoggedInNav /> : <NavBar />}
           <PhotoDetail />
+          <Footer />
         </Route>
         <Route path="/albums/new" exact={true}>
           <LoggedInNav />
@@ -91,6 +79,7 @@ function App() {
         <Route path="/albums/:albumId" exact={true}>
           <LoggedInNav />
           <AlbumPage />
+          <Footer />
         </Route>
         <Route path="/albums/:albumId/edit" exact={true}>
           <LoggedInNav />
@@ -99,6 +88,7 @@ function App() {
         <Route path="/you" exact={true}>
           <LoggedInNav />
           <ProfilePage />
+          <Footer />
         </Route>
         <Route path="/" exact={true}>
           <NavBar />
