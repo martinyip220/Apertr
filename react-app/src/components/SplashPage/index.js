@@ -22,7 +22,7 @@ function SplashPage() {
         });
         setShow(true);
       }, 500);
-    }, 2500);
+    }, 3000);
     return () => clearInterval(interval);
   }, [photos.length]);
 

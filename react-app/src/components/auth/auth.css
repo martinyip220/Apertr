@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: calc(100vh - 50px);
     background-image: url("https://free4kwallpapers.com/uploads/originals/2022/12/18/tracks-to-nowhere-wallpaper.jpg");
     background-size: cover;
     background-repeat: no-repeat;

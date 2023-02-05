@@ -31,7 +31,7 @@ const NavBar = () => {
         <div className="nav-right">
           <li className="nav-bar-items">
             <NavLink to="/login" exact={true} activeClassName="active" className="nav-link">
-              Login
+              Log In
             </NavLink>
           </li>
           <button className="signup-btn">
