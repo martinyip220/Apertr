@@ -109,3 +109,13 @@ The you page consists of all the albums you made! Feel free to edit them as need
    flask run
    ```
 
+# Future Implementations
+
+- AWS (Amazon Web Services) to upload pictures.
+- Comment Feature:
+   - Ability to leave comments in posts when logged in.
+   - Ability to edit and delete comments that the user made
+- Tag Feature:
+   - Group photos by tags such that they will be easier to search for.
+- Search Feature:
+   - Ability to look up specific images by their tags.

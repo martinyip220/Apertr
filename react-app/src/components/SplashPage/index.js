@@ -17,7 +17,7 @@ function SplashPage() {
       setBackgroundIndex((prevIndex) => {
         return (prevIndex + 1) % photos.length;
       });
-    }, 3200);
+    }, 3900);
     return () => clearInterval(interval);
   }, [photos.length]);
 
@@ -25,7 +25,7 @@ function SplashPage() {
     setShow(false);
     setTimeout(() => {
       setShow(true);
-    }, 500);
+    }, 600);
   }, [backgroundIndex]);
 
   return (
