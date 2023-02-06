@@ -61,7 +61,6 @@ function App() {
         <Route path="/explore" exact={true}>
           {user ? <LoggedInNav /> : <NavBar />}
           <ExplorePage />
-          <Footer />
         </Route>
         <Route path="/photos/new" exact={true}>
           {user ? <LoggedInNav /> : <NavBar />}
@@ -70,7 +69,6 @@ function App() {
         <Route path="/photos/:photoId" exact={true}>
           {user ? <LoggedInNav /> : <NavBar />}
           <PhotoDetail />
-          <Footer />
         </Route>
         <Route path="/albums/new" exact={true}>
           <LoggedInNav />

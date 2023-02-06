@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPhotosThunk } from "../../store/photo";
 import { getAllAlbumsThunk } from "../../store/album";
 import { Link } from "react-router-dom";
+import Footer from "../Footer";
 import "./index.css";
 
 function ExplorePage() {
@@ -62,6 +63,8 @@ function ExplorePage() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }
