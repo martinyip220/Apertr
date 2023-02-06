@@ -34,34 +34,34 @@ def seed_photos():
             user_id=1, album_id=2, photo_img="https://c4.wallpaperflare.com/wallpaper/924/106/356/5bd0add530baf-wallpaper-preview.jpg", description="the northern lights"
         ),
         Photo(
-            user_id=1, album_id=3, photo_img="https://free4kwallpapers.com/uploads/originals/2018/10/18/japanese-sunset-wallpaper.jpg", description="Japanese street!"
+            user_id=3, album_id=3, photo_img="https://free4kwallpapers.com/uploads/originals/2018/10/18/japanese-sunset-wallpaper.jpg", description="Japanese street!"
         ),
         Photo(
-            user_id=1, album_id=3, photo_img="https://free4kwallpapers.com/uploads/originals/2020/02/25/city-landscape-wallpaper.jpg", description="Empire state of mind"
+            user_id=3, album_id=3, photo_img="https://free4kwallpapers.com/uploads/originals/2020/02/25/city-landscape-wallpaper.jpg", description="Empire state of mind"
         ),
         Photo(
-            user_id=1, album_id=3, photo_img="https://free4kwallpapers.com/uploads/originals/2019/12/06/night-fireworks-at-the-eiffel-tower-in-paris-france-wallpaper.jpg", description="Eiffel tower!"
+            user_id=3, album_id=3, photo_img="https://free4kwallpapers.com/uploads/originals/2019/12/06/night-fireworks-at-the-eiffel-tower-in-paris-france-wallpaper.jpg", description="Eiffel tower!"
         ),
         Photo(
-            user_id=1, album_id=3, photo_img="https://free4kwallpapers.com/uploads/originals/2015/10/11/gwangan-bridge-south-korea-wallpaper.jpg", description="Korea!"
+            user_id=3, album_id=3, photo_img="https://free4kwallpapers.com/uploads/originals/2015/10/11/gwangan-bridge-south-korea-wallpaper.jpg", description="Korea!"
         ),
         Photo(
-            user_id=1, album_id=3, photo_img="https://free4kwallpapers.com/uploads/originals/2020/04/30/london-bridge-wallpaper.png", description="London Bridge"
+            user_id=3, album_id=3, photo_img="https://free4kwallpapers.com/uploads/originals/2020/04/30/london-bridge-wallpaper.png", description="London Bridge"
         ),
         Photo(
-            user_id=1, album_id=4, photo_img="https://free4kwallpapers.com/uploads/originals/2022/12/25/walk-on-the-beach-wallpaper.jpg", description="Look at that pier!"
+            user_id=2, album_id=4, photo_img="https://free4kwallpapers.com/uploads/originals/2022/12/25/walk-on-the-beach-wallpaper.jpg", description="Look at that pier!"
         ),
         Photo(
-            user_id=1, album_id=4, photo_img="https://free4kwallpapers.com/uploads/originals/2020/09/21/buaq-beach-kuta-bali-indonesia-wallpaper.jpg", description="low tide!"
+            user_id=2, album_id=4, photo_img="https://free4kwallpapers.com/uploads/originals/2020/09/21/buaq-beach-kuta-bali-indonesia-wallpaper.jpg", description="low tide!"
         ),
         Photo(
-            user_id=1, album_id=4, photo_img="https://free4kwallpapers.com/uploads/originals/2020/08/07/scenic-view-of-beach-during-dawn-wallpaper.jpg", description="A beautiful day"
+            user_id=2, album_id=4, photo_img="https://free4kwallpapers.com/uploads/originals/2020/08/07/scenic-view-of-beach-during-dawn-wallpaper.jpg", description="A beautiful day"
         ),
         Photo(
-            user_id=1, album_id=4, photo_img="https://free4kwallpapers.com/uploads/originals/2015/12/30/waimano-falls-hawaii-wallpaper.jpg", description="Simply magic, short hike from the beach!"
+            user_id=2, album_id=4, photo_img="https://free4kwallpapers.com/uploads/originals/2015/12/30/waimano-falls-hawaii-wallpaper.jpg", description="Simply magic, short hike from the beach!"
         ),
         Photo(
-            user_id=1, album_id=4, photo_img="https://free4kwallpapers.com/uploads/originals/2015/11/12/morning-beach-wallpaper.jpg", description="Unreal steadiness"
+            user_id=2, album_id=4, photo_img="https://free4kwallpapers.com/uploads/originals/2015/11/12/morning-beach-wallpaper.jpg", description="Unreal steadiness"
         ),
         Photo(
             user_id=2, album_id=5, photo_img="https://www.wsupercars.com/wallpapers-regular/Chevrolet/2024-Chevrolet-Corvette-E-Ray-001-1080.jpg", description="This is a my dream car collection. Take a look!"
