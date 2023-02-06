@@ -109,4 +109,3 @@ The you page consists of all the albums you made! Feel free to edit them as need
    flask run
    ```
 
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
