@@ -101,9 +101,8 @@
 .albums-container-bg {
     background-color: rgb(243,245,246);
     width: 100%;
-    height: calc(100% - 420px);
+    height: calc(100% - 400px);
     margin: 0;
-    padding-bottom: 20px;
 }
 
 .albums-container {
@@ -118,7 +117,7 @@
     margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 30px;
-    height: calc(100vh - 420px);
+    height: calc(100vh - 350px);
     display: flex;
     align-content: flex-start;
     flex-wrap: wrap;
@@ -156,6 +155,7 @@
 
 .no-albums-ctn {
     width: 80%;
+    height: calc(100vh - 439px);
     margin-left: 10%;
     margin-right: 10%;
     display: flex;
