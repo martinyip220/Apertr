@@ -20,7 +20,7 @@ function ProfilePage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      await dispatch(userAlbumsThunk(user.id));
+      await dispatch(userAlbumsThunk(user?.id));
       await dispatch(getAllUsers()).then(setLoaded(true));
     };
 

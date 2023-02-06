@@ -7,7 +7,7 @@ import "./index.css";
 
 function ExplorePage() {
   const dispatch = useDispatch();
-  const photosObject = useSelector((state) => state.photo.allPhotos.photos);
+  const photosObject = useSelector((state) => state.photo.allPhotos?.photos);
   const [loaded, setLoaded] = useState(false);
 
   function addDefaultSrc(e) {

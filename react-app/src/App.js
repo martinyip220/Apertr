@@ -14,7 +14,6 @@ import AlbumForm from "./components/CreateAlbum";
 import EditAlbumForm from "./components/EditAlbum";
 import AlbumPage from "./components/AlbumPage";
 import { authenticate } from "./store/session";
-import { getAllAlbumsThunk } from "./store/album";
 import SplashPage from "./components/SplashPage";
 import Footer from "./components/Footer";
 // import ProtectedRoute from "./components/auth/ProtectedRoute";
@@ -30,11 +29,12 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      await dispatch(authenticate());
-      await dispatch(getAllAlbumsThunk());
+      if (!user) {
+        await dispatch(authenticate());
+      }
       setLoaded(true);
     })();
-  }, [dispatch]);
+  }, [dispatch, user]);
 
   if (!loaded) {
     return null;

@@ -60,3 +60,18 @@
 .notSelected {
   border: 0;
 }
+
+.no-photos-uploaded-ctn {
+  font-size: 18px;
+  padding: 10px;
+}
+
+.no-photos-up-link {
+  font-weight: 600;
+  color: black;
+  text-decoration: none;
+}
+
+.no-photos-up-link:hover {
+  text-decoration: underline;
+}
