@@ -101,7 +101,7 @@
 .albums-container-bg {
     background-color: rgb(243,245,246);
     width: 100%;
-    height: calc(100vh - 420px);
+    height: calc(100% - 420px);
     margin: 0;
     padding-bottom: 20px;
 }

@@ -16,6 +16,7 @@ import AlbumPage from "./components/AlbumPage";
 import { authenticate } from "./store/session";
 import SplashPage from "./components/SplashPage";
 import Footer from "./components/Footer";
+import { getAllAlbumsThunk } from "./store/album";
 // import ProtectedRoute from "./components/auth/ProtectedRoute";
 // import UsersList from "./components/UsersList";
 // import User from "./components/User";
@@ -31,6 +32,7 @@ function App() {
     (async () => {
       if (!user) {
         await dispatch(authenticate());
+        await dispatch(getAllAlbumsThunk());
       }
       setLoaded(true);
     })();
