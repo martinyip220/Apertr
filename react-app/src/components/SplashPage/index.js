@@ -7,7 +7,6 @@ import photo4 from "../../assets/splash-pic-4.jpg"
 import photo5 from "../../assets/splash-pic-5.jpg"
 import "./index.css";
 
-
 function SplashPage() {
   const [backgroundIndex, setBackgroundIndex] = useState(0);
   const [show, setShow] = useState(false);
@@ -15,36 +14,39 @@ function SplashPage() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setShow(false);
-      setTimeout(() => {
-        setBackgroundIndex((prevIndex) => {
-          return (prevIndex + 1) % photos.length;
-        });
-        setShow(true);
-      }, 500);
+      setBackgroundIndex((prevIndex) => {
+        return (prevIndex + 1) % photos.length;
+      });
     }, 3200);
     return () => clearInterval(interval);
   }, [photos.length]);
 
+  useEffect(() => {
+    setShow(false);
+    setTimeout(() => {
+      setShow(true);
+    }, 500);
+  }, [backgroundIndex]);
+
   return (
-    <div
-      className={`splash-page-background ${show ? "active" : ""}`}
-      style={{ backgroundImage: `url(${photos[backgroundIndex]})` }}
-    >
-      <div className="splash-page-text-container">
-        <div className="splash-title">Find your inspiration.</div>
-        <div className="splash-text">
-          Join the Clickr community, home to tens of billions of
+    <div className="splash-page-background-container">
+      <div
+        className={`splash-page-background ${show ? "active" : ""}`}
+        style={{ backgroundImage: `url(${photos[backgroundIndex]})` }}
+      >
+        <div className="splash-page-text-container">
+          <div className="splash-title">Find your inspiration.</div>
+          <div className="splash-text">
+            Join the Clickr community, home to tens of billions of
+          </div>
+          <div className="splash-text">photos and 2 million groups.</div>
+          <NavLink to="/login" className="get-started-btn">
+            Start for free
+          </NavLink>
         </div>
-        <div className="splash-text">photos and 2 million groups.</div>
-        <NavLink to="/login" className="get-started-btn">
-          Start for free
-        </NavLink>
       </div>
     </div>
   );
 }
-
-
 
 export default SplashPage;
