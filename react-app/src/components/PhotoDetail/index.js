@@ -5,6 +5,7 @@ import { getOnePhotoThunk, getAllPhotosThunk } from "../../store/photo";
 import { getAllUsers } from "../../store/session";
 import DeletePhotoModal from "../DeletePhoto";
 import EditPhotoModal from "../EditPhoto";
+import Footer from "../Footer";
 import OpenModalMenuItem from "../OpenModalButton";
 import profilePic from "../../assets/profile-img.jpg";
 import "./index.css";
@@ -95,6 +96,8 @@ function PhotoDetail() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

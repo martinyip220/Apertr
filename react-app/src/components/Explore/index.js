@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPhotosThunk } from "../../store/photo";
 import { getAllAlbumsThunk } from "../../store/album";
 import { Link } from "react-router-dom";
+import Footer from "../Footer";
 import "./index.css";
 
 function ExplorePage() {
   const dispatch = useDispatch();
-  const photosObject = useSelector((state) => state.photo.allPhotos.photos);
+  const photosObject = useSelector((state) => state.photo.allPhotos?.photos);
   const [loaded, setLoaded] = useState(false);
 
   function addDefaultSrc(e) {
@@ -31,6 +32,8 @@ function ExplorePage() {
       return "photo-img-odd photo-img";
     }
   };
+
+  if (!loaded) return null;
 
   return (
     <div className="explore-pg-wrapper">
@@ -60,6 +63,8 @@ function ExplorePage() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

@@ -7,6 +7,15 @@ def seed_albums():
             user_id=1, title="World's Great Beauty", description="Take a peek around the world!"
         ),
         Album(
+            user_id=1, title="Snowy Mountain Adventure!", description="Wow it's like a winter wonderland here!"
+        ),
+        Album(
+            user_id=1, title="World Travel Destinations", description="I want to visit all these beautiful places!"
+        ),
+        Album(
+            user_id=1, title="Best Beaches Locations!", description="I can still remember the breeze and that sunshine!"
+        ),
+        Album(
             user_id=2, title="The best car collection", description="More than just from A to B!"
         ),
         Album(

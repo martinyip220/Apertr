@@ -6,9 +6,6 @@ import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar/NavBar";
 import LoginSignupNav from "./components/NavBar/NavBarLogSign";
 import LoggedInNav from "./components/NavBar/NavBarLogged";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
 import ExplorePage from "./components/Explore";
 import PhotoDetail from "./components/PhotoDetail";
 import ProfilePage from "./components/YouPage";
@@ -17,9 +14,11 @@ import AlbumForm from "./components/CreateAlbum";
 import EditAlbumForm from "./components/EditAlbum";
 import AlbumPage from "./components/AlbumPage";
 import { authenticate } from "./store/session";
-import { getAllAlbumsThunk } from "./store/album";
 import SplashPage from "./components/SplashPage";
 import Footer from "./components/Footer";
+// import ProtectedRoute from "./components/auth/ProtectedRoute";
+// import UsersList from "./components/UsersList";
+// import User from "./components/User";
 
 
 function App() {
@@ -30,11 +29,12 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      await dispatch(authenticate());
-      await dispatch(getAllAlbumsThunk());
+      if (!user) {
+        await dispatch(authenticate());
+      }
       setLoaded(true);
     })();
-  }, [dispatch]);
+  }, [dispatch, user]);
 
   if (!loaded) {
     return null;
@@ -61,7 +61,6 @@ function App() {
         <Route path="/explore" exact={true}>
           {user ? <LoggedInNav /> : <NavBar />}
           <ExplorePage />
-          <Footer />
         </Route>
         <Route path="/photos/new" exact={true}>
           {user ? <LoggedInNav /> : <NavBar />}
@@ -70,7 +69,6 @@ function App() {
         <Route path="/photos/:photoId" exact={true}>
           {user ? <LoggedInNav /> : <NavBar />}
           <PhotoDetail />
-          <Footer />
         </Route>
         <Route path="/albums/new" exact={true}>
           <LoggedInNav />

@@ -150,7 +150,7 @@ function AlbumForm() {
                 <div className="no-photos-uploaded-ctn">
                   <div>You have no photos uploaded.</div>
                   <div>
-                    Upload your photo click <Link to="/photos/new">here</Link>
+                    Upload your photo click <Link className="no-photos-up-link" to="/photos/new">here!</Link>
                   </div>
                 </div>
               ) : null}

@@ -38,10 +38,12 @@
 .logo-auth {
     height: 50px;
     margin-top: 30px;
+    transition: transform 0.5s ease-in-out;
 }
 
 .logo-auth:hover {
     cursor: pointer;
+    transform: scale(1.3);
 }
 
 .form-title {
