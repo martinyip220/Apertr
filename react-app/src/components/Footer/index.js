@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import github from "../../assets/github-icon.png";
 import linkedin from "../../assets/linkedin-icon.png";
 import "./index.css";
@@ -24,6 +23,7 @@ function Footer() {
             href="https://www.flickr.com/"
             target="_blank"
             className="flickr-link"
+            rel="noreferrer"
           >
             flickr.com
           </a>{" "}
@@ -34,12 +34,14 @@ function Footer() {
           <a
             href="https://github.com/martinyip220"
             target="_blank"
+            rel="noreferrer"
           >
             <img src={github} alt="github" className="about-icons"></img>
           </a>
           <a
             href="https://www.linkedin.com/in/martin-yip-889a9b261/"
             target="_blank"
+            rel="noreferrer"
           >
             <img src={linkedin} alt="linkedin" className="about-icons"></img>
           </a>

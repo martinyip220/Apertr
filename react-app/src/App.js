@@ -6,9 +6,6 @@ import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar/NavBar";
 import LoginSignupNav from "./components/NavBar/NavBarLogSign";
 import LoggedInNav from "./components/NavBar/NavBarLogged";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
 import ExplorePage from "./components/Explore";
 import PhotoDetail from "./components/PhotoDetail";
 import ProfilePage from "./components/YouPage";
@@ -20,6 +17,9 @@ import { authenticate } from "./store/session";
 import { getAllAlbumsThunk } from "./store/album";
 import SplashPage from "./components/SplashPage";
 import Footer from "./components/Footer";
+// import ProtectedRoute from "./components/auth/ProtectedRoute";
+// import UsersList from "./components/UsersList";
+// import User from "./components/User";
 
 
 function App() {
