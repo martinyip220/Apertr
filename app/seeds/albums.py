@@ -10,10 +10,10 @@ def seed_albums():
             user_id=1, title="Snowy Mountain Adventure!", description="Wow it's like a winter wonderland here!"
         ),
         Album(
-            user_id=1, title="World Travel Destinations", description="I want to visit all these beautiful places!"
+            user_id=3, title="World Travel Destinations", description="I want to visit all these beautiful places!"
         ),
         Album(
-            user_id=1, title="Best Beaches Locations!", description="I can still remember the breeze and that sunshine!"
+            user_id=2, title="Best Beaches Locations!", description="I can still remember the breeze and that sunshine!"
         ),
         Album(
             user_id=2, title="The best car collection", description="More than just from A to B!"

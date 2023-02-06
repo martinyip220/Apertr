@@ -58,8 +58,8 @@ function AlbumForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const photos = [...selectedPhotos].join(",");
+    
+    const photos = Array.from(selectedPhotos).join(",");
 
     const newAlbum = {
       title,
