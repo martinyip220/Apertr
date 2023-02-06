@@ -32,6 +32,8 @@ function ExplorePage() {
     }
   };
 
+  if (!loaded) return null;
+
   return (
     <div className="explore-pg-wrapper">
       <div className="explore-title-container">

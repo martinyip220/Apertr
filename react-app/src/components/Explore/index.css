@@ -45,8 +45,8 @@
 .explore-cards-ctn {
   display: flex;
   width: 100%;
+  height: calc(100vh - 161px);
   justify-content: center;
-  margin-bottom: 80px;
 }
 
 .photo-img {
