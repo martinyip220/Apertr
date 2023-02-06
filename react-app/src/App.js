@@ -88,7 +88,6 @@ function App() {
         <Route path="/you" exact={true}>
           <LoggedInNav />
           <ProfilePage />
-          <Footer />
         </Route>
         <Route path="/" exact={true}>
           <NavBar />

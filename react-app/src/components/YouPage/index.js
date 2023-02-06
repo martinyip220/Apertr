@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { getAllUsers } from "../../store/session";
 import { userAlbumsThunk } from "../../store/album";
 import AlbumCard from "../AlbumCard";
+import Footer from "../Footer";
 import profilePic from "../../assets/profile-img.jpg";
 import "./index.css";
 
@@ -26,7 +27,6 @@ function ProfilePage() {
 
     fetchData().catch(console.error);
   }, [dispatch, user?.id]);
-
 
   if (!loaded) return null;
 
@@ -71,24 +71,26 @@ function ProfilePage() {
           </NavLink>
         </div>
 
-
-        {albumsArr.length > 0 &&
+        {albumsArr.length > 0 && (
           <div className="albums-ctn-page">
-            {loaded && albumsArr.map((album) => (
-              <div className="albums-container" key={album.id}>
-                <AlbumCard albumId={album.id} />
-              </div>
-            ))}
+            {loaded &&
+              albumsArr.map((album) => (
+                <div className="albums-container" key={album.id}>
+                  <AlbumCard albumId={album.id} />
+                </div>
+              ))}
           </div>
-
-        }
+        )}
         {albumsArr.length === 0 && (
           <div className="no-albums-ctn">
-            <div className="no-albums-msg">You have no albums. Create one today!</div>
+            <div className="no-albums-msg">
+              You have no albums. Create one today!
             </div>
+          </div>
         )}
       </div>
 
+      <Footer />
     </div>
   );
 }
