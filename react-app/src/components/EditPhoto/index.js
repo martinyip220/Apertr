@@ -60,14 +60,20 @@ function EditPhotoModal({ photoId }) {
         btn.className = "errors-btn"
       }
 
-      if (isValidUrl(photo_img)) {
+       if (description.length > 151) {
+        errors.push("Description is limited to 150 characters");
+        btn.disabled = true
+        btn.className = "errors-btn"
+      }
+
+      if (isValidUrl(photo_img) && description.length < 151) {
         btn.disabled = false
         btn.className = "up-photo-btn"
       }
 
       await setErrors(errors)
     })();
-  }, [photo_img])
+  }, [photo_img, description])
 
 
   return (
