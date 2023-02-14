@@ -41,3 +41,16 @@
 .about-icons:hover {
     transform: scale(1.3);
 }
+
+
+@media screen and (min-width: 1009px) and (max-width: 1471px){
+    .footer-tech-stack {
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 1010px){
+    .footer-tech-stack {
+        font-size: 7px;
+    }
+}
