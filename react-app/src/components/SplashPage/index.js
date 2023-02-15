@@ -33,6 +33,7 @@ function SplashPage() {
       <img
         className={`splash-page-background ${show ? "active" : ""}`}
         src={photos[backgroundIndex]}
+        alt="background"
       ></img>
       <div className="splash-page-text-container">
         <div className="splash-title">Find your inspiration.</div>
