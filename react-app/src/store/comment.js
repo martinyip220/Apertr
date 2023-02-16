@@ -43,6 +43,38 @@ export const getAllPhotoCommentsThunk = (photoId) => async (dispatch) => {
     }
 }
 
+export const editCommentThunk = (commentData) => async (dispatch) => {
+    const { photoId, comment, id } = commentData;
+    console.log("photoid", photoId)
+    console.log("i am in the thunk, comment data: ", commentData)
+
+    const response = await fetch(`/api/comments/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            photoId,
+            comment,
+            id
+        })
+    })
+    if (response.ok) {
+        const editedComment = await response.json();
+        await dispatch(editComment(editedComment));
+        return editedComment;
+    }
+}
+
+export const deleteCommentThunk = (commentId) => async (dispatch) => {
+    const response = await fetch(`/api/comments/${commentId}`, {
+        method: "DELETE"
+    });
+    if (response.ok) {
+        const comment = await response.json();
+        await dispatch(deleteComment(commentId));
+        return comment;
+    }
+}
+
 
 const initialState = {
     allComments: {},
@@ -64,6 +96,17 @@ const commentsReducer = (state = initialState, action) => {
             newState.photoComments = {};
             const comments = action.payload
             newState.photoComments = comments
+            return newState
+        }
+        case EDIT_COMMENT: {
+            return {
+                ...state,
+                [action.payload.id]: action.payload
+            }
+        }
+        case DELETE_COMMENT: {
+            newState = { ...state };
+            delete newState.photoComments[action.payload]
             return newState
         }
         default:

@@ -1,0 +1,21 @@
+.comment-card-ctn {
+    border: 1px solid black;
+    font-size: 16px;
+    width: 500px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.comment-author-created {
+    display: flex;
+}
+
+.comment-author {
+    margin-right: 10px;
+}
+
+.comment-date {
+    font-size: 15px;
+    font-style: italic;
+    color: red;
+}

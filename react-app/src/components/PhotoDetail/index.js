@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getOnePhotoThunk, getAllPhotosThunk } from "../../store/photo";
 import { getAllUsers } from "../../store/session";
+import CommentCard from "../Comment";
 import DeletePhotoModal from "../DeletePhoto";
 import EditPhotoModal from "../EditPhoto";
 import Footer from "../Footer";
@@ -18,6 +19,8 @@ function PhotoDetail() {
   const [loaded, setLoaded] = useState(false);
   const singlePhoto = useSelector((state) => state.photo?.singlePhoto);
   const user = useSelector((state) => state.session?.user);
+  const allPhotoComments = useSelector((state) => state.comment.photoComments);
+  const commentsArr = Object.values(allPhotoComments)
   const ownerId = singlePhoto.userId
 
   function addDefaultSrc(e) {
@@ -88,7 +91,12 @@ function PhotoDetail() {
               <h2>Comments</h2>
             </div>
             <div className="placeholder-comments">
-              Comments Feature Coming Soon!
+              {loaded &&
+                commentsArr.map((comment) => (
+                  <div key={comment.id}>
+                    <CommentCard comment={comment} photoId={photoId}/>
+                  </div>
+                ))}
             </div>
           </div>
           <div className="photos-pg-placeholder-ctn">
