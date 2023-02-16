@@ -6,6 +6,7 @@ import { getAllUsers } from "../../store/session";
 import DeletePhotoModal from "../DeletePhoto";
 import EditPhotoModal from "../EditPhoto";
 import Footer from "../Footer";
+import { getAllPhotoCommentsThunk } from "../../store/comment";
 import OpenModalMenuItem from "../OpenModalButton";
 import profilePic from "../../assets/profile-img.jpg";
 import "./index.css";
@@ -28,6 +29,7 @@ function PhotoDetail() {
     (async () => {
       await dispatch(getAllPhotosThunk());
       await dispatch(getOnePhotoThunk(id));
+      await dispatch(getAllPhotoCommentsThunk(id));
       await dispatch(getAllUsers()).then(setLoaded(true));
     })();
   }, [dispatch, id]);
