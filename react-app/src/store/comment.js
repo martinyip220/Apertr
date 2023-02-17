@@ -1,5 +1,6 @@
 const CREATE_COMMENT = "comments/CREATE_COMMENT";
 const GET_COMMENT = "comments/GET_COMMENT";
+const GET_ALL_COMMENTS = "comments/GET_ALL_COMMENTS";
 const GET_ALL_PHOTO_COMMENTS = "comments/GET_ALL_PHOTO_COMMENTS";
 const EDIT_COMMENT = "comments/EDIT_COMMENT";
 const DELETE_COMMENT = "comments/DELETE_COMMENT";
@@ -14,6 +15,11 @@ const createComment = (comment) => ({
 const getOneComment = (comment) => ({
     type: GET_COMMENT,
     payload: comment
+})
+
+const getAllComments = (comments) => ({
+    type: GET_ALL_COMMENTS,
+    payload: comments
 })
 
 const getAllPhotoComments = (comments) => ({
@@ -33,6 +39,38 @@ const deleteComment = (commentId) => ({
 
 
 // Action Thunks
+export const createCommentThunk = (commentData) => async (dispatch) => {
+    const { photoId, comment } = commentData;
+
+    const response = await fetch(`/api/comments`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            photoId,
+            comment
+        })
+    })
+
+    if (response.ok) {
+        const comment = await response.json();
+        await dispatch(createComment(comment));
+        return comment;
+    }
+}
+
+
+
+export const getAllCommentsThunk = () => async (dispatch) => {
+    const response = await fetch(`/api/comments`);
+
+    if (response.ok) {
+        const comments = await response.json();
+        await dispatch(getAllComments(comments));
+        return comments
+    }
+
+}
+
 export const getAllPhotoCommentsThunk = (photoId) => async (dispatch) => {
     const response = await fetch(`/api/photos/${photoId}/comments`);
 
@@ -85,8 +123,18 @@ const initialState = {
 const commentsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
+        case GET_ALL_COMMENTS: {
+            newState = { ...state };
+            newState.allComments = {};
+            const comments = action.payload;
+            newState.allComments = comments
+            return newState
+        }
         case CREATE_COMMENT: {
-
+            newState = { ...state };
+            newState.photoComments = { ...state.photoComments };
+            newState.photoComments[action.payload.comment.id] = action.payload.comment;
+            return newState;
         }
         case GET_COMMENT: {
 

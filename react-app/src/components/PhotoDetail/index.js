@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getOnePhotoThunk, getAllPhotosThunk } from "../../store/photo";
 import { getAllUsers } from "../../store/session";
 import CommentCard from "../Comment";
+import CommentForm from "../CreateComment";
 import DeletePhotoModal from "../DeletePhoto";
 import EditPhotoModal from "../EditPhoto";
 import Footer from "../Footer";
@@ -20,8 +21,8 @@ function PhotoDetail() {
   const singlePhoto = useSelector((state) => state.photo?.singlePhoto);
   const user = useSelector((state) => state.session?.user);
   const allPhotoComments = useSelector((state) => state.comment.photoComments);
-  const commentsArr = Object.values(allPhotoComments)
-  const ownerId = singlePhoto.userId
+  const commentsArr = Object.values(allPhotoComments);
+  const ownerId = singlePhoto.userId;
 
   function addDefaultSrc(e) {
     e.target.src =
@@ -40,8 +41,6 @@ function PhotoDetail() {
   if (!loaded) return null;
 
   return (
-
-
     <div className="photo-detail-page">
       <div className="photo-detail-img-background">
         <div className="photo-detail-img-container">
@@ -74,14 +73,14 @@ function PhotoDetail() {
 
       <div className="photo-detail-bottom-ctn">
         <div className="profile-pic-photo-info-ctn">
-          <img className="default-photopic" src={profilePic} alt="default"></img>
+          <img
+            className="default-photopic"
+            src={profilePic}
+            alt="default"
+          ></img>
           <div className="owner-photo-info">
-            <div className="owner-name">
-              {singlePhoto.username}
-            </div>
-            <div className="owner-description">
-              {singlePhoto.description}
-            </div>
+            <div className="owner-name">{singlePhoto.username}</div>
+            <div className="owner-description">{singlePhoto.description}</div>
           </div>
         </div>
 
@@ -94,9 +93,10 @@ function PhotoDetail() {
               {loaded &&
                 commentsArr.map((comment) => (
                   <div key={comment.id}>
-                    <CommentCard comment={comment} photoId={photoId}/>
+                    <CommentCard comment={comment} photoId={photoId} />
                   </div>
                 ))}
+              <CommentForm photoId={photoId} />
             </div>
           </div>
           <div className="photos-pg-placeholder-ctn">
