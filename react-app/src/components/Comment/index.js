@@ -7,32 +7,48 @@ import OpenModalMenuItem from "../OpenModalButton";
 import "./index.css";
 
 function CommentCard({ comment, photoId }) {
-    const dispatch = useDispatch();
-    const date = (new Date(comment.createdAt)).toDateString();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.session?.user);
+  const ownerId = comment.ownerId;
+  const date = new Date(comment.createdAt).toDateString();
 
-    return (
-        <div className="comment-card-ctn">
-            <div className="comment-author-created">
-                <div className="comment-author">{comment.author}</div>
-                <div className="comment-date">{date}</div>
-                <div>
-                    <button>
-                        <OpenModalMenuItem
-                            itemText={<i className="fa-solid fa-pen-to-square"></i>}
-                            modalComponent={<EditCommentModal commentId={comment.id} photoId={photoId}/>}
-                        />
-                    </button>
-                    <button>
-                        <OpenModalMenuItem
-                            itemText={<i className="fa-regular fa-trash-can"></i>}
-                            modalComponent={<DeleteCommentModal commentId={comment.id} photoId={photoId}/>}
-                        />
-                    </button>
-                </div>
+  return (
+    <div className="comment-card-ctn">
+      <div className="comment-author-created">
+        <div className="comment-author">{comment.author}</div>
+        <div className="comment-date">{date}</div>
+        <div>
+          {user && user.id === ownerId && (
+            <div>
+              <button>
+                <OpenModalMenuItem
+                  itemText={<i className="fa-solid fa-pen-to-square"></i>}
+                  modalComponent={
+                    <EditCommentModal
+                      commentId={comment.id}
+                      photoId={photoId}
+                    />
+                  }
+                />
+              </button>
+              <button>
+                <OpenModalMenuItem
+                  itemText={<i className="fa-regular fa-trash-can"></i>}
+                  modalComponent={
+                    <DeleteCommentModal
+                      commentId={comment.id}
+                      photoId={photoId}
+                    />
+                  }
+                />
+              </button>
             </div>
-            <div>{comment.comment}</div>
+          )}
         </div>
-    )
+      </div>
+      <div>{comment.comment}</div>
+    </div>
+  );
 }
 
 export default CommentCard;

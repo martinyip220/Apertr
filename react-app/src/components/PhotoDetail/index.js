@@ -96,7 +96,9 @@ function PhotoDetail() {
                     <CommentCard comment={comment} photoId={photoId} />
                   </div>
                 ))}
-              <CommentForm photoId={photoId} />
+              {user && (
+                <CommentForm photoId={photoId} />
+              )}
             </div>
           </div>
           <div className="photos-pg-placeholder-ctn">
