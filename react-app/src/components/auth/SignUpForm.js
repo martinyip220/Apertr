@@ -35,7 +35,7 @@ const SignUpForm = () => {
 
       await setErrors(errors);
 
-      if (errors.length > 1) {
+      if (errors.length >= 1) {
         btn.disabled = true;
         btn.className = "signup-errors-disabled-btn";
       }

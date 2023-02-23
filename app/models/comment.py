@@ -22,6 +22,7 @@ class Comment(db.Model):
         return {
             'id': self.id,
             'author': self.user.full_name,
+            'ownerId': self.user_id,
             'photoId': self.photo_id,
             'comment': self.comment,
             'createdAt': self.created_at
