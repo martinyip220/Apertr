@@ -1,0 +1,32 @@
+.textarea-comment {
+    width: 494px;
+    height: 70px;
+    resize: none;
+    font-size: 16px;
+}
+
+.under-comment-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.counter-char {
+    font-size: 17px;
+    color: rgb(107, 107, 107);
+}
+
+.comment-submit-btn {
+    width: 80px;
+    margin-bottom: 12px;
+    border-width: 0;
+    height: 30px;
+    background-color: rgb(18, 143, 220);
+    color: white;
+    font-weight: 550;
+    border-radius: 5px;
+}
+
+.comment-submit-btn:hover {
+    cursor: pointer;
+    background-color: rgb(58, 167, 235);
+}
