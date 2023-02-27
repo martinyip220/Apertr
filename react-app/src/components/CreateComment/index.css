@@ -8,6 +8,7 @@
 .under-comment-info {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 80px;
 }
 
 .counter-char {

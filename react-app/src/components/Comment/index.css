@@ -1,5 +1,5 @@
 .comment-card-ctn {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     font-size: 16px;
     width: 500px;
     height: auto;
@@ -8,14 +8,38 @@
 
 .comment-author-created {
     display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.comment-author-date-ctn {
+    display: flex;
 }
 
 .comment-author {
     margin-right: 10px;
+    font-weight: 600;
 }
 
 .comment-date {
     font-size: 15px;
     font-style: italic;
     color: red;
+}
+
+.comment-icon-btns {
+    background-color: transparent;
+    color: rgba(163, 163, 163, 0.418);
+    border: 0;
+    font-size: 16px;
+}
+
+.comment-icon-btns:hover {
+    cursor: pointer;
+    color: black
+}
+
+.comment-div {
+    height: 30px;
+    width: 500px;
 }

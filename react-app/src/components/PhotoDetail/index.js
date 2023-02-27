@@ -89,7 +89,7 @@ function PhotoDetail() {
             <div className="comments-title-ctn">
               <h2>Comments</h2>
             </div>
-            <div className="placeholder-comments">
+            <div className="comments-area">
               {loaded &&
                 commentsArr.map((comment) => (
                   <div key={comment.id}>
@@ -109,7 +109,9 @@ function PhotoDetail() {
         </div>
       </div>
 
+      {/* <div className="footer-pg-ctn">
       <Footer />
+      </div> */}
     </div>
   );
 }

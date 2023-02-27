@@ -15,12 +15,14 @@ function CommentCard({ comment, photoId }) {
   return (
     <div className="comment-card-ctn">
       <div className="comment-author-created">
-        <div className="comment-author">{comment.author}</div>
-        <div className="comment-date">{date}</div>
-        <div>
+        <div className="comment-author-date-ctn">
+          <div className="comment-author">{comment.author}</div>
+          <div className="comment-date">{date}</div>
+        </div>
+        <div className="comment-auth-btns">
           {user && user.id === ownerId && (
             <div>
-              <button>
+              <button className="comment-icon-btns">
                 <OpenModalMenuItem
                   itemText={<i className="fa-solid fa-pen-to-square"></i>}
                   modalComponent={
@@ -31,7 +33,7 @@ function CommentCard({ comment, photoId }) {
                   }
                 />
               </button>
-              <button>
+              <button className="comment-icon-btns">
                 <OpenModalMenuItem
                   itemText={<i className="fa-regular fa-trash-can"></i>}
                   modalComponent={
@@ -46,7 +48,7 @@ function CommentCard({ comment, photoId }) {
           )}
         </div>
       </div>
-      <div>{comment.comment}</div>
+      <div className="comment-div">{comment.comment}</div>
     </div>
   );
 }
