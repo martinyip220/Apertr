@@ -2,70 +2,82 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import { editCommentThunk, getAllPhotoCommentsThunk } from "../../store/comment";
+import {
+  editCommentThunk,
+  getAllPhotoCommentsThunk,
+} from "../../store/comment";
 
 import "./index.css";
 
 function EditCommentModal({ commentId, photoId }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
-    const [errors, setErrors] = useState([]);
-    const photoComments = useSelector((state) => state.comment.photoComments);
-    const commentsArr = Object.values(photoComments);
-    const currComment = commentsArr.find((comment) => comment.id === commentId)
-    const [comment, setComment] = useState(currComment?.comment);
-    const id = commentId;
+  const [errors, setErrors] = useState([]);
+  const photoComments = useSelector((state) => state.comment.photoComments);
+  const commentsArr = Object.values(photoComments);
+  const currComment = commentsArr.find((comment) => comment.id === commentId);
+  const [comment, setComment] = useState(currComment?.comment);
+  const id = commentId;
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        const commentData = {
-            photoId,
-            comment,
-            id
-        }
+    const commentData = {
+      photoId,
+      comment,
+      id,
+    };
 
-        await dispatch(editCommentThunk(commentData))
-        await dispatch(getAllPhotoCommentsThunk(photoId))
+    await dispatch(editCommentThunk(commentData));
+    await dispatch(getAllPhotoCommentsThunk(photoId));
 
-        closeModal();
-    }
+    closeModal();
+  };
 
+  const commentEle = document.getElementById("editComment");
+  const counterEle = document.getElementById("editCounter");
 
-    return (
-        <div>
-            <div>
-                <div>Edit Comment</div>
-            </div>
+  commentEle?.addEventListener("input", function (e) {
+    const target = e.target;
 
-            <form onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>
-                            {error}
-                        </li>
-                    ))}
-                </ul>
+    // Get the `maxlength` attribute
+    const maxLength = target.getAttribute("maxlength");
 
-                <label>Comment</label>
-                <textarea
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                    required
-                />
+    // Count the current number of characters
+    const currentLength = target.value.length;
 
-                <div>
-                    <div onClick={closeModal}>
-                        Cancel
-                    </div>
-                    <button type="submit">
-                        Save
-                    </button>
-                </div>
-            </form>
+    counterEle.innerHTML = `${currentLength}/${maxLength}`;
+  });
+
+  return (
+    <div className="edit-del-comment-ctn">
+      <div>
+        <div className="edit-del-comment-title">Edit Comment</div>
+      </div>
+
+      <form className="edit-del-comment-form" onSubmit={handleSubmit}>
+
+        <label className="edit-comment-label">Comment</label>
+        <textarea
+          value={comment}
+          maxLength="200"
+          id="editComment"
+          placeholder="Add a comment"
+          className="comment-textarea"
+          onChange={(e) => setComment(e.target.value)}
+          required
+        />
+        <div className="edit-counter-char" id="editCounter"></div>
+
+        <div className="edit-del-comment-btns-ctn">
+          <div className="cancel-edit-comment" onClick={closeModal}>Cancel</div>
+          <button className="edit-comment-btn" type="submit">
+            Save
+          </button>
         </div>
-    )
+      </form>
+    </div>
+  );
 }
-
 
 export default EditCommentModal;
