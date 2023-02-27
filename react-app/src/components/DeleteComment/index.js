@@ -20,16 +20,17 @@ function DeleteCommentModal({ commentId, photoId }) {
   };
 
   return (
-    <div>
+    <div className="del-comment-ctn">
       <div>
-        <div>Delete Comment</div>
+        <div className="edit-del-comment-title">Delete Comment</div>
       </div>
 
-      <div>Do you want to permanently delete this comment?</div>
+      <div className="del-comment-msg">Do you want to permanently delete this comment?</div>
 
-      <div>
-        <button onClick={closeModal}>Cancel</button>
+      <div className="del-comment-btn-ctn">
+        <button className="del-comment-cancel" onClick={closeModal}>Cancel</button>
         <button
+          className="delete-comment-btn"
           onClick={() => {
             if (
               window.confirm(
