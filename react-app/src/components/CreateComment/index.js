@@ -45,8 +45,8 @@ function CommentForm({ photoId }) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="create-comment-form">
+      <form  onSubmit={handleSubmit}>
         <textarea
           className="textarea-comment"
           maxLength="200"

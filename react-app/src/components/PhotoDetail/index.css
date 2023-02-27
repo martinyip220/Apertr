@@ -76,7 +76,7 @@
 .photo-pg-comments-wrapper {
     height: 30vh;
     width: 30vw;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
