@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request
 from flask_login import current_user, login_required
-from ..models import db, Photo, Album
+from ..models import db, Photo, Album, Comment
 from ..forms import PhotoForm
 from .auth_routes import validation_errors_to_error_messages
 
@@ -90,3 +90,16 @@ def all_user_photos(id):
         return {photo.id: photo.to_dict() for photo in photos}, 200
     else:
         return {'errors': 'User not found'}, 404
+
+
+#all photo's comments
+@photo_routes.route("/<int:id>/comments")
+@login_required
+def all_photo_comments(id):
+
+    comments = Comment.query.filter_by(photo_id=id).all()
+
+    if comments:
+        return {comment.id: comment.to_dict() for comment in comments}, 200
+    else:
+        return {'errors': 'Photo not found'}, 404

@@ -3,9 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getOnePhotoThunk, getAllPhotosThunk } from "../../store/photo";
 import { getAllUsers } from "../../store/session";
+import CommentCard from "../Comment";
+import CommentForm from "../CreateComment";
 import DeletePhotoModal from "../DeletePhoto";
 import EditPhotoModal from "../EditPhoto";
 import Footer from "../Footer";
+import { getAllPhotoCommentsThunk } from "../../store/comment";
 import OpenModalMenuItem from "../OpenModalButton";
 import profilePic from "../../assets/profile-img.jpg";
 import "./index.css";
@@ -17,7 +20,9 @@ function PhotoDetail() {
   const [loaded, setLoaded] = useState(false);
   const singlePhoto = useSelector((state) => state.photo?.singlePhoto);
   const user = useSelector((state) => state.session?.user);
-  const ownerId = singlePhoto.userId
+  const allPhotoComments = useSelector((state) => state.comment.photoComments);
+  const commentsArr = Object.values(allPhotoComments);
+  const ownerId = singlePhoto.userId;
 
   function addDefaultSrc(e) {
     e.target.src =
@@ -28,6 +33,7 @@ function PhotoDetail() {
     (async () => {
       await dispatch(getAllPhotosThunk());
       await dispatch(getOnePhotoThunk(id));
+      await dispatch(getAllPhotoCommentsThunk(id));
       await dispatch(getAllUsers()).then(setLoaded(true));
     })();
   }, [dispatch, id]);
@@ -35,8 +41,6 @@ function PhotoDetail() {
   if (!loaded) return null;
 
   return (
-
-
     <div className="photo-detail-page">
       <div className="photo-detail-img-background">
         <div className="photo-detail-img-container">
@@ -69,14 +73,14 @@ function PhotoDetail() {
 
       <div className="photo-detail-bottom-ctn">
         <div className="profile-pic-photo-info-ctn">
-          <img className="default-photopic" src={profilePic} alt="default"></img>
+          <img
+            className="default-photopic"
+            src={profilePic}
+            alt="default"
+          ></img>
           <div className="owner-photo-info">
-            <div className="owner-name">
-              {singlePhoto.username}
-            </div>
-            <div className="owner-description">
-              {singlePhoto.description}
-            </div>
+            <div className="owner-name">{singlePhoto.username}</div>
+            <div className="owner-description">{singlePhoto.description}</div>
           </div>
         </div>
 
@@ -85,8 +89,16 @@ function PhotoDetail() {
             <div className="comments-title-ctn">
               <h2>Comments</h2>
             </div>
-            <div className="placeholder-comments">
-              Comments Feature Coming Soon!
+            <div className="comments-area">
+              {loaded &&
+                commentsArr.map((comment) => (
+                  <div key={comment.id}>
+                    <CommentCard comment={comment} photoId={photoId} />
+                  </div>
+                ))}
+              {user && (
+                <CommentForm photoId={photoId} />
+              )}
             </div>
           </div>
           <div className="photos-pg-placeholder-ctn">
@@ -97,7 +109,9 @@ function PhotoDetail() {
         </div>
       </div>
 
+      {/* <div className="footer-pg-ctn">
       <Footer />
+      </div> */}
     </div>
   );
 }
