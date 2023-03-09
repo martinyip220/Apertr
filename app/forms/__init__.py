@@ -3,3 +3,4 @@ from .signup_form import SignUpForm
 from .photo_form import PhotoForm
 from .album_form import AlbumForm
 from .comment_form import CommentForm
+from .tag_form import TagForm
