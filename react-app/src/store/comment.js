@@ -83,8 +83,6 @@ export const getAllPhotoCommentsThunk = (photoId) => async (dispatch) => {
 
 export const editCommentThunk = (commentData) => async (dispatch) => {
     const { photoId, comment, id } = commentData;
-    console.log("photoid", photoId)
-    console.log("i am in the thunk, comment data: ", commentData)
 
     const response = await fetch(`/api/comments/${id}`, {
         method: "PUT",
