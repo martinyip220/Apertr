@@ -40,16 +40,16 @@ function TagModal({ tagId, photoId }) {
   };
 
   return (
-    <div>
-      <div>
+    <div className="tag-modal-ctn">
+      <div className="tag-title-ctn">
         <div className="edit-del-tag-title">Tag Actions</div>
-        <button onClick={closeModal}>
-          <i class="fa-solid fa-x"></i>
+        <button className="tag-cancel" onClick={closeModal}>
+          <i className="fa-solid fa-x tag-cancel-x"></i>
         </button>
       </div>
 
       <form className="edit-del-tag-form">
-        <label className="edit-del-tag-label">Tag</label>
+        <label className="edit-del-tag-label">Tag:</label>
         <input
           value={tag}
           maxLength="10"
@@ -60,8 +60,8 @@ function TagModal({ tagId, photoId }) {
         />
 
         <div className="edit-del-tag-btns-ctn">
-          <button onClick={handleDelete}>Delete</button>
-          <button onClick={handleEdit}>Edit</button>
+          <button className="delete-photo-btn" onClick={handleDelete}>Delete</button>
+          <button className="edit-tag-btn" onClick={handleEdit}>Edit</button>
         </div>
       </form>
     </div>
