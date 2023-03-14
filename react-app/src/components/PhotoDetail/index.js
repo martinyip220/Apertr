@@ -14,6 +14,7 @@ import OpenModalMenuItem from "../OpenModalButton";
 import profilePic from "../../assets/profile-img.jpg";
 import "./index.css";
 import TagCard from "../Tag";
+import CreateTagModal from "../Tag/createTag";
 
 function PhotoDetail() {
   const dispatch = useDispatch();
@@ -101,23 +102,33 @@ function PhotoDetail() {
                     <CommentCard comment={comment} photoId={photoId} />
                   </div>
                 ))}
-              {user && (
-                <CommentForm photoId={photoId} />
-              )}
+              {user && <CommentForm photoId={photoId} />}
             </div>
           </div>
           <div className="photos-pg-placeholder-ctn">
-            Tags:
+            <div className="tags-photo-title-create-ctn">
+              <div className="tags-photo-title">Tags:</div>
+              <div className="tag-create-icon-ctn">
+                Add
+                <button className="tag-create-icon-btn">
+                  <OpenModalMenuItem
+                    itemText={<i class="fa-solid fa-plus"></i>}
+                    modalComponent={
+                      <CreateTagModal photoId={id} />
+                    }
+                  />
+                </button>
+              </div>
+            </div>
             <div className="tags-area">
-              {loaded && tagsArr.length > 0 &&
+              {loaded &&
+                tagsArr.length > 0 &&
                 tagsArr.map((tag) => (
                   <div key={tag.id}>
                     <TagCard tag={tag} photoId={photoId} />
                   </div>
                 ))}
-              {loaded && tagsArr.length === 0 && (
-                <div>Create a Tag!</div>
-              )}
+              {loaded && tagsArr.length === 0 && <div>Create a Tag!</div>}
             </div>
           </div>
         </div>

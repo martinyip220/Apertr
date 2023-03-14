@@ -6,12 +6,11 @@ import TagModal from "./tagModal";
 
 
 function TagCard({ tag, photoId }) {
-    const dispatch = useDispatch();
     const user = useSelector((state) => state.session?.user);
     const ownerId = tag.ownerId;
 
     return (
-        <div>
+        <div className="single-tag">
             <div className="tag-content">{tag.tag}</div>
             <div className="tag-actions">
                 {user && user.id === ownerId && (
