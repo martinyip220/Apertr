@@ -108,7 +108,8 @@ function PhotoDetail() {
           <div className="photos-pg-placeholder-ctn">
             <div className="tags-photo-title-create-ctn">
               <div className="tags-photo-title">Tags:</div>
-              <div className="tag-create-icon-ctn">
+              {user && (
+                <div className="tag-create-icon-ctn">
                 Add
                 <button className="tag-create-icon-btn">
                   <OpenModalMenuItem
@@ -119,6 +120,8 @@ function PhotoDetail() {
                   />
                 </button>
               </div>
+              )}
+
             </div>
             <div className="tags-area">
               {loaded &&
