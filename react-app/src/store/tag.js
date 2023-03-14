@@ -2,6 +2,7 @@ const CREATE_TAG = "tag/CREATE_TAG";
 const GET_ALL_PHOTO_TAGS = "tags/GET_ALL_PHOTO_TAGS";
 const EDIT_TAG = "tag/EDIT_TAG";
 const DELETE_TAG = "tag/DELETE_TAG";
+const PHOTO_TAGS = "tag/PHOTO_TAGS";
 
 
 // Actions
@@ -25,6 +26,10 @@ const deleteTag = (tagId) => ({
     payload: tagId
 })
 
+const photoTags = (tags) => ({
+    type: PHOTO_TAGS,
+    payload: tags
+})
 
 // Action Thunks
 export const createTagThunk = (tagData) => async (dispatch) => {
@@ -89,6 +94,16 @@ export const deleteTagThunk = (tagId) => async (dispatch) => {
     }
 }
 
+export const photosSameTagsThunk = (tag) => async (dispatch) => {
+    const response = await fetch(`/api/photos/tags/${tag}`);
+
+    if (response.ok) {
+        const tags = await response.json();
+        await dispatch(photoTags(tags));
+        return tags;
+    }
+}
+
 
 const initialState = {
     allTags: {},
@@ -121,6 +136,13 @@ const tagsReducer = (state = initialState, action) => {
         case DELETE_TAG: {
             newState = { ...state };
             delete newState.photoTags[action.payload]
+            return newState;
+        }
+        case PHOTO_TAGS: {
+            newState = { ...state };
+            newState.allTags = {};
+            const tags = action.payload;
+            newState.allTags = tags;
             return newState;
         }
         default:

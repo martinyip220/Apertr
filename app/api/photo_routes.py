@@ -115,3 +115,14 @@ def all_photo_tags(id):
         return {tag.id: tag.to_dict() for tag in tags}, 200
     else:
         return {'errors': 'Photo not found'}, 404
+
+#get all photo's with the same tag
+@photo_routes.route("/tags/<tag>")
+def all_photos_with_tag(tag):
+
+    tags = Tag.query.filter_by(tag=tag).all()
+
+    if tags:
+        return {tag.id: tag.to_dict() for tag in tags}, 200
+    else:
+        return {'errors': 'Photo not found'}, 404
