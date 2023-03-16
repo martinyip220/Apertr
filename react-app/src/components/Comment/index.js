@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllPhotoCommentsThunk } from "../../store/comment";
+import React from "react";
+import { useSelector } from "react-redux";
 import DeleteCommentModal from "../DeleteComment";
 import EditCommentModal from "../EditComment";
 import OpenModalMenuItem from "../OpenModalButton";
 import "./index.css";
 
 function CommentCard({ comment, photoId }) {
-  const dispatch = useDispatch();
   const user = useSelector((state) => state.session?.user);
   const ownerId = comment.ownerId;
   const date = new Date(comment.createdAt).toDateString();

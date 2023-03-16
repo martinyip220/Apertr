@@ -14,7 +14,7 @@ function PhotoTagsPage() {
   const photosArr = Object.values(tagPhotos);
   const tagId = [];
   const tag = useParams();
-  tagsArr.forEach((tag) => tagId.push(tag.id));
+  tagsArr.forEach((tag) => tagId.push(tag.photoId));
   let taggedPhotos = photosArr[0]?.filter((photo) => tagId.includes(photo.id));
   const [loaded, setLoaded] = useState(false);
 
@@ -25,7 +25,7 @@ function PhotoTagsPage() {
     };
 
     fetchData().catch(console.error);
-  }, [dispatch]);
+  }, [dispatch, tag.tag]);
 
   if (!loaded) return null;
 

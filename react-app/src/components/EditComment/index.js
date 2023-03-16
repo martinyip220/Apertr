@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import {
   editCommentThunk,
@@ -12,7 +11,6 @@ import "./index.css";
 function EditCommentModal({ commentId, photoId }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
-  const [errors, setErrors] = useState([]);
   const photoComments = useSelector((state) => state.comment.photoComments);
   const commentsArr = Object.values(photoComments);
   const currComment = commentsArr.find((comment) => comment.id === commentId);

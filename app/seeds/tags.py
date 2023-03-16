@@ -64,13 +64,13 @@ def seed_tags():
             user_id=2, photo_id=20, tag="Water"
         ),
         Tag(
-            user_id=2, photo_id=21, tag="Water"
+            user_id=2, photo_id=21, tag="Supercar"
         ),
         Tag(
-            user_id=2, photo_id=22, tag="Water"
+            user_id=2, photo_id=22, tag="Supercar"
         ),
         Tag(
-            user_id=2, photo_id=23, tag="Water"
+            user_id=2, photo_id=23, tag="Supercar"
         ),
         Tag(
             user_id=3, photo_id=24, tag="Bunny"

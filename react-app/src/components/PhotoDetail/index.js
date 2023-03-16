@@ -7,7 +7,6 @@ import CommentCard from "../Comment";
 import CommentForm from "../CreateComment";
 import DeletePhotoModal from "../DeletePhoto";
 import EditPhotoModal from "../EditPhoto";
-import Footer from "../Footer";
 import { getAllPhotoCommentsThunk } from "../../store/comment";
 import { getAllPhotoTagsThunk } from "../../store/tag";
 import OpenModalMenuItem from "../OpenModalButton";

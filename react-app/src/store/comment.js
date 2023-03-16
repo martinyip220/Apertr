@@ -1,5 +1,4 @@
 const CREATE_COMMENT = "comments/CREATE_COMMENT";
-const GET_COMMENT = "comments/GET_COMMENT";
 const GET_ALL_COMMENTS = "comments/GET_ALL_COMMENTS";
 const GET_ALL_PHOTO_COMMENTS = "comments/GET_ALL_PHOTO_COMMENTS";
 const EDIT_COMMENT = "comments/EDIT_COMMENT";
@@ -9,11 +8,6 @@ const DELETE_COMMENT = "comments/DELETE_COMMENT";
 // Actions
 const createComment = (comment) => ({
     type: CREATE_COMMENT,
-    payload: comment
-})
-
-const getOneComment = (comment) => ({
-    type: GET_COMMENT,
     payload: comment
 })
 
@@ -133,9 +127,6 @@ const commentsReducer = (state = initialState, action) => {
             newState.photoComments = { ...state.photoComments };
             newState.photoComments[action.payload.comment.id] = action.payload.comment;
             return newState;
-        }
-        case GET_COMMENT: {
-
         }
         case GET_ALL_PHOTO_COMMENTS: {
             newState = { ...state };
