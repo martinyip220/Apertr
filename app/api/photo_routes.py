@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_required
-from ..models import db, Photo, Album, Comment
+from ..models import db, Photo, Album, Comment, Tag
 from ..forms import PhotoForm
 from .auth_routes import validation_errors_to_error_messages
 
@@ -101,5 +101,28 @@ def all_photo_comments(id):
 
     if comments:
         return {comment.id: comment.to_dict() for comment in comments}, 200
+    else:
+        return {'errors': 'Photo not found'}, 404
+
+#all photo's tags
+@photo_routes.route("/<int:id>/tags")
+@login_required
+def all_photo_tags(id):
+
+    tags = Tag.query.filter_by(photo_id=id).all()
+
+    if tags:
+        return {tag.id: tag.to_dict() for tag in tags}, 200
+    else:
+        return {'errors': 'Photo not found'}, 404
+
+#get all photo's with the same tag
+@photo_routes.route("/tags/<tag>")
+def all_photos_with_tag(tag):
+
+    tags = Tag.query.filter_by(tag=tag).all()
+
+    if tags:
+        return {tag.id: tag.to_dict() for tag in tags}, 200
     else:
         return {'errors': 'Photo not found'}, 404

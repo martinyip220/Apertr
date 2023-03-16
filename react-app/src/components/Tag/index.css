@@ -1,0 +1,111 @@
+.tag-modal-ctn {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.tag-title-ctn {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.edit-del-tag-title {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.tag-cancel {
+  background-color: transparent;
+  border: 0;
+}
+
+.tag-cancel-x {
+  font-size: 17px;
+  color: grey;
+}
+
+.tag-cancel-x:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.edit-del-tag-form {
+  height: 100px;
+  width: 90%;
+}
+
+.edit-del-tag-label {
+  margin-right: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.tag-input {
+  margin-bottom: 50px;
+  font-size: 18px;
+}
+
+.edit-del-tag-btns-ctn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-tag-btn {
+  width: 80px;
+  border-width: 0;
+  height: 29px;
+  background-color: rgb(18, 143, 220);
+  color: white;
+  font-weight: 550;
+  border-radius: 5px;
+}
+
+.edit-tag-btn:hover {
+  cursor: pointer;
+  background-color: rgb(58, 167, 235);
+}
+
+.single-tag {
+  background-color: rgb(207,214,217);
+  border-radius: 10px;
+  padding: 4px;
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.tag-gear-icon {
+    background-color: transparent;
+    border: 0;
+    color: rgb(175, 175, 175);
+}
+
+.tag-gear-icon:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.tag-limit {
+  font-size: 12px;
+  color: red;
+  display: flex;
+  justify-content: center;
+}
+
+.tag-label-desc {
+  display: flex;
+  justify-content: center;
+}
+
+.create-tag-btns-ctn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.tag-content {
+  cursor: pointer;
+}

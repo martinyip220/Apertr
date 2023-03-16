@@ -29,6 +29,7 @@ class Photo(db.Model):
     user = db.relationship("User", back_populates="photo")
     album = db.relationship("Album", secondary=photo_albums ,back_populates="photo")
     comment = db.relationship("Comment", back_populates="photo")
+    tag = db.relationship("Tag", back_populates="photo")
 
     def to_dict(self):
         return {
@@ -39,5 +40,6 @@ class Photo(db.Model):
             'description': self.description,
             'createdAt': self.created_at,
             'albums': [album.id for album in self.album],
-            'comments': [comment.to_dict() for comment in self.comment]
+            'comments': [comment.to_dict() for comment in self.comment],
+            'tags': [tag.to_dict() for tag in self.tag]
         }

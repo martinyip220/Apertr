@@ -8,6 +8,7 @@ import LoginSignupNav from "./components/NavBar/NavBarLogSign";
 import LoggedInNav from "./components/NavBar/NavBarLogged";
 import ExplorePage from "./components/Explore";
 import PhotoDetail from "./components/PhotoDetail";
+import PhotoTagsPage from "./components/PhotoTags";
 import ProfilePage from "./components/YouPage";
 import UploadPhotoForm from "./components/UploadPhoto";
 import AlbumForm from "./components/CreateAlbum";
@@ -67,6 +68,10 @@ function App() {
         <Route path="/photos/new" exact={true}>
           {user ? <LoggedInNav /> : <NavBar />}
           <UploadPhotoForm />
+        </Route>
+        <Route path="/photos/tags/:tag" exact={true}>
+          {user ? <LoggedInNav /> : <NavBar />}
+          <PhotoTagsPage />
         </Route>
         <Route path="/photos/:photoId" exact={true}>
           {user ? <LoggedInNav /> : <NavBar />}

@@ -7,11 +7,13 @@ import CommentCard from "../Comment";
 import CommentForm from "../CreateComment";
 import DeletePhotoModal from "../DeletePhoto";
 import EditPhotoModal from "../EditPhoto";
-import Footer from "../Footer";
 import { getAllPhotoCommentsThunk } from "../../store/comment";
+import { getAllPhotoTagsThunk } from "../../store/tag";
 import OpenModalMenuItem from "../OpenModalButton";
 import profilePic from "../../assets/profile-img.jpg";
 import "./index.css";
+import TagCard from "../Tag";
+import CreateTagModal from "../Tag/createTag";
 
 function PhotoDetail() {
   const dispatch = useDispatch();
@@ -21,7 +23,9 @@ function PhotoDetail() {
   const singlePhoto = useSelector((state) => state.photo?.singlePhoto);
   const user = useSelector((state) => state.session?.user);
   const allPhotoComments = useSelector((state) => state.comment.photoComments);
+  const allPhotoTags = useSelector((state) => state.tag.photoTags);
   const commentsArr = Object.values(allPhotoComments);
+  const tagsArr = Object.values(allPhotoTags);
   const ownerId = singlePhoto.userId;
 
   function addDefaultSrc(e) {
@@ -34,6 +38,7 @@ function PhotoDetail() {
       await dispatch(getAllPhotosThunk());
       await dispatch(getOnePhotoThunk(id));
       await dispatch(getAllPhotoCommentsThunk(id));
+      await dispatch(getAllPhotoTagsThunk(id));
       await dispatch(getAllUsers()).then(setLoaded(true));
     })();
   }, [dispatch, id]);
@@ -96,14 +101,36 @@ function PhotoDetail() {
                     <CommentCard comment={comment} photoId={photoId} />
                   </div>
                 ))}
-              {user && (
-                <CommentForm photoId={photoId} />
-              )}
+              {user && <CommentForm photoId={photoId} />}
             </div>
           </div>
           <div className="photos-pg-placeholder-ctn">
-            <div className="placeholder-tags">
-              Place Holder Tags in Development!
+            <div className="tags-photo-title-create-ctn">
+              <div className="tags-photo-title">Tags:</div>
+              {user && (
+                <div className="tag-create-icon-ctn">
+                Add
+                <button className="tag-create-icon-btn">
+                  <OpenModalMenuItem
+                    itemText={<i className="fa-solid fa-plus"></i>}
+                    modalComponent={
+                      <CreateTagModal photoId={id} />
+                    }
+                  />
+                </button>
+              </div>
+              )}
+
+            </div>
+            <div className="tags-area">
+              {loaded &&
+                tagsArr.length > 0 &&
+                tagsArr.map((tag) => (
+                  <div key={tag.id}>
+                    <TagCard tag={tag} photoId={photoId} />
+                  </div>
+                ))}
+              {loaded && tagsArr.length === 0 && <div>Create a Tag!</div>}
             </div>
           </div>
         </div>
