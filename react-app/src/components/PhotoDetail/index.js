@@ -113,7 +113,7 @@ function PhotoDetail() {
                 Add
                 <button className="tag-create-icon-btn">
                   <OpenModalMenuItem
-                    itemText={<i class="fa-solid fa-plus"></i>}
+                    itemText={<i className="fa-solid fa-plus"></i>}
                     modalComponent={
                       <CreateTagModal photoId={id} />
                     }

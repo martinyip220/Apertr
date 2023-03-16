@@ -105,3 +105,7 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.tag-content {
+  cursor: pointer;
+}
